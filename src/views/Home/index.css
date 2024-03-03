@@ -1,34 +1,4 @@
-.text-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.animated-text {
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typeWriter 2s steps(40, end), blinkCursor 0.5s step-end infinite;
-}
-
-@keyframes typeWriter {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes blinkCursor {
-
-  from,
-  to {
-    border-right: 2px solid transparent;
-  }
-
-  50% {
-    border-right: 2px solid #000;
-  }
+.skill-container:hover .icon-wrapper {
+  transition: transform .3s;
+  transform: rotateY(360deg);
 }

@@ -5,6 +5,7 @@ import '@fontsource/roboto';
 import routes from './routes/routes';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './layout';
+import Home from './views/Home';
 
 const theme = createTheme({
   palette: {
@@ -54,6 +55,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
             {/* Your existing routes will be rendered inside Layout component */}
             {routes.map((route, ind) => (
               <Route key={ind} element={route.component} path={route.path} />

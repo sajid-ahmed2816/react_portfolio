@@ -1,8 +1,7 @@
 body {
-  background: linear-gradient(60deg, rgba(24,0,41,1) 0%, rgba(55,0,100,1) 25%, rgba(53,21,93,1) 50%, rgba(55,0,100,1) 75%, rgba(24,0,41,1) 100%);
+  background: linear-gradient(60deg, rgba(24, 0, 41, 1) 0%, rgba(46, 13, 74, 1) 25%, rgba(53, 21, 93, 1) 50%, rgba(46, 13, 74, 1) 75%, rgba(24, 0, 41, 1) 100%);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
 }
 
 /*  */

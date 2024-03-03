@@ -1,94 +1,90 @@
 import React, { useState } from 'react'
-import { AppBar, Box, Toolbar, IconButton, Typography, Container, Menu, Avatar, Button, Tooltip, MenuItem } from '@mui/material';
-import { LogoDev, MenuOpen } from '@mui/icons-material';
+import { AppBar, Box, Toolbar, IconButton, Typography, Container, Button, MenuItem, Drawer } from '@mui/material';
+import { LogoDev, MenuOpen, Menu } from '@mui/icons-material';
 import Navigation from '../../Navigation';
 import { Link } from 'react-router-dom';
 import Colors from '../../assets/style';
 
-const settings = ["View Resume", "Download Resume"];
-
 function Header() {
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [open, setOpen] = useState(false);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{ gap: "20px" }}>
+        <Toolbar disableGutters sx={{ gap: "20px", justifyContent: "space-between", }}>
           <Box
-            sx={{ display: "flex", alignItems: "center" }}
+            sx={{ display: "flex" }}
           >
-            <LogoDev sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
             <Typography
               variant="h6"
               noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
+              component={Link}
+              to="/home"
               sx={{
                 mr: 2,
-                display: { xs: 'none', md: 'flex' },
+                display: 'flex',
                 justifyContent: "space-between",
                 fontFamily: 'monospace',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
                 color: 'inherit',
                 textDecoration: 'none',
+                alignItems: "center"
               }}
             >
-              Sajid.
+              Sajid.<LogoDev sx={{ display: 'flex', mr: 1 }} />
             </Typography>
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: { md: 1, sm: 0, xs: 0 }, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
+              onClick={toggleDrawer(true)}
               color="inherit"
             >
-              <MenuOpen />
+              <Menu />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+            <Drawer
+              open={open} onClose={toggleDrawer(false)}
               sx={{
                 display: { xs: 'block', md: 'none' },
+                width: "200px",
               }}
             >
+              <MenuItem>
+                <Typography
+                  variant="h6"
+                  noWrap
+                  component={Link}
+                  to="/home"
+                  sx={{
+                    mr: 2,
+                    display: 'flex',
+                    justifyContent: "space-between",
+                    fontFamily: 'monospace',
+                    fontWeight: 700,
+                    letterSpacing: '.3rem',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                    alignItems: "center"
+                  }}
+                >
+                  Sajid.<LogoDev sx={{ display: 'flex', mr: 1 }} />
+                </Typography>
+                <IconButton onClick={toggleDrawer(false)}>
+                  <MenuOpen />
+                </IconButton>
+              </MenuItem>
               {Navigation.map((page, ind) => (
-                <MenuItem key={ind} onClick={handleCloseNavMenu}>
+                <MenuItem key={ind}>
                   <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Drawer>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: "flex-end", gap: "20px" }}>
@@ -97,7 +93,6 @@ function Header() {
                 component={Link}
                 to={page.path}
                 key={ind}
-                onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 <Typography variant='body2' sx={{
@@ -115,35 +110,6 @@ function Header() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Sajid Ahmed" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
         </Toolbar>
       </Container>
     </AppBar>
