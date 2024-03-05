@@ -49,10 +49,18 @@ function Header() {
               <Menu />
             </IconButton>
             <Drawer
-              open={open} onClose={toggleDrawer(false)}
+              open={open}
+              onClose={toggleDrawer(false)}
+              anchor='right'
               sx={{
                 display: { xs: 'block', md: 'none' },
                 width: "200px",
+              }}
+              PaperProps={{
+                sx: {
+                  background: Colors.secondary,
+                  color: Colors.primary
+                }
               }}
             >
               <MenuItem>
