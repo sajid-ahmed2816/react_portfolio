@@ -60,9 +60,15 @@ const skills = [
 ]
 
 const qualifications = [
-  { year: '2013', qualification: 'Matriculation', institution: 'Hill Crest School System' },
+  { year: '2022', qualification: 'Diploma', institution: 'Sir Adamjee Institute Of Management Science' },
   { year: '2016', qualification: 'Intermediate', institution: 'Government Degree College' },
-  { year: '2022', qualification: 'Diploma', institution: 'Sir Adamjee Institute of Management Science' },
+  { year: '2013', qualification: 'Matriculation', institution: 'Hill Crest School System' },
+];
+
+const experiences = [
+  { year: '2023 - continue', position: 'Frontend / ReactJs Developer', organization: 'MangoTech Solutions' },
+  { year: '2022 - 2023', position: 'MERN Stack Developer', organization: 'WeSudo' },
+  { year: '2020 - 2022', position: 'Document Processing Executive', organization: 'Systems Limited' },
 ];
 
 function Home() {
@@ -110,16 +116,16 @@ function Home() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: "120px"
           }}
         >
           {/* Intro Sec */}
           <Grid
             container
             sx={{
+              height: "100vh",
               flexDirection: { md: "row", sm: "column-reverse", xs: "column-reverse" },
               justifyContent: { md: "center", sm: "flex-end", xs: "flex-end" },
-              mt: "120px"
+              alignItems: "center"
             }}
           >
             <Grid item md={6} sx={{ width: "100%" }}>
@@ -214,7 +220,9 @@ function Home() {
                   width: "100%",
                   display: "flex",
                   justifyContent: "center",
-                  position: "relative"
+                  alignItems: "center",
+                  position: "relative",
+                  height: "100%",
                 }}
               >
                 <Box
@@ -241,39 +249,24 @@ function Home() {
           </Grid>
           {/* Intro Sec */}
 
-          {/* Qualification Section */}
-          <Grid container>
-            <Grid item md={12}>
+          <Grid container sx={{ height: "100vh", alignItems: "center" }}>
+            {/* Qualification Section */}
+            <Grid item md={6} sm={12} xs={12}>
               <Box>
-                <Typography variant="h4">
+                <Typography variant="h3">
                   My Qualification
                 </Typography>
               </Box>
-            </Grid>
-            <Grid item md={12}>
-              <Box position="relative">
+
+              <Box sx={{ position: "relative", p: 2 }}>
                 {qualifications.map((qualification, index) => (
                   <Fragment key={index}>
-                    {index > 0 && (
-                      <div
-                        style={{
-                          position: 'absolute',
-                          left: '0%',
-                          top: '10%',
-                          height: "160px",
-                          transform: 'translateX(-50%)',
-                          width: '1px',
-                          backgroundColor: Colors.secondary, // Change the color of the line
-                          zIndex: -1,
-                        }}
-                      />
-                    )}
                     <Box sx={{ display: "flex", p: 2 }}>
                       <Box
                         sx={{
-                          mt: "5px",
+                          mt: "7px",
                           position: 'absolute',
-                          left: '0%',
+                          left: '5%',
                           transform: 'translateX(-50%)',
                           width: "10px",
                           height: "10px",
@@ -283,12 +276,17 @@ function Home() {
                         }}
                       />
                       <Box sx={{ ml: 2 }}>
-                        <Typography variant="body2">
+                        <Typography sx={{ fontSize: "19px" }}>
                           {qualification.year}
                         </Typography>
                         <Box>
-                          <Typography variant="subtitle1">
-                            {qualification.qualification} - {qualification.institution}
+                          <Typography sx={{ fontSize: "18px" }}>
+                            {qualification.qualification}
+                          </Typography>
+                        </Box>
+                        <Box>
+                          <Typography sx={{ fontSize: "18px" }}>
+                            {qualification.institution}
                           </Typography>
                         </Box>
                       </Box>
@@ -297,8 +295,54 @@ function Home() {
                 ))}
               </Box>
             </Grid>
+            {/* Qualification Section */}
+            {/* Experience Section */}
+            <Grid item md={6} sm={12} xs={12}>
+              <Box>
+                <Typography variant="h3">
+                  My Experience
+                </Typography>
+              </Box>
+
+              <Box sx={{ position: "relative", p: 2 }}>
+                {experiences.map((experience, index) => (
+                  <Fragment key={index}>
+                    <Box sx={{ display: "flex", p: 2 }}>
+                      <Box
+                        sx={{
+                          mt: "7px",
+                          position: 'absolute',
+                          left: '5%',
+                          transform: 'translateX(-50%)',
+                          width: "10px",
+                          height: "10px",
+                          borderRadius: "50%",
+                          background: Colors.primaryGradient,
+                          boxShadow: `0px 0px 5px 1px ${Colors.secondary}`
+                        }}
+                      />
+                      <Box sx={{ ml: 2 }}>
+                        <Typography sx={{ fontSize: "19px" }}>
+                          {experience.year}
+                        </Typography>
+                        <Box>
+                          <Typography sx={{ fontSize: "18px" }}>
+                            {experience.position}
+                          </Typography>
+                        </Box>
+                        <Box>
+                          <Typography sx={{ fontSize: "18px" }}>
+                            {experience.organization}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Box>
+                  </Fragment>
+                ))}
+              </Box>
+            </Grid>
+            {/* Experience Section */}
           </Grid>
-          {/* Qualification Section */}
 
           {/* Skills Sec */}
           <Grid container spacing={2}>
