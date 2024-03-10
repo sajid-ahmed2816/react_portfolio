@@ -73,6 +73,7 @@ const experiences = [
 
 function Home() {
   const [loading, setLoading] = useState(false);
+  const [rotate, setRotate] = useState(false);
 
   const navigate = useNavigate();
 
@@ -116,13 +117,14 @@ function Home() {
           sx={{
             display: "flex",
             flexDirection: "column",
+            mt: "60px"
           }}
         >
           {/* Intro Sec */}
           <Grid
             container
             sx={{
-              height: "100vh",
+              height: "90vh",
               flexDirection: { md: "row", sm: "column-reverse", xs: "column-reverse" },
               justifyContent: { md: "center", sm: "flex-end", xs: "flex-end" },
               alignItems: "center"
@@ -252,100 +254,127 @@ function Home() {
           <Grid container sx={{ height: "100vh", alignItems: "center" }}>
             {/* Qualification Section */}
             <Grid item md={6} sm={12} xs={12}>
-              <Box>
-                <Typography variant="h3">
-                  My Qualification
-                </Typography>
-              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "20px",
+                }}
+              >
+                <Box>
+                  <Typography variant="h3">
+                    My Qualification
+                  </Typography>
+                </Box>
 
-              <Box sx={{ position: "relative", p: 2 }}>
-                {qualifications.map((qualification, index) => (
-                  <Fragment key={index}>
-                    <Box sx={{ display: "flex", p: 2 }}>
-                      <Box
-                        sx={{
-                          mt: "7px",
-                          position: 'absolute',
-                          left: '5%',
-                          transform: 'translateX(-50%)',
-                          width: "10px",
-                          height: "10px",
-                          borderRadius: "50%",
-                          background: Colors.primaryGradient,
-                          boxShadow: `0px 0px 5px 1px ${Colors.secondary}`
-                        }}
-                      />
-                      <Box sx={{ ml: 2 }}>
-                        <Typography sx={{ fontSize: "19px" }}>
-                          {qualification.year}
-                        </Typography>
-                        <Box>
-                          <Typography sx={{ fontSize: "18px" }}>
-                            {qualification.qualification}
+                <Box sx={{ position: "relative", p: 2 }}>
+                  {qualifications.map((qualification, index) => (
+                    <Fragment key={index}>
+                      <Box sx={{ display: "flex", p: 2 }}>
+                        <Box
+                          sx={{
+                            mt: "7px",
+                            position: 'absolute',
+                            left: '5%',
+                            transform: 'translateX(-50%)',
+                            width: "10px",
+                            height: "10px",
+                            borderRadius: "50%",
+                            background: Colors.primaryGradient,
+                            boxShadow: `0px 0px 5px 1px ${Colors.secondary}`
+                          }}
+                        />
+                        <Box sx={{ ml: 2 }}>
+                          <Typography sx={{ fontSize: "19px" }}>
+                            {qualification.year}
                           </Typography>
-                        </Box>
-                        <Box>
-                          <Typography sx={{ fontSize: "18px" }}>
-                            {qualification.institution}
-                          </Typography>
+                          <Box>
+                            <Typography sx={{ fontSize: "18px" }}>
+                              {qualification.qualification}
+                            </Typography>
+                          </Box>
+                          <Box>
+                            <Typography sx={{ fontSize: "18px" }}>
+                              {qualification.institution}
+                            </Typography>
+                          </Box>
                         </Box>
                       </Box>
-                    </Box>
-                  </Fragment>
-                ))}
+                    </Fragment>
+                  ))}
+                </Box>
               </Box>
             </Grid>
             {/* Qualification Section */}
             {/* Experience Section */}
             <Grid item md={6} sm={12} xs={12}>
-              <Box>
-                <Typography variant="h3">
-                  My Experience
-                </Typography>
-              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "20px",
+                }}
+              >
+                <Box>
+                  <Typography variant="h3">
+                    My Experience
+                  </Typography>
+                </Box>
 
-              <Box sx={{ position: "relative", p: 2 }}>
-                {experiences.map((experience, index) => (
-                  <Fragment key={index}>
-                    <Box sx={{ display: "flex", p: 2 }}>
-                      <Box
-                        sx={{
-                          mt: "7px",
-                          position: 'absolute',
-                          left: '5%',
-                          transform: 'translateX(-50%)',
-                          width: "10px",
-                          height: "10px",
-                          borderRadius: "50%",
-                          background: Colors.primaryGradient,
-                          boxShadow: `0px 0px 5px 1px ${Colors.secondary}`
-                        }}
-                      />
-                      <Box sx={{ ml: 2 }}>
-                        <Typography sx={{ fontSize: "19px" }}>
-                          {experience.year}
-                        </Typography>
-                        <Box>
-                          <Typography sx={{ fontSize: "18px" }}>
-                            {experience.position}
+                <Box sx={{ position: "relative", p: 2 }}>
+                  {experiences.map((experience, index) => (
+                    <Fragment key={index}>
+                      <Box sx={{ display: "flex", p: 2 }}>
+                        <Box
+                          sx={{
+                            mt: "7px",
+                            position: 'absolute',
+                            left: '5%',
+                            transform: 'translateX(-50%)',
+                            width: "10px",
+                            height: "10px",
+                            borderRadius: "50%",
+                            background: Colors.primaryGradient,
+                            boxShadow: `0px 0px 5px 1px ${Colors.secondary}`
+                          }}
+                        />
+                        <Box sx={{ ml: 2 }}>
+                          <Typography
+                            sx={{
+                              fontSize: "19px",
+                            }}
+                          >
+                            {experience.year}
                           </Typography>
-                        </Box>
-                        <Box>
-                          <Typography sx={{ fontSize: "18px" }}>
-                            {experience.organization}
-                          </Typography>
+                          <Box>
+                            <Typography sx={{ fontSize: "18px" }}>
+                              {experience.position}
+                            </Typography>
+                          </Box>
+                          <Box>
+                            <Typography sx={{ fontSize: "18px" }}>
+                              {experience.organization}
+                            </Typography>
+                          </Box>
                         </Box>
                       </Box>
-                    </Box>
-                  </Fragment>
-                ))}
+                    </Fragment>
+                  ))}
+                </Box>
               </Box>
             </Grid>
             {/* Experience Section */}
           </Grid>
 
           {/* Skills Sec */}
-          <Grid container spacing={2}>
+          <Grid
+            container
+            spacing={2}
+            sx={{
+              rowGap: "20px",
+              pb: "20px",
+            }}
+          >
             <Grid item md={12}>
               <Typography
                 variant="h4"
@@ -356,7 +385,7 @@ function Home() {
                 My Skills
               </Typography>
             </Grid>
-            <Grid item md={12} sx={{ p: 1 }}>
+            <Grid item md={12}>
               <Grid container spacing={3}>
                 {skills.map((skill, ind) => (
                   <Grid
@@ -364,7 +393,8 @@ function Home() {
                     item
                     md={3}
                     sm={6}
-                    xs={12}>
+                    xs={12}
+                  >
                     <Box
                       className="skill-container"
                       sx={{
@@ -378,10 +408,18 @@ function Home() {
                         transition: "all .3s",
                         ":hover": {
                           boxShadow: `0px 0px 5px 1px ${Colors.secondary}`,
-                        }
+                          "& .icon-wrapper": {
+                            transform: "rotateY(360deg)",
+                          },
+                        },
                       }}
                     >
-                      <Box className="icon-wrapper">
+                      <Box className="icon-wrapper"
+                        sx={{
+                          transition: "transform .3s",
+                          transform: "rotateY(0deg)",
+                        }}
+                      >
                         {skill.icon}
                       </Box>
                       <Typography>
