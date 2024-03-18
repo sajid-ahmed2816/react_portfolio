@@ -6,6 +6,7 @@ import routes from './routes/routes';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './layout';
 import Home from './views/Home';
+import ToasterContainer from './Components/Toaster';
 
 const theme = createTheme({
   palette: {
@@ -54,6 +55,7 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <ToasterContainer />
       <CssBaseline />
       <BrowserRouter>
         <Routes>

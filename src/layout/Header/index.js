@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { AppBar, Box, Toolbar, IconButton, Typography, Container, Button, MenuItem, Drawer } from '@mui/material';
 import { LogoDev, MenuOpen, Menu } from '@mui/icons-material';
 import Navigation from '../../Navigation';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Colors from '../../assets/style';
 
 function Header() {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -36,7 +37,7 @@ function Header() {
                 alignItems: "center"
               }}
             >
-              Sajid.<LogoDev sx={{ display: 'flex', mr: 1 }} />
+              Sajid <LogoDev sx={{ display: 'flex', mr: 1 }} />
             </Typography>
           </Box>
 
@@ -78,17 +79,26 @@ function Header() {
                     letterSpacing: '.3rem',
                     color: 'inherit',
                     textDecoration: 'none',
-                    alignItems: "center"
+                    alignItems: "center",
                   }}
                 >
-                  Sajid.<LogoDev sx={{ display: 'flex', mr: 1 }} />
+                  Sajid <LogoDev sx={{ display: 'flex', mr: 1 }} />
                 </Typography>
                 <IconButton onClick={toggleDrawer(false)}>
                   <MenuOpen />
                 </IconButton>
               </MenuItem>
               {Navigation.map((page, ind) => (
-                <MenuItem key={ind}>
+                <MenuItem
+                  key={ind}
+                  sx={{
+                    ":hover": {
+                      background: Colors.primaryGradient,
+                      color: Colors.secondary
+                    }
+                  }}
+                  onClick={() => { navigate(page.path); setOpen(false) }}
+                >
                   <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}

@@ -1,10 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Box, CardMedia, Container, Grid, Typography } from '@mui/material';
+import { Box, CardMedia, Chip, Container, Grid, Stack, Typography } from '@mui/material';
 import Images from '../../assets/images/Images';
 import { useSpring, animated, config } from 'react-spring';
 import Colors from '../../assets/style';
 
+const hobbies = [
+  "Programming",
+  "Coding",
+  "Learning",
+  "Gaming",
+  "Technology",
+  "Movies",
+  "Music",
+  "Travelling",
+  "History"
+]
+
 function About() {
+
   const [animateImage, setAnimateImage] = useState(false);
 
   useEffect(() => {
@@ -16,7 +29,7 @@ function About() {
   }, []);
 
   const imageAnimation = useSpring({
-    opacity: animateImage ? 1 : 0,
+    // opacity: animateImage ? 1 : 0.7,
     transform: `translateX(${animateImage ? 0 : 100}%)`,
     overflow: 'hidden',
     config: config.gentle
@@ -25,7 +38,6 @@ function About() {
   return (
     <Box
       sx={{
-        height: "100vh",
         width: "100%",
         display: "flex",
         alignItems: "center",
@@ -33,12 +45,12 @@ function About() {
       }}
     >
       <Container>
-        <Box sx={{ mt: "60px" }}>
+        <Box sx={{ mt: "40px" }}>
           <Grid
             container
             spacing={2}
             sx={{
-              height: "90vh",
+              height: { md: "100vh", sm: "100%", xs: "100%" },
             }}
           >
             <Grid item md={6} sm={12} xs={12}>
@@ -122,6 +134,38 @@ function About() {
               </Box>
             </Grid>
           </Grid>
+          {/* <Grid
+            container
+            sx={{
+              height: { md: "100vh", sm: "100%", xs: "100%" },
+            }}
+          >
+            <Grid item md={12} sm={12} sx={12}>
+              <Typography
+                variant='h2'
+              >
+                Hobbies & Interest
+              </Typography>
+              <Stack
+                gap={"20px"}
+                flexDirection={"column"}
+                alignItems={"flex-start"}
+                flexWrap={"wrap"}
+              >
+                {hobbies.map((hobby, ind) => (
+                  <Chip
+                    key={ind}
+                    label={hobby}
+                    sx={{
+                      background: Colors.primaryGradient,
+                      fontSize: "24px",
+                      p: "10px 20px"
+                    }}
+                  />
+                ))}
+              </Stack>
+            </Grid>
+          </Grid> */}
         </Box>
       </Container>
     </Box>

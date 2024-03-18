@@ -1,8 +1,13 @@
 import React from 'react'
+import { Box } from '@mui/material'
 
 function Project() {
   return (
-    <div>Project</div>
+    <Box
+      sx={{
+        height: "100vh"
+      }}
+    >Project</Box>
   )
 }
 

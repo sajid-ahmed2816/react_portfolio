@@ -1,12 +1,10 @@
 import React, { Fragment, useState } from 'react';
-import { Box, Button, CardMedia, Container, Grid, Typography, CircularProgress } from '@mui/material';
-import Images from '../../assets/images/Images';
+import { Box, CardMedia, Container, Grid, Typography, IconButton } from '@mui/material';
+import Images, { Html, Css, Javascript, Mongodb, ExpressJs, ReactJs, NodeJs, Firebase, Redux, Github, Bootstrap, MaterialUi, LinkedIn } from '../../assets/images/Images';
 import { TypeAnimation } from 'react-type-animation';
 import Colors from '../../assets/style';
-import { Html, Css, Javascript, Mongodb, ExpressJs, ReactJs, NodeJs, Firebase, Redux, Github, Bootstrap, MaterialUi } from '../../assets/images/Images';
-import "./index.css"
 import { useNavigate } from 'react-router-dom';
-import { FiberManualRecord } from '@mui/icons-material';
+import { PrimaryButton, SecondaryButton } from '../../Components/Buttons';
 
 const skills = [
   {
@@ -73,29 +71,19 @@ const experiences = [
 
 function Home() {
   const [loading, setLoading] = useState(false);
-  const [rotate, setRotate] = useState(false);
 
   const navigate = useNavigate();
 
   const handleDownload = async () => {
     setLoading(true);
     try {
-      const resumeId = "151HRHJLRFTBdpzDJrBx7DZq5A-cBTfFI"
-      const apiUrl = `https://drive.google.com/uc?id=${resumeId}`;
-
-      // Use fetch to download the file
-      const response = await fetch(apiUrl, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer YOUR_GOOGLE_DRIVE_API_ACCESS_TOKEN`,
-        },
-      });
-      const blob = await response.blob();
+      // Direct link to your resume file on Google Drive
+      const resumeUrl = "https://drive.google.com/uc?id=151HRHJLRFTBdpzDJrBx7DZq5A-cBTfFI";
 
       // Create a temporary link element to trigger the download
       const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.download = 'Resume.pdf';
+      link.href = resumeUrl;
+      link.download = 'resume.pdf'; // Change 'YourResume.pdf' to your desired filename
       document.body.appendChild(link);
 
       // Trigger the click event to start the download
@@ -117,47 +105,44 @@ function Home() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            mt: "60px"
+            gap: { md: 0, sm: "80px", xs: "80px" }
           }}
         >
           {/* Intro Sec */}
           <Grid
             container
+            spacing={{ md: 0, sm: 2, xs: 2 }}
             sx={{
-              height: "90vh",
-              flexDirection: { md: "row", sm: "column-reverse", xs: "column-reverse" },
-              justifyContent: { md: "center", sm: "flex-end", xs: "flex-end" },
-              alignItems: "center"
+              height: { md: "100vh", sm: "100%", xs: "100%" },
+              // flexDirection: { md: "row", sm: "column-reverse", xs: "column-reverse" },
+              justifyContent: "center",
+              alignItems: "center",
+              flexWrap: "wrap-reverse",
+              mt: { md: 0, sm: "120px", xs: "120px" },
+              pt: { md: "50px", sm: 0, xs: 0 }
             }}
           >
-            <Grid item md={6} sx={{ width: "100%" }}>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: { md: "flex-start", sm: "center", xs: "center" },
-                  justifyContent: "center",
-                  width: "100%",
-                  height: "100%"
-                }}
-              >
-                <Box>
-                  <Typography sx={{ color: Colors.white, fontSize: { md: "48px", sm: "36px", xs: "24px" }, }}>
+            <Grid item md={6}>
+              <Grid container spacing={2}>
+                <Grid item md={12} sm={12} xs={12}>
+                  <Typography sx={{ color: Colors.white, fontSize: { lg: "59px", md: "48px", sm: "36px", xs: "24px" }, }}>
                     Hi, I am&nbsp;
                     <Typography
                       component={"span"}
                       sx={{
                         color: Colors.secondary,
-                        fontSize: { md: "48px", sm: "36px", xs: "24px" },
+                        fontSize: { lg: "59px", md: "48px", sm: "36px", xs: "24px" },
                       }}
                     >
                       Sajid Ahmed.
                     </Typography>
                   </Typography>
+                </Grid>
+                <Grid item md={12} sm={12} xs={12}>
                   <Typography
                     sx={{
                       color: Colors.secondary,
-                      fontSize: { md: "40px", sm: "28px", xs: "18px" },
+                      fontSize: { lg: "48px", md: "40px", sm: "28px", xs: "18px" },
                       fontWeight: 700
                     }}
                   >
@@ -175,46 +160,55 @@ function Home() {
                       repeat={Infinity}
                     />
                   </Typography>
-                </Box>
-                <Box sx={{ display: "flex", gap: "10px", mt: "10px" }}>
-                  <Button
-                    variant='contained'
-                    sx={{
-                      background: Colors.primary1,
-                      color: Colors.white,
-                      width: "220px",
-                      ":hover": {
-                        background: Colors.primary
-                      }
-                    }}
-                    onClick={handleDownload}
-                  >
-                    {loading ?
-                      <CircularProgress
-                        sx={{
-                          color: Colors.white,
-                          width: "20px !important",
-                          height: "20px !important",
-                        }}
-                      /> :
-                      "Download Resume"
-                    }
-                  </Button>
-                  <Button
-                    variant='outlined'
-                    sx={{
-                      borderColor: Colors.white,
-                      color: Colors.white,
-                      ":hover": {
-                        background: Colors.primaryGradient
-                      }
-                    }}
-                    onClick={() => navigate("/contact")}
-                  >
-                    Contact Me
-                  </Button>
-                </Box>
-              </Box>
+                </Grid>
+                <Grid item md={12} sm={12} sx={12}>
+                  <Box sx={{ py: "16px", display: "flex", gap: "16px" }}>
+                    <IconButton
+                      sx={{
+                        p: 0,
+                        color: Colors.secondary,
+                        ":hover": {
+                          color: Colors.secondary + 50
+                        }
+                      }}
+                      onClick={() => window.open("https://linkedin.com/in/sajid-ahmed-9b5089279")}
+                    >
+                      <LinkedIn />
+                    </IconButton>
+                    <IconButton
+                      sx={{
+                        p: 0,
+                        color: Colors.secondary,
+                        ":hover": {
+                          color: Colors.secondary + 50
+                        }
+                      }}
+                      onClick={() => window.open("https://github.com/sajid-ahmed2816")}
+                    >
+                      <Github />
+                    </IconButton>
+                  </Box>
+                </Grid>
+                <Grid item md={12} sm={12} sx={12}>
+                  <Grid container columnSpacing={2}>
+                    <Grid item md={6} sm={6} xs={12}>
+                      <PrimaryButton
+                        fullWidth={true}
+                        onClick={handleDownload}
+                        title={"Download Resume"}
+                        loading={loading}
+                      />
+                    </Grid>
+                    <Grid item md={6} sm={6} xs={12}>
+                      <SecondaryButton
+                        fullWidth={true}
+                        onClick={() => navigate("/contact")}
+                        title={"Contact Me"}
+                      />
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </Grid>
             </Grid>
             <Grid item md={6}>
               <Box
@@ -251,7 +245,13 @@ function Home() {
           </Grid>
           {/* Intro Sec */}
 
-          <Grid container sx={{ height: "100vh", alignItems: "center" }}>
+          <Grid
+            container
+            sx={{
+              height: { md: "100vh", sm: "100%", xs: "100%" },
+              alignItems: "center"
+            }}
+          >
             {/* Qualification Section */}
             <Grid item md={6} sm={12} xs={12}>
               <Box
@@ -372,18 +372,26 @@ function Home() {
             spacing={2}
             sx={{
               rowGap: "20px",
-              pb: "20px",
+              height: { md: "100vh", sm: "100%", xs: "100%" },
             }}
           >
             <Grid item md={12}>
-              <Typography
-                variant="h4"
+              <Box
                 sx={{
-                  color: Colors.white
+                  display: "flex",
+                  alignItems: "center",
+                  height: "100%"
                 }}
               >
-                My Skills
-              </Typography>
+                <Typography
+                  variant="h3"
+                  sx={{
+                    color: Colors.white
+                  }}
+                >
+                  My Skills
+                </Typography>
+              </Box>
             </Grid>
             <Grid item md={12}>
               <Grid container spacing={3}>

@@ -1,7 +1,25 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: linear-gradient(60deg, rgba(24, 0, 41, 1) 0%, rgba(46, 13, 74, 1) 25%, rgba(53, 21, 93, 1) 50%, rgba(46, 13, 74, 1) 75%, rgba(24, 0, 41, 1) 100%);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-/*  */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #330D4A;
+  /* Scroll bar track ka background color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D7B9ED;
+  /* Scroll bar ka thumb ka background color */
+  border-radius: 5px;
+  /* Scroll bar ka thumb ka border radius */
+}
