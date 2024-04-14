@@ -23,3 +23,15 @@ body {
   border-radius: 5px;
   /* Scroll bar ka thumb ka border radius */
 }
+
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after,
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+  color: #ffffff;
+}
+
+.swiper-scrollbar-drag,
+.swiper-pagination-bullet-active {
+  background: #ffffff;
+}

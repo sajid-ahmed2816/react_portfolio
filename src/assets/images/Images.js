@@ -6,6 +6,7 @@ const Images = {
   dev5: require("./dev5.png"),
   dev6: require("./dev6.png"),
   dev7: require("./dev7.png"),
+  about2: require("./about2.jpg"),
 }
 
 export const Html = () => {

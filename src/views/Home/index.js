@@ -1,10 +1,12 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import { Box, CardMedia, Container, Grid, Typography, IconButton } from '@mui/material';
 import Images, { Html, Css, Javascript, Mongodb, ExpressJs, ReactJs, NodeJs, Firebase, Redux, Github, Bootstrap, MaterialUi, LinkedIn } from '../../assets/images/Images';
 import { TypeAnimation } from 'react-type-animation';
 import Colors from '../../assets/style';
 import { useNavigate } from 'react-router-dom';
 import { PrimaryButton, SecondaryButton } from '../../Components/Buttons';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const skills = [
   {
@@ -71,6 +73,7 @@ const experiences = [
 
 function Home() {
   const [loading, setLoading] = useState(false);
+  const gitUserName = "sajid-ahmed28"
 
   const navigate = useNavigate();
 
@@ -98,6 +101,14 @@ function Home() {
     }
   };
 
+  useEffect(() => {
+    AOS.init({
+      disable: "phone",
+      duration: 700,
+      easing: "ease-out-cubic",
+    });
+  }, []);
+
   return (
     <Box sx={{ width: "100%" }}>
       <Container>
@@ -124,7 +135,7 @@ function Home() {
           >
             <Grid item md={6}>
               <Grid container spacing={2}>
-                <Grid item md={12} sm={12} xs={12}>
+                <Grid item md={12} sm={12} xs={12} data-aos="fade-down">
                   <Typography sx={{ color: Colors.white, fontSize: { lg: "59px", md: "48px", sm: "36px", xs: "24px" }, }}>
                     Hi, I am&nbsp;
                     <Typography
@@ -161,7 +172,7 @@ function Home() {
                     />
                   </Typography>
                 </Grid>
-                <Grid item md={12} sm={12} sx={12}>
+                <Grid item md={12} sm={12} sx={12} data-aos="fade-right">
                   <Box sx={{ py: "16px", display: "flex", gap: "16px" }}>
                     <IconButton
                       sx={{
@@ -189,7 +200,7 @@ function Home() {
                     </IconButton>
                   </Box>
                 </Grid>
-                <Grid item md={12} sm={12} sx={12}>
+                <Grid item md={12} sm={12} sx={12} data-aos="fade-up">
                   <Grid container columnSpacing={2}>
                     <Grid item md={6} sm={6} xs={12}>
                       <PrimaryButton
@@ -220,6 +231,7 @@ function Home() {
                   position: "relative",
                   height: "100%",
                 }}
+                data-aos="fade-left"
               >
                 <Box
                   sx={{
@@ -253,7 +265,7 @@ function Home() {
             }}
           >
             {/* Qualification Section */}
-            <Grid item md={6} sm={12} xs={12}>
+            <Grid item md={6} sm={12} xs={12} data-aos="fade-right">
               <Box
                 sx={{
                   display: "flex",
@@ -270,12 +282,13 @@ function Home() {
                 <Box sx={{ position: "relative", p: 2 }}>
                   {qualifications.map((qualification, index) => (
                     <Fragment key={index}>
-                      <Box sx={{ display: "flex", p: 2 }}>
+                      <Box sx={{ display: "flex", p: 2 }}
+                        data-aos="fade-up"
+                      >
                         <Box
                           sx={{
                             mt: "7px",
                             position: 'absolute',
-                            left: '5%',
                             transform: 'translateX(-50%)',
                             width: "10px",
                             height: "10px",
@@ -307,7 +320,7 @@ function Home() {
             </Grid>
             {/* Qualification Section */}
             {/* Experience Section */}
-            <Grid item md={6} sm={12} xs={12}>
+            <Grid item md={6} sm={12} xs={12} data-aos="fade-left">
               <Box
                 sx={{
                   display: "flex",
@@ -324,12 +337,11 @@ function Home() {
                 <Box sx={{ position: "relative", p: 2 }}>
                   {experiences.map((experience, index) => (
                     <Fragment key={index}>
-                      <Box sx={{ display: "flex", p: 2 }}>
+                      <Box sx={{ display: "flex", p: 2 }} data-aos="fade-up">
                         <Box
                           sx={{
                             mt: "7px",
                             position: 'absolute',
-                            left: '5%',
                             transform: 'translateX(-50%)',
                             width: "10px",
                             height: "10px",
@@ -382,6 +394,7 @@ function Home() {
                   alignItems: "center",
                   height: "100%"
                 }}
+                data-aos="fade-up"
               >
                 <Typography
                   variant="h3"
@@ -394,7 +407,7 @@ function Home() {
               </Box>
             </Grid>
             <Grid item md={12}>
-              <Grid container spacing={3}>
+              <Grid container spacing={3} data-aos="fade-right">
                 {skills.map((skill, ind) => (
                   <Grid
                     key={ind}
@@ -402,6 +415,7 @@ function Home() {
                     md={3}
                     sm={6}
                     xs={12}
+                    data-aos="fade-right"
                   >
                     <Box
                       className="skill-container"
@@ -440,6 +454,10 @@ function Home() {
             </Grid>
           </Grid>
           {/* Skills Sec */}
+
+          {/* Graph Sec */}
+          <div id="gh" data-login={gitUserName}></div>
+          {/* Graph Sec */}
         </Box>
       </Container>
     </Box >
