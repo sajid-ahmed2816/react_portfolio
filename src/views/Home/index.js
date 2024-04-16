@@ -265,7 +265,7 @@ function Home() {
             }}
           >
             {/* Qualification Section */}
-            <Grid item md={6} sm={12} xs={12} data-aos="fade-right">
+            <Grid item md={6} sm={12} xs={12} >
               <Box
                 sx={{
                   display: "flex",
@@ -273,7 +273,7 @@ function Home() {
                   gap: "20px",
                 }}
               >
-                <Box>
+                <Box data-aos="fade-right">
                   <Typography variant="h3">
                     My Qualification
                   </Typography>
@@ -320,7 +320,7 @@ function Home() {
             </Grid>
             {/* Qualification Section */}
             {/* Experience Section */}
-            <Grid item md={6} sm={12} xs={12} data-aos="fade-left">
+            <Grid item md={6} sm={12} xs={12}>
               <Box
                 sx={{
                   display: "flex",
@@ -328,7 +328,7 @@ function Home() {
                   gap: "20px",
                 }}
               >
-                <Box>
+                <Box data-aos="fade-left">
                   <Typography variant="h3">
                     My Experience
                   </Typography>
