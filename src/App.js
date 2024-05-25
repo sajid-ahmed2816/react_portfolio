@@ -1,12 +1,12 @@
 import { createTheme, ThemeProvider } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import Colors from './assets/style';
-import '@fontsource/roboto';
 import routes from './routes/routes';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './layout';
 import Home from './views/Home';
 import ToasterContainer from './Components/Toaster';
+import "@fontsource/noto-sans";
 
 const theme = createTheme({
   palette: {
@@ -21,6 +21,7 @@ const theme = createTheme({
     }
   },
   typography: {
+    fontFamily: "Noto Sans",
     h1: {
       fontSize: "72px",
     },

@@ -7,6 +7,8 @@ const Images = {
   dev6: require("./dev6.png"),
   dev7: require("./dev7.png"),
   about2: require("./about2.jpg"),
+  todoApp: require("./screencapture-app-todo-reactjs-netlify-app-2024-05-25-04_27_19.png"),
+  quizApp: require("./screencapture-react-js-quizapp-netlify-app-2024-05-25-04_44_15.png"),
 }
 
 export const Html = () => {
@@ -25,7 +27,7 @@ export const Html = () => {
   );
 }
 
-export const Css = () => {
+export const CSS = () => {
   return (
     <svg
       fill="none"
@@ -158,6 +160,19 @@ export const MaterialUi = () => {
       width="50px"
     >
       <path d="M8 16.61v-1.24l6-3.46V7.23l-5 2.89-5-2.89V13l-1 .58L2 13V5l1.07-.62L9 7.81l3.93-2.27 2-1.16L16 5v8.06L10.92 16l4.05 2.33 5.03-2.9V11l1-.58 1 .58v5.58l-7.03 4.06L8 16.61m14-6.86l-1 .58-1-.58V8.58L21 8l1 .58v1.17z" />
+    </svg>
+  );
+}
+
+export const TailwindCSS = () => {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      height="50px"
+      width="50px"
+    >
+      <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z" />
     </svg>
   );
 }

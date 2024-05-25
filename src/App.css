@@ -35,3 +35,11 @@ body {
 .swiper-pagination-bullet-active {
   background: #ffffff;
 }
+
+@media (max-width: 900px) {
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+}

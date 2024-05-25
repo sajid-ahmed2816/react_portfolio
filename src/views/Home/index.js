@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 import { Box, CardMedia, Container, Grid, Typography, IconButton } from '@mui/material';
-import Images, { Html, Css, Javascript, Mongodb, ExpressJs, ReactJs, NodeJs, Firebase, Redux, Github, Bootstrap, MaterialUi, LinkedIn } from '../../assets/images/Images';
+import Images, { Html, CSS, Javascript, Mongodb, ExpressJs, ReactJs, NodeJs, Firebase, Redux, TailwindCSS, Bootstrap, MaterialUi, LinkedIn, Github } from '../../assets/images/Images';
 import { TypeAnimation } from 'react-type-animation';
 import Colors from '../../assets/style';
 import { useNavigate } from 'react-router-dom';
@@ -15,11 +15,15 @@ const skills = [
   },
   {
     name: "CSS",
-    icon: <Css />,
+    icon: <CSS />,
   },
   {
     name: "JavaScript",
     icon: <Javascript />,
+  },
+  {
+    name: "TailwindCSS",
+    icon: <TailwindCSS />,
   },
   {
     name: "Bootstrap",
@@ -28,10 +32,6 @@ const skills = [
   {
     name: "Material UI",
     icon: <MaterialUi />,
-  },
-  {
-    name: "Github",
-    icon: <Github />,
   },
   {
     name: "Firebase",
@@ -129,20 +129,27 @@ function Home() {
               justifyContent: "center",
               alignItems: "center",
               flexWrap: "wrap-reverse",
-              mt: { md: 0, sm: "120px", xs: "120px" },
+              mt: { md: 0, sm: "120px", xs: "60px" },
               pt: { md: "50px", sm: 0, xs: 0 }
             }}
           >
             <Grid item md={6}>
-              <Grid container spacing={2}>
+              <Grid container spacing={2} justifyContent={{ xs: "center" }}>
                 <Grid item md={12} sm={12} xs={12} data-aos="fade-down">
-                  <Typography sx={{ color: Colors.white, fontSize: { lg: "59px", md: "48px", sm: "36px", xs: "24px" }, }}>
+                  <Typography
+                    sx={{
+                      color: Colors.white,
+                      fontSize: { lg: "55px", md: "48px", sm: "36px", xs: "24px" },
+                      textAlign: { xs: "center", md: "left" }
+                    }}
+                  >
                     Hi, I am&nbsp;
                     <Typography
                       component={"span"}
                       sx={{
-                        color: Colors.secondary,
-                        fontSize: { lg: "59px", md: "48px", sm: "36px", xs: "24px" },
+                        color: Colors.primary,
+                        fontSize: { lg: "55px", md: "48px", sm: "36px", xs: "24px" },
+                        textShadow: `${Colors.secondary} -1px -1px 2px, ${Colors.secondary} 1px -1px 2px, ${Colors.secondary} -1px 1px 2px, ${Colors.secondary} 1px 1px 2px`
                       }}
                     >
                       Sajid Ahmed.
@@ -154,7 +161,8 @@ function Home() {
                     sx={{
                       color: Colors.secondary,
                       fontSize: { lg: "48px", md: "40px", sm: "28px", xs: "18px" },
-                      fontWeight: 700
+                      fontWeight: 700,
+                      textAlign: { xs: "center", md: "left" }
                     }}
                   >
                     <TypeAnimation
@@ -178,9 +186,13 @@ function Home() {
                       sx={{
                         p: 0,
                         color: Colors.secondary,
+                        transition: "all .3s ease-in-out",
                         ":hover": {
                           color: Colors.secondary + 50
-                        }
+                        },
+                        // ":hover": {
+                        //   filter: `drop-shadow(0px 0px 2px ${Colors.secondary})`
+                        // }
                       }}
                       onClick={() => window.open("https://linkedin.com/in/sajid-ahmed-9b5089279")}
                     >
@@ -201,8 +213,8 @@ function Home() {
                   </Box>
                 </Grid>
                 <Grid item md={12} sm={12} sx={12} data-aos="fade-up">
-                  <Grid container columnSpacing={2}>
-                    <Grid item md={6} sm={6} xs={12}>
+                  <Grid container columnSpacing={2} >
+                    <Grid item md={6} sm={6} xs={12} width={"100%"}>
                       <PrimaryButton
                         fullWidth={true}
                         onClick={handleDownload}
@@ -274,7 +286,7 @@ function Home() {
                 }}
               >
                 <Box data-aos="fade-right">
-                  <Typography variant="h3">
+                  <Typography variant="h3" sx={{ fontSize: { md: "48px", xs: "40px" } }}>
                     My Qualification
                   </Typography>
                 </Box>
@@ -329,7 +341,7 @@ function Home() {
                 }}
               >
                 <Box data-aos="fade-left">
-                  <Typography variant="h3">
+                  <Typography variant="h3" sx={{ fontSize: { md: "48px", xs: "40px" } }}>
                     My Experience
                   </Typography>
                 </Box>
@@ -399,7 +411,8 @@ function Home() {
                 <Typography
                   variant="h3"
                   sx={{
-                    color: Colors.white
+                    color: Colors.white,
+                    fontSize: { md: "48px", xs: "40px" }
                   }}
                 >
                   My Skills
