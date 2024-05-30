@@ -180,8 +180,15 @@ function Home() {
                     />
                   </Typography>
                 </Grid>
-                <Grid item md={12} sm={12} sx={12} data-aos="fade-right">
-                  <Box sx={{ py: "16px", display: "flex", gap: "16px" }}>
+                <Grid item md={12} sm={12} xs={12} data-aos="fade-right">
+                  <Box
+                    sx={{
+                      py: "16px",
+                      display: "flex",
+                      justifyContent: { md: "flex-start", sm: "center", xs: "center" },
+                      gap: "16px"
+                    }}
+                  >
                     <IconButton
                       sx={{
                         p: 0,
@@ -212,7 +219,7 @@ function Home() {
                     </IconButton>
                   </Box>
                 </Grid>
-                <Grid item md={12} sm={12} sx={12} data-aos="fade-up">
+                <Grid item md={12} sm={12} xs={12} data-aos="fade-up">
                   <Grid container columnSpacing={2} >
                     <Grid item md={6} sm={6} xs={12} width={"100%"}>
                       <PrimaryButton
@@ -286,7 +293,13 @@ function Home() {
                 }}
               >
                 <Box data-aos="fade-right">
-                  <Typography variant="h3" sx={{ fontSize: { md: "48px", xs: "40px" } }}>
+                  <Typography
+                    variant="h3"
+                    sx={{
+                      fontSize: { md: "48px", xs: "40px" },
+                      textAlign: { md: "left", sm: "center", xs: "center" }
+                    }}
+                  >
                     My Qualification
                   </Typography>
                 </Box>
@@ -341,7 +354,13 @@ function Home() {
                 }}
               >
                 <Box data-aos="fade-left">
-                  <Typography variant="h3" sx={{ fontSize: { md: "48px", xs: "40px" } }}>
+                  <Typography
+                    variant="h3"
+                    sx={{
+                      fontSize: { md: "48px", xs: "40px" },
+                      textAlign: { md: "left", sm: "center", xs: "center" }
+                    }}
+                  >
                     My Experience
                   </Typography>
                 </Box>
