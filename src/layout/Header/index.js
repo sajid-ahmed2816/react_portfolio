@@ -51,7 +51,7 @@ function Header() {
                   alignItems: "center"
                 }}
               >
-                Sajid <LogoDev sx={{ display: 'flex', mr: 1 }} />
+                Sajid.
               </Typography>
             </Box>
 

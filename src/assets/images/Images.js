@@ -9,7 +9,8 @@ const Images = {
   about2: require("./about2.jpg"),
   todoApp: require("./screencapture-app-todo-reactjs-netlify-app-2024-05-25-04_27_19.png"),
   quizApp: require("./screencapture-react-js-quizapp-netlify-app-2024-05-25-04_44_15.png"),
-  taraShine: require("./taraShine.png")
+  taraShine: require("./taraShine.png"),
+  ecommerceWeb: require("./ecommerceWeb.png"),
 }
 
 export const Html = () => {

@@ -37,12 +37,12 @@ function Project() {
       link: "https://tara-web.netlify.app/",
       image: Images.taraShine
     },
-    // {
-    //   title: "Ecommerce Website",
-    //   description: "This website is adapted from a Figma design into a React.js application, utilizing MUI for styling. The site is fully media responsive, ensuring it looks great on any device. By combining React.js for dynamic functionality and MUI for a consistent, modern aesthetic, the website delivers a seamless and visually appealing user experience.",
-    //   link: "https://tara-web.netlify.app/",
-    //   image: Images.taraShine
-    // },
+    {
+      title: "Ecommerce Website",
+      description: "This is a e-commerce web app, developed in React.js, utilizing react-bootstrap for styling the UI, used fakestore API to fetch products, used google maps API for store locater. Admin dashboard and backend is under developement, In future this app will be a fullstack MERN App.",
+      link: "https://e-commerce-react-js-web.netlify.app/",
+      image: Images.ecommerceWeb
+    },
   ]
   return (
     <Container>
