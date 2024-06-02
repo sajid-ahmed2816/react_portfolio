@@ -29,6 +29,7 @@ body {
 .swiper-button-prev:after,
 .swiper-rtl .swiper-button-next:after {
   color: #ffffff;
+  font-size: 30px;
 }
 
 .swiper-scrollbar-drag,

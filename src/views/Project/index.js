@@ -5,7 +5,7 @@ import { Box, Button, CardMedia, Container, Grid, Typography } from '@mui/materi
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // import Swiper core and required modules
-import { Scrollbar, A11y } from 'swiper/modules';
+import { Scrollbar, A11y, Navigation } from 'swiper/modules';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -55,39 +55,16 @@ function Project() {
         }}
       >
         <Swiper
-          modules={[Scrollbar, A11y]}
+          modules={[Scrollbar, A11y, Navigation]}
           spaceBetween={50}
           slidesPerView={1}
+          navigation
           scrollbar={{ draggable: true }}
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={() => console.log('slide change')}
         >
           {projectsData.map((item, i) => (
             <SwiperSlide key={i}>
-              {/* <Box sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                p: "40px 40px 60px 40px"
-              }}
-              >
-                <Box>
-                  <CardMedia
-                    component={"img"}
-                    src={item}
-                    sx={{
-                      minWidth: "300px",
-                      objectFit: "cover",
-                      height: "450px"
-                    }}
-                  />
-                </Box>
-                <Box>
-                  <Typography>
-                    Title Here
-                  </Typography>
-                </Box>
-              </Box> */}
               <Grid container alignItems={"center"} justifyContent={"center"} gap={"24px"} p={3}>
                 <Grid item md={5}>
                   <Box>

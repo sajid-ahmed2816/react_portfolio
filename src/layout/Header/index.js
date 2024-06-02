@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { AppBar, Box, Toolbar, IconButton, Typography, Container, Button, MenuItem, Drawer, useScrollTrigger, Slide } from '@mui/material';
 import { LogoDev, MenuOpen, Menu } from '@mui/icons-material';
 import Navigation from '../../Navigation';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Colors from '../../assets/style';
 
 function HideOnScroll(props) {
@@ -22,6 +22,7 @@ function HideOnScroll(props) {
 function Header() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -124,16 +125,20 @@ function Header() {
                   component={Link}
                   to={page.path}
                   key={ind}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={{
+                    my: 2,
+                    color: 'white',
+                    display: 'block',
+                    boxShadow: pathname == page.path ? `0px 0px 5px 2px ${Colors.secondary}` : "none"
+                  }}
                 >
                   <Typography variant='body2' sx={{
                     transition: "0.3s all ease-in-out",
-                    borderRight: `4px solid  transparent`,
+                    borderRight: `4px solid transparent`,
                     px: 1,
                     ":hover": {
-                      borderRight: `4px solid ${Colors.white}`,
-                    }
-
+                      borderRight: pathname == page.path ? "4px solid transparent" : `4px solid ${Colors.white}`,
+                    },
                   }}>
                     {page.name}
                   </Typography>
