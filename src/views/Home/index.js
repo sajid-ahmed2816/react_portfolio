@@ -254,15 +254,6 @@ function Home() {
                 }}
                 data-aos="fade-left"
               >
-                <Box
-                  sx={{
-                    position: "absolute",
-                    height: "400px",
-                    width: "100%",
-                    borderRadius: "8px",
-                    backgroundColor: "#00000082"
-                  }}
-                />
                 <CardMedia
                   component={"img"}
                   src={Images.mernImage}
