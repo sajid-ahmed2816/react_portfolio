@@ -81,7 +81,7 @@ function Home() {
     setLoading(true);
     try {
       // Direct link to your resume file on Google Drive
-      const resumeUrl = "https://drive.google.com/uc?id=1gD1kzgatiZxMqDzb0bwJ6OTxvYXgebe-";
+      const resumeUrl = "https://drive.google.com/uc?id=1vureuZiFy6IQEK2StYiczJLA0-GsS5ry";
       // Create a temporary link element to trigger the download 
       const link = document.createElement('a');
       link.href = resumeUrl;
