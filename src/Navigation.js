@@ -1,7 +1,7 @@
 const Navigation = [
   {
     name: 'Home',
-    path: "/home",
+    path: "/",
   },
   {
     name: 'About',

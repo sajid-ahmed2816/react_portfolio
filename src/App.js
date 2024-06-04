@@ -61,8 +61,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            {/* Your existing routes will be rendered inside Layout component */}
             {routes.map((route, ind) => (
               <Route key={ind} element={route.component} path={route.path} />
             ))}

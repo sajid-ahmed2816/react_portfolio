@@ -6,7 +6,7 @@ import Contact from "../views/Contact";
 const routes = [
   {
     name: 'Home',
-    path: "/home",
+    path: "/",
     component: <Home />
 
   },
