@@ -126,7 +126,7 @@ function Home() {
             sx={{
               height: { md: "100vh", sm: "100%", xs: "100%" },
               // flexDirection: { md: "row", sm: "column-reverse", xs: "column-reverse" },
-              justifyContent: "center",
+              justifyContent: "space-between",
               alignItems: "center",
               flexWrap: "wrap-reverse",
               mt: { md: 0, sm: "120px", xs: "60px" },
@@ -159,10 +159,13 @@ function Home() {
                 <Grid item md={12} sm={12} xs={12}>
                   <Typography
                     sx={{
-                      color: Colors.secondary,
+                      // color: Colors.secondary,
                       fontSize: { lg: "48px", md: "40px", sm: "28px", xs: "18px" },
                       fontWeight: 700,
-                      textAlign: { xs: "center", md: "left" }
+                      textAlign: { xs: "center", md: "left" },
+                      background: `linear-gradient(to right, #62009c, #720099)`,
+                      "-webkit-background-clip": "text",
+                      "-webkit-text-fill-color": "transparent",
                     }}
                   >
                     <TypeAnimation
@@ -240,7 +243,7 @@ function Home() {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={5}>
               <Box
                 sx={{
                   width: "100%",
@@ -255,19 +258,19 @@ function Home() {
                 <Box
                   sx={{
                     position: "absolute",
-                    height: { md: "400px", sm: "400px", xs: "400px" },
-                    width: { md: "400px", sm: "100%", xs: "100%" },
+                    height: "400px",
+                    width: "100%",
                     borderRadius: "8px",
                     backgroundColor: "#00000082"
                   }}
                 />
                 <CardMedia
                   component={"img"}
-                  src={Images.dev3}
+                  src={Images.mernImage}
                   sx={{
-                    height: { md: "400px", sm: "400px", xs: "400px" },
-                    width: { md: "400px", sm: "100%", xs: "100%" },
-                    objectFit: "cover",
+                    height: "400px",
+                    width: "100%",
+                    objectFit: "contain",
                     borderRadius: "8px"
                   }}
                 />

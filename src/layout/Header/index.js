@@ -129,7 +129,7 @@ function Header() {
                     my: 2,
                     color: 'white',
                     display: 'block',
-                    boxShadow: pathname == page.path ? `0px 0px 5px 2px ${Colors.secondary}` : "none"
+                    border: pathname == page.path ? `1px solid ${Colors.secondary}` : "1px solid transparent",
                   }}
                 >
                   <Typography variant='body2' sx={{

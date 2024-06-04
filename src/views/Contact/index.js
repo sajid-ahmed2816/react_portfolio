@@ -47,14 +47,14 @@ function Contact() {
   }
 
   return (
-    <Box
-      sx={{
-        height: { md: "100vh", sm: "100%", xs: "100%" },
-        display: 'flex',
-        alignItems: "center"
-      }}
-    >
-      <Container>
+    <Container>
+      <Box
+        sx={{
+          height: "100vh",
+          display: 'flex',
+          alignItems: "center"
+        }}
+      >
         <Grid
           container
           sx={{
@@ -172,8 +172,8 @@ function Contact() {
             </Box>
           </Grid>
         </Grid>
-      </Container>
-    </Box>
+      </Box>
+    </Container>
   )
 }
 

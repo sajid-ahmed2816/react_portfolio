@@ -11,6 +11,7 @@ const Images = {
   quizApp: require("./screencapture-react-js-quizapp-netlify-app-2024-05-25-04_44_15.png"),
   taraShine: require("./taraShine.png"),
   ecommerceWeb: require("./ecommerceWeb.png"),
+  mernImage: require("./MERN-Stack-Development.png"),
 }
 
 export const Html = () => {

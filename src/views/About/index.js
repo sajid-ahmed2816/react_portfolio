@@ -53,7 +53,7 @@ function About() {
       }}
     >
       <Container>
-        <Box sx={{ mt: "75px" }}>
+        <Box sx={{ mt: { md: "42px", sm: "84px", xs: "84px" } }}>
           <Grid container rowGap={{ md: "50px", sm: 0, xs: 0 }} flexDirection={"column"}>
             <Grid item md={12} sm={12} xs={12}>
               <Grid
@@ -115,10 +115,7 @@ function About() {
                         p: 2
                       }}
                     >
-                      Welcome to my portfolio! I am a skilled and passionate front-end developer with expertise
-                      in a variety of technologies. My proficiency includes JavaScript, ECMAScript, and HTML,
-                      allowing me to create dynamic and interactive web experiences. I am well-versed in CSS and
-                      CSS3, ensuring that my designs are not only functional but also visually appealing.
+                      Welcome to my portfolio! I am a skilled and passionate front-end developer with expertise in a variety of technologies. My proficiency includes React.js, allowing me to build powerful and dynamic user interfaces, ensuring that my designs are both aesthetically pleasing and highly functional. My deep understanding of HTML and CSS ensures that every project I undertake is built with a solid foundation and polished to perfection.
                     </Typography>
                   </Box>
                 </Grid>
