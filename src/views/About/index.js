@@ -71,30 +71,28 @@ function About() {
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
-                      // position: "relative",
-                      // height: "100%",
-                      // overflow: 'hidden'
                     }}
                   >
-                    {/* <Box
-                    sx={{
-                      position: "absolute",
-                      height: { md: "400px", sm: "400px", xs: "400px" },
-                      width: { md: "400px", sm: "100%", xs: "100%" },
-                      borderRadius: "8px",
-                      backgroundColor: "#00000082"
-                    }}
-                  /> */}
-                    <CardMedia
-                      component={"img"}
-                      src={Images.dev3}
+                    <Box
                       sx={{
-                        height: { md: "400px", sm: "400px", xs: "400px" },
-                        width: { md: "400px", sm: "100%", xs: "100%" },
-                        objectFit: "cover",
-                        borderRadius: "8px"
+                        border: `1px solid ${Colors.primary}`,
+                        borderRadius: "16px",
+                        p: 2,
+                        boxShadow: `5px 10px ${Colors.white} inset`
                       }}
-                    />
+                    >
+                      <CardMedia
+                        component={"img"}
+                        src={Images.developerImage}
+                        sx={{
+                          border: `1px solid ${Colors.primary}`,
+                          height: "400px",
+                          width: "100%",
+                          objectFit: "cover",
+                          borderRadius: "8px"
+                        }}
+                      />
+                    </Box>
                   </Box>
                 </Grid>
                 <Grid item md={6} sm={12} xs={12}>
@@ -161,30 +159,28 @@ function About() {
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
-                      // position: "relative",
-                      // height: "100%",
-                      // overflow: 'hidden'
                     }}
                   >
-                    {/* <Box
-                    sx={{
-                      position: "absolute",
-                      height: { md: "400px", sm: "400px", xs: "400px" },
-                      width: { md: "400px", sm: "100%", xs: "100%" },
-                      borderRadius: "8px",
-                      backgroundColor: "#00000082"
-                    }}
-                  /> */}
-                    <CardMedia
-                      component={"img"}
-                      src={Images.about2}
+                    <Box
                       sx={{
-                        height: { md: "400px", sm: "400px", xs: "400px" },
-                        width: { md: "400px", sm: "100%", xs: "100%" },
-                        objectFit: "contain",
-                        borderRadius: "8px"
+                        border: `1px solid ${Colors.primary}`,
+                        borderRadius: "16px",
+                        p: 2,
+                        boxShadow: `5px 10px ${Colors.white} inset`
                       }}
-                    />
+                    >
+                      <CardMedia
+                        component={"img"}
+                        src={Images.about2}
+                        sx={{
+                          border: `1px solid ${Colors.primary}`,
+                          height: { md: "400px", sm: "400px", xs: "400px" },
+                          width: { md: "100%", sm: "100%", xs: "100%" },
+                          objectFit: "cover",
+                          borderRadius: "8px"
+                        }}
+                      />
+                    </Box>
                   </Box>
                 </Grid>
               </Grid>

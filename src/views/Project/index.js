@@ -22,7 +22,7 @@ function Project() {
     {
       title: "Todo App",
       description: "A task management tool developed with React.js and Firebase. It offers real-time updates with Firebase, a responsive design for all devices, and intuitive task management. The frontend is built with React.js, and the backend is powered by Firebase.",
-      link: "https://app-todo-reactjs.netlify.app/",
+      link: "https://app-reactjs-todo.netlify.app/",
       image: Images.todoApp
     },
     {
@@ -66,44 +66,61 @@ function Project() {
           {projectsData.map((item, i) => (
             <SwiperSlide key={i}>
               <Grid container alignItems={"center"} justifyContent={"center"} gap={"24px"} p={3}>
-                <Grid item md={5}>
-                  <Box>
+                <Grid item md={6.5}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 2
+                    }}
+                  >
+                    <Typography variant='h4'>{item.title}</Typography>
+                    <Button
+                      size={"small"}
+                      sx={{
+                        gap: "8px",
+                        color: Colors.white,
+                        ":hover": {
+                          backgroundColor: `${Colors.primary}`,
+                          boxShadow: `0px 0px 5px 2px ${Colors.primary1}`,
+                        }
+                      }}
+                      variant={"contained"}
+                      onClick={() => window.open(item.link)}
+                      endIcon={<Launch sx={{ color: Colors.white }} />}
+                    >
+                      Visit
+                    </Button>
+                  </Box>
+                </Grid>
+                <Grid item md={6.5}>
+                  <Box
+                    sx={{
+                      p: 2,
+                      borderRadius: "16px",
+                      border: `1px solid ${Colors.primary}`,
+                      boxShadow: `5px 10px ${Colors.white} inset`
+                    }}
+                  >
                     <CardMedia
                       component={"img"}
                       src={item.image}
                       sx={{
                         width: "100%",
                         objectFit: "contain",
-                        borderRadius: "8px"
+                        borderRadius: "8px",
+                        border: `1px solid ${Colors.primary}`
                       }}
                     />
                   </Box>
                 </Grid>
-                <Grid item md={5}>
+                <Grid item md={6.5}>
                   <Box
                     sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "24px",
-                      alignItems: "flex-start",
                       p: 1
                     }}
                   >
-                    <Typography variant='h4'>{item.title}</Typography>
                     <Typography variant='body2'>{item.description}</Typography>
-                    <Button
-                      sx={{
-                        gap: "8px",
-                        ":hover": {
-                          backgroundColor: `${Colors.primary}`,
-                          boxShadow: `0px 0px 5px 2px ${Colors.secondary}`,
-                        }
-                      }}
-                      variant={"contained"}
-                      onClick={() => window.open(item.link)}
-                    >
-                      <Typography sx={{ fontSize: "14px" }}>Visit</Typography>
-                      <Launch sx={{ fontSize: "20px" }} /></Button>
                   </Box>
                 </Grid>
               </Grid>

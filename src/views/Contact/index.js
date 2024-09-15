@@ -138,7 +138,7 @@ function Contact() {
                     <InputField
                       label={"Your Message"}
                       multiline={true}
-                      rows={3}
+                      rows={5}
                       fullWidth={true}
                       register={register("message", {
                         required: "Your Message Required"

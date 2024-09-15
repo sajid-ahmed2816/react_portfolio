@@ -7,6 +7,7 @@ import Layout from './layout';
 import Home from './views/Home';
 import ToasterContainer from './Components/Toaster';
 import "@fontsource/noto-sans";
+import "@fontsource/poppins"
 
 const theme = createTheme({
   palette: {
@@ -17,38 +18,47 @@ const theme = createTheme({
       main: Colors.secondary,
     },
     text: {
-      primary: Colors.white
+      primary: Colors.black
     }
   },
   typography: {
-    fontFamily: "Noto Sans",
+    fontFamily: "Poppins",
     h1: {
       fontSize: "72px",
+      color: Colors.black
     },
 
     h2: {
       fontSize: "64px",
+      color: Colors.black
     },
     h3: {
-      fontSize: "48px"
+      fontSize: "48px",
+      color: Colors.black
     },
     h4: {
-      fontSize: "36px"
+      fontSize: "36px",
+      color: Colors.black
     },
     h5: {
-      fontSize: "24px"
+      fontSize: "24px",
+      color: Colors.black
     },
     h6: {
-      fontSize: "20px"
+      fontSize: "20px",
+      color: Colors.black
     },
     body1: {
-      fontSize: "16px"
+      fontSize: "16px",
+      color: Colors.black
     },
     body2: {
-      fontSize: "14px"
+      fontSize: "14px",
+      color: Colors.black
     },
     caption: {
-      fontSize: "12px"
+      fontSize: "12px",
+      color: Colors.black
     }
   }
 })

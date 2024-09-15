@@ -6,12 +6,15 @@ const Images = {
   dev5: require("./dev5.png"),
   dev6: require("./dev6.png"),
   dev7: require("./dev7.png"),
+  dev8: require("./image (6).png"),
   about2: require("./about2.jpg"),
-  todoApp: require("./screencapture-app-todo-reactjs-netlify-app-2024-05-25-04_27_19.png"),
+  todoApp: require("./todoApp.png"),
   quizApp: require("./screencapture-react-js-quizapp-netlify-app-2024-05-25-04_44_15.png"),
   taraShine: require("./taraShine.png"),
   ecommerceWeb: require("./ecommerceWeb.png"),
   mernImage: require("./MERN-Stack-Development.png"),
+  developerImage: require("./image.png"),
+  faqImage: require("./image (3).png"),
 }
 
 export const Html = () => {

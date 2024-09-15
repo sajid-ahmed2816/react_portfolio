@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { AppBar, Box, Toolbar, IconButton, Typography, Container, Button, MenuItem, Drawer, useScrollTrigger, Slide } from '@mui/material';
+import { AppBar, Box, Toolbar, IconButton, Typography, Container, Button, MenuItem, Drawer, useScrollTrigger, Slide, List } from '@mui/material';
 import { LogoDev, MenuOpen, Menu } from '@mui/icons-material';
 import Navigation from '../../Navigation';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -30,7 +30,7 @@ function Header() {
 
   return (
     <HideOnScroll>
-      <AppBar position="fixed">
+      <AppBar position="fixed" style={{ background: Colors.black }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters sx={{ gap: "20px", justifyContent: "space-between", }}>
             <Box
@@ -40,14 +40,14 @@ function Header() {
                 variant="h6"
                 noWrap
                 component={Link}
-                to="/home"
+                to="/"
                 sx={{
                   mr: 2,
                   display: 'flex',
                   justifyContent: "space-between",
                   fontWeight: 700,
                   letterSpacing: '.3rem',
-                  color: 'inherit',
+                  color: Colors.white,
                   textDecoration: 'none',
                   alignItems: "center"
                 }}
@@ -60,9 +60,9 @@ function Header() {
               <IconButton
                 size="large"
                 onClick={toggleDrawer(true)}
-                color="inherit"
+                sx={{ color: Colors.white }}
               >
-                <Menu />
+                <Menu sx={{ color: Colors.white }} />
               </IconButton>
               <Drawer
                 open={open}
@@ -70,52 +70,54 @@ function Header() {
                 anchor='right'
                 sx={{
                   display: { xs: 'block', md: 'none' },
-                  width: "200px",
                 }}
                 PaperProps={{
                   sx: {
-                    background: Colors.primaryGradient,
-                    color: Colors.secondary
+                    background: Colors.black,
+                    color: Colors.white
                   }
                 }}
               >
-                <MenuItem>
-                  <Typography
-                    variant="h6"
-                    noWrap
-                    component={Link}
-                    to="/home"
-                    sx={{
-                      mr: 2,
-                      display: 'flex',
-                      justifyContent: "space-between",
-                      fontWeight: 700,
-                      letterSpacing: '.3rem',
-                      color: 'inherit',
-                      textDecoration: 'none',
-                      alignItems: "center",
-                    }}
-                  >
-                    Sajid <LogoDev sx={{ display: 'flex', mr: 1 }} />
-                  </Typography>
-                  <IconButton onClick={toggleDrawer(false)}>
-                    <MenuOpen sx={{ color: Colors.secondary }} />
-                  </IconButton>
-                </MenuItem>
-                {Navigation.map((page, ind) => (
-                  <MenuItem
-                    key={ind}
-                    sx={{
-                      ":hover": {
-                        background: Colors.secondary,
-                        color: Colors.primary
-                      }
-                    }}
-                    onClick={() => { navigate(page.path); setOpen(false) }}
-                  >
-                    <Typography textAlign="center">{page.name}</Typography>
+                <List>
+                  <MenuItem>
+                    <Typography
+                      variant="h6"
+                      noWrap
+                      component={Link}
+                      to="/home"
+                      sx={{
+                        mr: 2,
+                        display: 'flex',
+                        justifyContent: "space-between",
+                        fontWeight: 700,
+                        letterSpacing: '.3rem',
+                        color: Colors.white,
+                        textDecoration: 'none',
+                        alignItems: "center",
+                      }}
+                    >
+                      Sajid.
+                    </Typography>
+                    <IconButton onClick={toggleDrawer(false)}>
+                      <MenuOpen sx={{ color: Colors.white, transform: "scaleX(-1)" }} />
+                    </IconButton>
                   </MenuItem>
-                ))}
+                  {Navigation.map((page, ind) => (
+                    <MenuItem
+                      key={ind}
+                      sx={{
+                        justifyContent: "center",
+                        ":hover": {
+                          background: Colors.secondary,
+                          color: Colors.primary
+                        }
+                      }}
+                      onClick={() => { navigate(page.path); setOpen(false) }}
+                    >
+                      <Typography sx={{ textAlign: "center", color: Colors.white }}>{page.name}</Typography>
+                    </MenuItem>
+                  ))}
+                </List>
               </Drawer>
             </Box>
 
@@ -129,17 +131,21 @@ function Header() {
                     my: 2,
                     color: 'white',
                     display: 'block',
-                    border: pathname == page.path ? `1px solid ${Colors.secondary}` : "1px solid transparent",
+                    border: pathname == page.path ? `1px solid ${Colors.primary}` : "1px solid transparent",
+                    ":hover": {
+                      ".button-text": {
+                        borderRight: pathname == page.path ? "4px solid transparent" : `4px solid ${Colors.primary}`,
+                      }
+                    },
                   }}
                 >
-                  <Typography variant='body2' sx={{
-                    transition: "0.3s all ease-in-out",
-                    borderRight: `4px solid transparent`,
-                    px: 1,
-                    ":hover": {
-                      borderRight: pathname == page.path ? "4px solid transparent" : `4px solid ${Colors.white}`,
-                    },
-                  }}>
+                  <Typography variant='body2'
+                    className='button-text'
+                    sx={{
+                      borderRight: `4px solid transparent`,
+                      color: Colors.white,
+                      px: 1,
+                    }}>
                     {page.name}
                   </Typography>
                 </Button>

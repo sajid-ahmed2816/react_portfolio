@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react';
-import { Box, CardMedia, Container, Grid, Typography, IconButton } from '@mui/material';
+import { Box, CardMedia, Container, Grid, Typography, IconButton, Accordion, AccordionActions, AccordionSummary, AccordionDetails, Button } from '@mui/material';
 import Images, { Html, CSS, Javascript, Mongodb, ExpressJs, ReactJs, NodeJs, Firebase, Redux, TailwindCSS, Bootstrap, MaterialUi, LinkedIn, Github } from '../../assets/images/Images';
 import { TypeAnimation } from 'react-type-animation';
 import Colors from '../../assets/style';
@@ -7,6 +7,44 @@ import { useNavigate } from 'react-router-dom';
 import { PrimaryButton, SecondaryButton } from '../../Components/Buttons';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { ArrowForwardIosSharp } from '@mui/icons-material';
+import { styled } from '@mui/material/styles';
+
+const CustomAccordion = styled((props) => (
+  <Accordion disableGutters elevation={0} {...props} />
+))(({ theme }) => ({
+  border: `1px solid ${theme.palette.divider}`,
+  '&:not(:last-child)': {
+    borderBottom: 0,
+  },
+  '&::before': {
+    display: 'none',
+  },
+}));
+
+const CustomAccordionSummary = styled((props) => (
+  <AccordionSummary
+    expandIcon={<ArrowForwardIosSharp sx={{ fontSize: '0.9rem' }} />}
+    {...props}
+  />
+))(({ theme }) => ({
+  backgroundColor: 'rgba(0, 0, 0, .03)',
+  flexDirection: 'row-reverse',
+  '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
+    transform: 'rotate(90deg)',
+  },
+  '& .MuiAccordionSummary-content': {
+    marginLeft: theme.spacing(1),
+  },
+  ...theme.applyStyles('dark', {
+    backgroundColor: 'rgba(255, 255, 255, .05)',
+  }),
+}));
+
+const CustomAccordionDetails = styled(AccordionDetails)(({ theme }) => ({
+  padding: theme.spacing(2),
+  borderTop: '1px solid rgba(0, 0, 0, .125)',
+}));
 
 const skills = [
   {
@@ -71,11 +109,37 @@ const experiences = [
   { year: '2020 - 2022', position: 'Document Processing Executive', organization: 'Systems Limited' },
 ];
 
+const faqs = [
+  {
+    question: "What frontend development services do you provide?",
+    answer: "I specialize in creating responsive and modern user interfaces using React.js, Material UI, and Tailwind CSS, ensuring a smooth and visually appealing user experience."
+  },
+  {
+    question: "How do you handle backend development?",
+    answer: "I develop robust server-side applications using Node.js and Express.js, focusing on scalability, security, and performance."
+  },
+  {
+    question: "Can you help with API integration and development?",
+    answer: "Yes, I provide seamless integration of third-party services and create RESTful APIs for your web applications."
+  },
+  {
+    question: "Do you develop e-commerce platforms and custom dashboards?",
+    answer: "Absolutely! I develop full-featured e-commerce platforms and custom dashboards with user-friendly admin panels."
+  },
+  {
+    question: "Will my web application be cross-browser compatible and mobile responsive?",
+    answer: "Yes, I ensure that all web applications I develop work flawlessly across different browsers and devices, delivering a consistent user experience."
+  },
+]
+
 function Home() {
   const [loading, setLoading] = useState(false);
-  const gitUserName = "sajid-ahmed28"
-
+  const [expanded, setExpanded] = useState('panel0');
   const navigate = useNavigate();
+
+  const handleChange = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+  };
 
   const handleDownload = async () => {
     setLoading(true);
@@ -109,7 +173,7 @@ function Home() {
   }, []);
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box>
       <Container>
         <Box
           sx={{
@@ -121,7 +185,7 @@ function Home() {
           {/* Intro Sec */}
           <Grid
             container
-            spacing={{ md: 0, sm: 2, xs: 2 }}
+            spacing={{ md: 6, sm: 2, xs: 2 }}
             sx={{
               height: { md: "100vh", sm: "100%", xs: "100%" },
               // flexDirection: { md: "row", sm: "column-reverse", xs: "column-reverse" },
@@ -129,7 +193,7 @@ function Home() {
               alignItems: "center",
               flexWrap: "wrap-reverse",
               mt: { md: 0, sm: "120px", xs: "60px" },
-              pt: { md: "50px", sm: 0, xs: 0 }
+              pt: { md: "20px", sm: 0, xs: 0 }
             }}
           >
             <Grid item md={6}>
@@ -137,8 +201,8 @@ function Home() {
                 <Grid item md={12} sm={12} xs={12} data-aos="fade-down">
                   <Typography
                     sx={{
-                      color: Colors.white,
-                      fontSize: { lg: "55px", md: "48px", sm: "36px", xs: "24px" },
+                      color: Colors.black,
+                      fontSize: { lg: "52px", md: "48px", sm: "36px", xs: "24px" },
                       textAlign: { xs: "center", md: "left" }
                     }}
                   >
@@ -146,9 +210,9 @@ function Home() {
                     <Typography
                       component={"span"}
                       sx={{
-                        color: Colors.primary,
-                        fontSize: { lg: "55px", md: "48px", sm: "36px", xs: "24px" },
-                        textShadow: `${Colors.secondary} -1px -1px 2px, ${Colors.secondary} 1px -1px 2px, ${Colors.secondary} -1px 1px 2px, ${Colors.secondary} 1px 1px 2px`
+                        color: Colors.white,
+                        fontSize: { lg: "52px", md: "48px", sm: "36px", xs: "24px" },
+                        textShadow: `${Colors.primary} -1px -1px 2px, ${Colors.primary1} 1px -1px 2px, ${Colors.primary} -1px 1px 2px, ${Colors.secondary} 1px 1px 2px`
                       }}
                     >
                       Sajid Ahmed.
@@ -162,7 +226,7 @@ function Home() {
                       fontSize: { lg: "48px", md: "40px", sm: "28px", xs: "18px" },
                       fontWeight: 700,
                       textAlign: { xs: "center", md: "left" },
-                      background: `linear-gradient(to right, #62009c, #720099)`,
+                      background: `linear-gradient(to right, #48CFCB, #229799)`,
                       "-webkit-background-clip": "text",
                       "-webkit-text-fill-color": "transparent",
                     }}
@@ -173,6 +237,10 @@ function Home() {
                         1000,
                         'React JS Developer',
                         1000,
+                        'UI/UX Developer',
+                        1000,
+                        'Quick Learner',
+                        1000,
                         'Gamer',
                         1000,
                       ]}
@@ -180,6 +248,15 @@ function Home() {
                       speed={20}
                       repeat={Infinity}
                     />
+                  </Typography>
+                </Grid>
+                <Grid item md={12} sm={12} xs={12} data-aos="fade-left">
+                  <Typography
+                    sx={{
+                      color: Colors.black,
+                    }}
+                  >
+                    Skilled in building dynamic web applications using MongoDB, Express.js, React.js, and Node.js. I excel at turning designs into functional apps with robust features and seamless API integration.
                   </Typography>
                 </Grid>
                 <Grid item md={12} sm={12} xs={12} data-aos="fade-right">
@@ -194,10 +271,10 @@ function Home() {
                     <IconButton
                       sx={{
                         p: 0,
-                        color: Colors.secondary,
+                        color: Colors.primary,
                         transition: "all .3s ease-in-out",
                         ":hover": {
-                          color: Colors.secondary + 50
+                          color: Colors.primary1
                         },
                         // ":hover": {
                         //   filter: `drop-shadow(0px 0px 2px ${Colors.secondary})`
@@ -210,9 +287,9 @@ function Home() {
                     <IconButton
                       sx={{
                         p: 0,
-                        color: Colors.secondary,
+                        color: Colors.primary,
                         ":hover": {
-                          color: Colors.secondary + 50
+                          color: Colors.primary1
                         }
                       }}
                       onClick={() => window.open("https://github.com/sajid-ahmed2816")}
@@ -242,7 +319,7 @@ function Home() {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item md={5}>
+            <Grid item md={6}>
               <Box
                 sx={{
                   width: "100%",
@@ -252,18 +329,29 @@ function Home() {
                   position: "relative",
                   height: "100%",
                 }}
-                data-aos="fade-left"
+                data-aos="zoom-in"
               >
-                <CardMedia
-                  component={"img"}
-                  src={Images.mernImage}
+                <Box
                   sx={{
-                    height: "400px",
-                    width: "100%",
-                    objectFit: "contain",
-                    borderRadius: "8px"
+                    border: `1px solid ${Colors.primary}`,
+                    borderRadius: "16px",
+                    p: 2,
+                    boxShadow: `5px 10px ${Colors.white} inset`
                   }}
-                />
+                >
+                  <CardMedia
+                    component={"img"}
+                    src={Images.dev8}
+                    sx={{
+                      transform: "scaleX(-1)",
+                      border: `1px solid ${Colors.primary}`,
+                      height: { md: "520px", sm: "400px", xs: "340px" },
+                      width: "100%",
+                      objectFit: "cover",
+                      borderRadius: "8px"
+                    }}
+                  />
+                </Box>
               </Box>
             </Grid>
           </Grid>
@@ -290,7 +378,8 @@ function Home() {
                     variant="h3"
                     sx={{
                       fontSize: { md: "48px", xs: "40px" },
-                      textAlign: { md: "left", sm: "center", xs: "center" }
+                      textAlign: { md: "left", sm: "center", xs: "center" },
+                      color: Colors.secondary
                     }}
                   >
                     My Qualification
@@ -305,27 +394,27 @@ function Home() {
                       >
                         <Box
                           sx={{
-                            mt: "7px",
+                            mt: "10px",
                             position: 'absolute',
                             transform: 'translateX(-50%)',
                             width: "10px",
                             height: "10px",
                             borderRadius: "50%",
-                            background: Colors.primaryGradient,
-                            boxShadow: `0px 0px 5px 1px ${Colors.secondary}`
+                            background: Colors.secondary,
+                            boxShadow: `0px 0px 5px 1px ${Colors.primary1}`
                           }}
                         />
                         <Box sx={{ ml: 2 }}>
-                          <Typography sx={{ fontSize: "19px" }}>
+                          <Typography sx={{ fontSize: "18px", color: Colors.secondary }}>
                             {qualification.year}
                           </Typography>
                           <Box>
-                            <Typography sx={{ fontSize: "18px" }}>
+                            <Typography sx={{ fontSize: "20px", fontWeight: 600, color: Colors.secondary }}>
                               {qualification.qualification}
                             </Typography>
                           </Box>
                           <Box>
-                            <Typography sx={{ fontSize: "18px" }}>
+                            <Typography sx={{ fontSize: "18px", color: Colors.primary1 }}>
                               {qualification.institution}
                             </Typography>
                           </Box>
@@ -351,7 +440,8 @@ function Home() {
                     variant="h3"
                     sx={{
                       fontSize: { md: "48px", xs: "40px" },
-                      textAlign: { md: "left", sm: "center", xs: "center" }
+                      textAlign: { md: "left", sm: "center", xs: "center" },
+                      color: Colors.secondary
                     }}
                   >
                     My Experience
@@ -364,31 +454,32 @@ function Home() {
                       <Box sx={{ display: "flex", p: 2 }} data-aos="fade-up">
                         <Box
                           sx={{
-                            mt: "7px",
+                            mt: "10px",
                             position: 'absolute',
                             transform: 'translateX(-50%)',
                             width: "10px",
                             height: "10px",
                             borderRadius: "50%",
-                            background: Colors.primaryGradient,
-                            boxShadow: `0px 0px 5px 1px ${Colors.secondary}`
+                            background: Colors.secondary,
+                            boxShadow: `0px 0px 5px 1px ${Colors.primary1}`
                           }}
                         />
                         <Box sx={{ ml: 2 }}>
                           <Typography
                             sx={{
                               fontSize: "19px",
+                              color: Colors.secondary
                             }}
                           >
                             {experience.year}
                           </Typography>
                           <Box>
-                            <Typography sx={{ fontSize: "18px" }}>
+                            <Typography sx={{ fontSize: "20px", fontWeight: 600, color: Colors.secondary }}>
                               {experience.position}
                             </Typography>
                           </Box>
                           <Box>
-                            <Typography sx={{ fontSize: "18px" }}>
+                            <Typography sx={{ fontSize: "18px", color: Colors.primary1 }}>
                               {experience.organization}
                             </Typography>
                           </Box>
@@ -424,7 +515,8 @@ function Home() {
                   variant="h3"
                   sx={{
                     color: Colors.white,
-                    fontSize: { md: "48px", xs: "40px" }
+                    fontSize: { md: "48px", xs: "40px" },
+                    color: Colors.secondary
                   }}
                 >
                   My Skills
@@ -438,8 +530,8 @@ function Home() {
                     key={ind}
                     item
                     md={3}
-                    sm={6}
-                    xs={12}
+                    sm={4}
+                    xs={6}
                     data-aos="fade-right"
                   >
                     <Box
@@ -453,7 +545,9 @@ function Home() {
                         borderRadius: "8px",
                         color: Colors.white,
                         transition: "all .3s",
+                        background: Colors.primary,
                         ":hover": {
+                          background: Colors.primary1,
                           boxShadow: `0px 0px 5px 1px ${Colors.secondary}`,
                           "& .icon-wrapper": {
                             transform: "rotateY(360deg)",
@@ -480,9 +574,90 @@ function Home() {
           </Grid>
           {/* Skills Sec */}
 
-          {/* Graph Sec */}
-          <div id="gh" data-login={gitUserName}></div>
-          {/* Graph Sec */}
+          {/* Faqs Sec */}
+          <Grid
+            container
+            spacing={2}
+            sx={{
+              rowGap: "20px",
+              height: { md: "100vh", sm: "100%", xs: "100%" },
+            }}
+          >
+            <Grid item md={12}>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  height: "100%"
+                }}
+                data-aos="fade-up"
+              >
+                <Typography
+                  variant="h3"
+                  sx={{
+                    color: Colors.white,
+                    fontSize: { md: "48px", xs: "40px" },
+                    color: Colors.secondary
+                  }}
+                >
+                  Faqs
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item md={12}>
+              <Grid container spacing={3}>
+                <Grid item md={6}>
+                  <Box
+                    data-aos="fade-right"
+                    sx={{
+                      border: `1px solid ${Colors.primary}`,
+                      borderRadius: "16px",
+                      p: 2,
+                      boxShadow: `5px 10px ${Colors.white} inset`
+                    }}
+                  >
+                    <CardMedia
+                      component={"img"}
+                      src={Images.faqImage}
+                      sx={{
+                        width: "100%",
+                        height: "400px",
+                        objectFit: "cover",
+                        borderRadius: "8px",
+                        border: `1px solid ${Colors.primary}`
+                      }}
+                    />
+                  </Box>
+                </Grid>
+                <Grid item md={6} sm={12} xs={12}>
+                  <Box data-aos="fade-left">
+                    {faqs.map((item, ind) => (
+                      <CustomAccordion key={ind} disableGutters expanded={expanded === `panel${ind}`} onChange={handleChange(`panel${ind}`)}>
+                        <CustomAccordionSummary
+                          aria-controls={`panel${ind}-content`}
+                          id={`panel${ind}-header`}
+                          sx={{
+                            color: Colors.black,
+                            fontWeight: 600
+                          }}
+                        >
+                          {item.question}
+                        </CustomAccordionSummary>
+                        <CustomAccordionDetails
+                          sx={{
+                            color: Colors.primary1
+                          }}
+                        >
+                          {item.answer}
+                        </CustomAccordionDetails>
+                      </CustomAccordion>
+                    ))}
+                  </Box>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+          {/* Faqs Sec */}
         </Box>
       </Container>
     </Box >
