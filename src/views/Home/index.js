@@ -141,28 +141,28 @@ function Home() {
     setExpanded(newExpanded ? panel : false);
   };
 
-  const handleDownload = async () => {
-    setLoading(true);
-    try {
-      // Direct link to your resume file on Google Drive
-      const resumeUrl = "https://drive.google.com/uc?id=1vureuZiFy6IQEK2StYiczJLA0-GsS5ry";
-      // Create a temporary link element to trigger the download 
-      const link = document.createElement('a');
-      link.href = resumeUrl;
-      link.download = 'resume.pdf'; // Change 'YourResume.pdf' to your desired filename
-      document.body.appendChild(link);
+  // const handleDownload = async () => {
+  //   setLoading(true);
+  //   try {
+  //     // Direct link to your resume file on Google Drive
+  //     const resumeUrl = "https://drive.google.com/uc?id=1vureuZiFy6IQEK2StYiczJLA0-GsS5ry";
+  //     // Create a temporary link element to trigger the download 
+  //     const link = document.createElement('a');
+  //     link.href = resumeUrl;
+  //     link.download = 'resume.pdf'; // Change 'YourResume.pdf' to your desired filename
+  //     document.body.appendChild(link);
 
-      // Trigger the click event to start the download
-      link.click();
+  //     // Trigger the click event to start the download
+  //     link.click();
 
-      // Remove the temporary link element
-      document.body.removeChild(link);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     // Remove the temporary link element
+  //     document.body.removeChild(link);
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   useEffect(() => {
     AOS.init({
@@ -188,7 +188,6 @@ function Home() {
             spacing={{ md: 6, sm: 2, xs: 2 }}
             sx={{
               height: { md: "100vh", sm: "100%", xs: "100%" },
-              // flexDirection: { md: "row", sm: "column-reverse", xs: "column-reverse" },
               justifyContent: "space-between",
               alignItems: "center",
               flexWrap: "wrap-reverse",
@@ -196,7 +195,7 @@ function Home() {
               pt: { md: "20px", sm: 0, xs: 0 }
             }}
           >
-            <Grid item md={6}>
+            <Grid item xl={7} lg={7} md={7} sm={12} xs={12}>
               <Grid container spacing={2} justifyContent={{ xs: "center" }}>
                 <Grid item md={12} sm={12} xs={12} data-aos="fade-down">
                   <Typography
@@ -233,7 +232,11 @@ function Home() {
                   >
                     <TypeAnimation
                       sequence={[
+                        'Software Engineer',
+                        1000,
                         'MERN Stack Developer',
+                        1000,
+                        'Frontend Developer',
                         1000,
                         'React JS Developer',
                         1000,
@@ -299,14 +302,17 @@ function Home() {
                   </Box>
                 </Grid>
                 <Grid item md={12} sm={12} xs={12} data-aos="fade-up">
-                  <Grid container columnSpacing={2} >
+                  <Grid container columnSpacing={2} rowSpacing={2}>
                     <Grid item md={6} sm={6} xs={12} width={"100%"}>
-                      <PrimaryButton
-                        fullWidth={true}
-                        onClick={handleDownload}
-                        title={"Download Resume"}
-                        loading={loading}
-                      />
+                      <a
+                        href="download/resume.pdf"
+                        download
+                      >
+                        <PrimaryButton
+                          fullWidth={true}
+                          title={"Download Resume"}
+                        />
+                      </a>
                     </Grid>
                     <Grid item md={6} sm={6} xs={12}>
                       <SecondaryButton
@@ -319,7 +325,7 @@ function Home() {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item md={6}>
+            <Grid item xl={5} lg={5} md={5} sm={12} xs={12}>
               <Box
                 sx={{
                   width: "100%",
@@ -341,9 +347,8 @@ function Home() {
                 >
                   <CardMedia
                     component={"img"}
-                    src={Images.dev8}
+                    src={Images.heroImage}
                     sx={{
-                      transform: "scaleX(-1)",
                       border: `1px solid ${Colors.primary}`,
                       height: { md: "520px", sm: "400px", xs: "340px" },
                       width: "100%",
@@ -529,6 +534,8 @@ function Home() {
                   <Grid
                     key={ind}
                     item
+                    xl={3}
+                    lg={3}
                     md={3}
                     sm={4}
                     xs={6}
@@ -606,7 +613,7 @@ function Home() {
             </Grid>
             <Grid item md={12}>
               <Grid container spacing={3}>
-                <Grid item md={6}>
+                <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
                   <Box
                     data-aos="fade-right"
                     sx={{
@@ -629,8 +636,8 @@ function Home() {
                     />
                   </Box>
                 </Grid>
-                <Grid item md={6} sm={12} xs={12}>
-                  <Box data-aos="fade-left">
+                <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
+                  <Box data-aos="fade-left" sx={{ pb: { xl: 0, lg: 0, md: 0, sm: 3, xs: 3 } }}>
                     {faqs.map((item, ind) => (
                       <CustomAccordion key={ind} disableGutters expanded={expanded === `panel${ind}`} onChange={handleChange(`panel${ind}`)}>
                         <CustomAccordionSummary

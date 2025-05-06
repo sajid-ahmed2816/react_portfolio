@@ -15,6 +15,10 @@ const Images = {
   mernImage: require("./MERN-Stack-Development.png"),
   developerImage: require("./image.png"),
   faqImage: require("./image (3).png"),
+  heroImage: require("./1627985816443.jpg"),
+  scriptio: require("./Screenshot 2025-05-07 014831.png"),
+  adstreet: require("./Screenshot 2025-05-07 015537.png"),
+  cigarMaster: require("./Screenshot 2025-05-07 020118.png")
 }
 
 export const Html = () => {

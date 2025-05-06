@@ -43,6 +43,24 @@ function Project() {
       link: "https://e-commerce-react-js-web.netlify.app/",
       image: Images.ecommerceWeb
     },
+    {
+      title: "Scriptio Web App",
+      description: "This is a e-commerce web app, developed in React.js, utilizing MUI for styling the UI, used RESTful APIs to fetch products, used google places API to fetch and show user current location and address. Created Custom CMS for admin to control product, categories, offers, order, pharmacies, custom prescrioption order and manage blog content of the website.",
+      link: "https://e-rx.info/",
+      image: Images.scriptio
+    },
+    {
+      title: "Adstreet Blog Web App",
+      description: "This is a blog web app, developed in React.js, utilizing MUI for styling the UI, used RESTful APIs to fetch blogs and other content to show dynamic data all over the website, used google places API to fetch and show the location of admin created events. Created Custom CMS for admin to control banners, blogs, contents, and events on the website.",
+      link: "https://adstreet.com.pk/",
+      image: Images.adstreet
+    },
+    {
+      title: "Cigar Master Web App",
+      description: "This is a OTT web app, developed in React.js, utilizing MUI for styling the UI, used RESTful APIs to fetch blogs and videos, other content to show dynamic data all over the website. Created Custom CMS for admin to control videos, blogs, contents, offers and discounts on the website, this project is under development.",
+      link: "https://cigar-web.surge.sh/",
+      image: Images.cigarMaster
+    },
   ]
   return (
     <Container>
@@ -78,6 +96,7 @@ function Project() {
                     <Button
                       size={"small"}
                       sx={{
+                        display: { xl: "flex", lg: "flex", md: "flex", sm: "none", xs: "none" },
                         gap: "8px",
                         color: Colors.white,
                         ":hover": {
@@ -93,7 +112,7 @@ function Project() {
                     </Button>
                   </Box>
                 </Grid>
-                <Grid item md={6.5}>
+                <Grid item xl={6.5} lg={6.5} md={6.5} sm={12} xs={12}>
                   <Box
                     sx={{
                       p: 2,
@@ -114,13 +133,39 @@ function Project() {
                     />
                   </Box>
                 </Grid>
-                <Grid item md={6.5}>
+                <Grid item xl={6.5} lg={6.5} md={6.5} sm={12} xs={12}>
                   <Box
                     sx={{
                       p: 1
                     }}
                   >
                     <Typography variant='body2'>{item.description}</Typography>
+                  </Box>
+                </Grid>
+                <Grid item xl={6.5} lg={6.5} md={6.5} sm={12} xs={12}>
+                  <Box
+                    sx={{
+                      p: 1
+                    }}
+                  >
+                    <Button
+                      fullWidth={true}
+                      size={"large"}
+                      sx={{
+                        display: { xl: "none", lg: "none", md: "none", sm: "flex", xs: "flex" },
+                        gap: "8px",
+                        color: Colors.white,
+                        ":hover": {
+                          backgroundColor: `${Colors.primary}`,
+                          boxShadow: `0px 0px 5px 2px ${Colors.primary1}`,
+                        }
+                      }}
+                      variant={"contained"}
+                      onClick={() => window.open(item.link)}
+                      endIcon={<Launch sx={{ color: Colors.white }} />}
+                    >
+                      Visit
+                    </Button>
                   </Box>
                 </Grid>
               </Grid>
