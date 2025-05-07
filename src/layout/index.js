@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import { Box } from "@mui/material";
+import { Box, Toolbar } from "@mui/material";
 import { Outlet } from 'react-router-dom';
 import "../App.css"
 
@@ -10,10 +10,12 @@ function Layout() {
       <Header />
       <Box sx={{
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
       }}>
+        <Toolbar sx={{ height: { xl: "66.02px", lg: "66.02px", md: "66.02px", sm: "56px", xs: "56px" } }} />
         <Outlet />
       </Box>
       <Footer />

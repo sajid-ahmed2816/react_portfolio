@@ -45,7 +45,7 @@ function Project() {
     },
     {
       title: "Scriptio Web App",
-      description: "This is a e-commerce web app, developed in React.js, utilizing MUI for styling the UI, used RESTful APIs to fetch products, used google places API to fetch and show user current location and address. Created Custom CMS for admin to control product, categories, offers, order, pharmacies, custom prescrioption order and manage blog content of the website.",
+      description: "This is a e-commerce web app, developed in React.js, utilizing MUI for styling the UI, used RESTful APIs to fetch products, used google places API to fetch and show user current location and address. Created Custom CMS for admin to control product, categories, offers, order, pharmacies and manage blog content of the website.",
       link: "https://e-rx.info/",
       image: Images.scriptio
     },
@@ -66,10 +66,9 @@ function Project() {
     <Container>
       <Box
         sx={{
-          height: "100vh",
           display: 'flex',
-          alignItems: { md: "center", sm: "flex-start", xs: "flex-start" },
-          mt: { md: 0, sm: "90px", xs: "75px" }
+          alignItems: "center",
+          height: "calc(100vh - 66px)"
         }}
       >
         <Swiper
@@ -78,13 +77,18 @@ function Project() {
           slidesPerView={1}
           navigation
           scrollbar={{ draggable: true }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log('slide change')}
         >
           {projectsData.map((item, i) => (
             <SwiperSlide key={i}>
-              <Grid container alignItems={"center"} justifyContent={"center"} gap={"24px"} p={3}>
-                <Grid item md={6.5}>
+              <Grid
+                container
+                alignItems={"center"}
+                justifyContent={"center"}
+                gap={2}
+                px={{ xl: 3, lg: 3, md: 3, sm: 0, xs: 0 }}
+                py={{ xl: 3, lg: 3, md: 3, sm: 2, xs: 2 }}
+              >
+                <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
                   <Box
                     sx={{
                       display: "flex",
@@ -92,7 +96,7 @@ function Project() {
                       gap: 2
                     }}
                   >
-                    <Typography variant='h4'>{item.title}</Typography>
+                    <Typography variant='h4' sx={{ fontSize: { xl: "36px", lg: "36px", md: "36px", sm: "32px", xs: "32px" } }}>{item.title}</Typography>
                     <Button
                       size={"small"}
                       sx={{
@@ -112,7 +116,7 @@ function Project() {
                     </Button>
                   </Box>
                 </Grid>
-                <Grid item xl={6.5} lg={6.5} md={6.5} sm={12} xs={12}>
+                <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
                   <Box
                     sx={{
                       p: 2,
@@ -125,15 +129,17 @@ function Project() {
                       component={"img"}
                       src={item.image}
                       sx={{
+                        aspectRatio: "14/7",
                         width: "100%",
-                        objectFit: "contain",
+                        objectFit: "cover",
+                        objectPosition: "top",
                         borderRadius: "8px",
                         border: `1px solid ${Colors.primary}`
                       }}
                     />
                   </Box>
                 </Grid>
-                <Grid item xl={6.5} lg={6.5} md={6.5} sm={12} xs={12}>
+                <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
                   <Box
                     sx={{
                       p: 1
@@ -142,17 +148,17 @@ function Project() {
                     <Typography variant='body2'>{item.description}</Typography>
                   </Box>
                 </Grid>
-                <Grid item xl={6.5} lg={6.5} md={6.5} sm={12} xs={12}>
+                <Grid item xl={9} lg={9} md={9} sm={12} xs={12} sx={{ display: { xl: "none", lg: "none", md: "none", sm: "flex", xs: "flex" } }}>
                   <Box
                     sx={{
-                      p: 1
+                      p: 1,
+                      width: "100%"
                     }}
                   >
                     <Button
                       fullWidth={true}
                       size={"large"}
                       sx={{
-                        display: { xl: "none", lg: "none", md: "none", sm: "flex", xs: "flex" },
                         gap: "8px",
                         color: Colors.white,
                         ":hover": {

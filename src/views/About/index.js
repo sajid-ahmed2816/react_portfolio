@@ -26,42 +26,23 @@ function About() {
     });
   }, []);
 
-  // const [animateImage, setAnimateImage] = useState(false);
-
-  // useEffect(() => {
-  //   const timeoutId = setTimeout(() => {
-  //     setAnimateImage(true);
-  //   }, 100);
-
-  //   return () => clearTimeout(timeoutId);
-  // }, []);
-
-  // const imageAnimation = useSpring({
-  //   // opacity: animateImage ? 1 : 0.7,
-  //   transform: `translateX(${animateImage ? 0 : 100}%)`,
-  //   overflow: 'hidden',
-  //   config: config.gentle
-  // });
-
   return (
     <Box
       sx={{
         width: "100%",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        py: { xl: "50px", lg: "50px", md: "50px", sm: 2, xs: 2 }
       }}
     >
       <Container>
-        <Box sx={{ mt: { md: "42px", sm: "84px", xs: "84px" } }}>
+        <Box>
           <Grid container rowGap={{ md: "50px", sm: 0, xs: 0 }} flexDirection={"column"}>
             <Grid item md={12} sm={12} xs={12}>
               <Grid
                 container
                 spacing={2}
-                sx={{
-                  height: { md: "100vh", sm: "100%", xs: "100%" },
-                }}
                 alignItems={"center"}
               >
                 <Grid item md={6} sm={12} xs={12} data-aos="fade-right" sx={{ display: "flex" }}>
@@ -124,9 +105,6 @@ function About() {
               <Grid
                 container
                 spacing={2}
-                sx={{
-                  height: { md: "100vh", sm: "100%", xs: "100%" },
-                }}
               >
 
                 {/* about 2 */}
@@ -186,38 +164,6 @@ function About() {
               </Grid>
             </Grid>
           </Grid>
-          {/* <Grid
-            container
-            sx={{
-              height: { md: "100vh", sm: "100%", xs: "100%" },
-            }}
-          >
-            <Grid item md={12} sm={12} sx={12}>
-              <Typography
-                variant='h2'
-              >
-                Hobbies & Interest
-              </Typography>
-              <Stack
-                gap={"20px"}
-                flexDirection={"column"}
-                alignItems={"flex-start"}
-                flexWrap={"wrap"}
-              >
-                {hobbies.map((hobby, ind) => (
-                  <Chip
-                    key={ind}
-                    label={hobby}
-                    sx={{
-                      background: Colors.primaryGradient,
-                      fontSize: "24px",
-                      p: "10px 20px"
-                    }}
-                  />
-                ))}
-              </Stack>
-            </Grid>
-          </Grid> */}
         </Box>
       </Container>
     </Box>

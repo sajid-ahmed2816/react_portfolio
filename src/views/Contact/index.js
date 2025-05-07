@@ -50,7 +50,7 @@ function Contact() {
     <Container>
       <Box
         sx={{
-          height: "100vh",
+          height: "calc(100vh - 66px)",
           display: 'flex',
           alignItems: "center"
         }}
@@ -61,8 +61,6 @@ function Contact() {
             height: "100%",
             alignItems: "center",
             justifyContent: "center",
-            mt: { md: 0, sm: "100px", xs: "100px" },
-            mb: { md: 0, sm: "40px", xs: "40px" }
           }}
         >
           <Grid item md={10}>

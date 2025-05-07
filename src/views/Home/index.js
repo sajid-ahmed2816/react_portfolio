@@ -179,24 +179,22 @@ function Home() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: { md: 0, sm: "80px", xs: "80px" }
+            gap: { md: "120px", sm: "80px", xs: "80px" },
+            py: { xl: "50px", lg: "50px", md: "50px", sm: 2, xs: 2 }
           }}
         >
           {/* Intro Sec */}
           <Grid
             container
-            spacing={{ md: 6, sm: 2, xs: 2 }}
+            spacing={2}
             sx={{
-              height: { md: "100vh", sm: "100%", xs: "100%" },
               justifyContent: "space-between",
               alignItems: "center",
               flexWrap: "wrap-reverse",
-              mt: { md: 0, sm: "120px", xs: "60px" },
-              pt: { md: "20px", sm: 0, xs: 0 }
             }}
           >
             <Grid item xl={7} lg={7} md={7} sm={12} xs={12}>
-              <Grid container spacing={2} justifyContent={{ xs: "center" }}>
+              <Grid container spacing={2} justifyContent={{ xs: "center" }} sx={{ pr: { xl: "60px", lg: "60px", md: "60px", sm: 0, xs: 0 } }}>
                 <Grid item md={12} sm={12} xs={12} data-aos="fade-down">
                   <Typography
                     sx={{
@@ -330,8 +328,9 @@ function Home() {
                 sx={{
                   width: "100%",
                   display: "flex",
+                  flexDirection: "column",
                   justifyContent: "center",
-                  alignItems: "center",
+                  alignItems: "stretch",
                   position: "relative",
                   height: "100%",
                 }}
@@ -350,7 +349,7 @@ function Home() {
                     src={Images.heroImage}
                     sx={{
                       border: `1px solid ${Colors.primary}`,
-                      height: { md: "520px", sm: "400px", xs: "340px" },
+                      height: { md: "480px", sm: "400px", xs: "340px" },
                       width: "100%",
                       objectFit: "cover",
                       borderRadius: "8px"
@@ -365,7 +364,6 @@ function Home() {
           <Grid
             container
             sx={{
-              height: { md: "100vh", sm: "100%", xs: "100%" },
               alignItems: "center"
             }}
           >
@@ -504,7 +502,6 @@ function Home() {
             spacing={2}
             sx={{
               rowGap: "20px",
-              height: { md: "100vh", sm: "100%", xs: "100%" },
             }}
           >
             <Grid item md={12}>
@@ -587,7 +584,6 @@ function Home() {
             spacing={2}
             sx={{
               rowGap: "20px",
-              height: { md: "100vh", sm: "100%", xs: "100%" },
             }}
           >
             <Grid item md={12}>
@@ -637,7 +633,7 @@ function Home() {
                   </Box>
                 </Grid>
                 <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
-                  <Box data-aos="fade-left" sx={{ pb: { xl: 0, lg: 0, md: 0, sm: 3, xs: 3 } }}>
+                  <Box data-aos="fade-left">
                     {faqs.map((item, ind) => (
                       <CustomAccordion key={ind} disableGutters expanded={expanded === `panel${ind}`} onChange={handleChange(`panel${ind}`)}>
                         <CustomAccordionSummary
