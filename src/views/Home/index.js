@@ -98,7 +98,7 @@ const skills = [
 ]
 
 const qualifications = [
-  { year: '2022', qualification: 'Diploma', institution: 'Sir Adamjee Institute Of Management Science' },
+  { year: '2022', qualification: 'Diploma', institution: 'Sir Adamjee Institute' },
   { year: '2016', qualification: 'Intermediate', institution: 'Government Degree College' },
   { year: '2013', qualification: 'Matriculation', institution: 'Hill Crest School System' },
 ];
