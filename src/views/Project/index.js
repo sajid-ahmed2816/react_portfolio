@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Box, Button, CardMedia, Container, Grid, Typography } from '@mui/material'
 
 // Import Swiper React components
@@ -15,6 +15,7 @@ import 'swiper/css/scrollbar';
 import Images from '../../assets/images/Images';
 import { Launch } from '@mui/icons-material';
 import Colors from '../../assets/style';
+import ParticlesCanvas from '../../Components/Custom';
 
 
 function Project() {
@@ -63,123 +64,125 @@ function Project() {
     },
   ]
   return (
-    <Container>
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: "center",
-          height: "calc(100vh - 66px)"
-        }}
-      >
-        <Swiper
-          modules={[Scrollbar, A11y, Navigation]}
-          spaceBetween={50}
-          slidesPerView={1}
-          navigation
-          scrollbar={{ draggable: true }}
+    <Fragment>
+      <ParticlesCanvas position={"fixed"} zIndex={-1} />
+      <Container maxWidth={"xl"} sx={{ height: "100vh" }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: "center",
+            pt: { xl: "66px", lg: "66px", md: "66px", sm: "66px", xs: "44px" }
+          }}
         >
-          {projectsData.map((item, i) => (
-            <SwiperSlide key={i}>
-              <Grid
-                container
-                alignItems={"center"}
-                justifyContent={"center"}
-                gap={2}
-                px={{ xl: 3, lg: 3, md: 3, sm: 0, xs: 0 }}
-                py={{ xl: 3, lg: 3, md: 3, sm: 2, xs: 2 }}
-              >
-                <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 2
-                    }}
-                  >
-                    <Typography variant='h4' sx={{ fontSize: { xl: "36px", lg: "36px", md: "36px", sm: "32px", xs: "32px" } }}>{item.title}</Typography>
-                    <Button
-                      size={"small"}
+          <Swiper
+            modules={[Scrollbar, A11y, Navigation]}
+            spaceBetween={50}
+            slidesPerView={1}
+            navigation
+            scrollbar={{ draggable: true }}
+          >
+            {projectsData.map((item, i) => (
+              <SwiperSlide key={i}>
+                <Grid
+                  container
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  gap={2}
+                  px={{ xl: 3, lg: 3, md: 3, sm: 0, xs: 0 }}
+                  py={{ xl: 3, lg: 3, md: 3, sm: 2, xs: 2 }}
+                >
+                  <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
+                    <Box
                       sx={{
-                        display: { xl: "flex", lg: "flex", md: "flex", sm: "none", xs: "none" },
-                        gap: "8px",
-                        color: Colors.white,
-                        ":hover": {
-                          backgroundColor: `${Colors.primary}`,
-                          boxShadow: `0px 0px 5px 2px ${Colors.primary1}`,
-                        }
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 2
                       }}
-                      variant={"contained"}
-                      onClick={() => window.open(item.link)}
-                      endIcon={<Launch sx={{ color: Colors.white }} />}
                     >
-                      Visit
-                    </Button>
-                  </Box>
-                </Grid>
-                <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
-                  <Box
-                    sx={{
-                      p: 2,
-                      borderRadius: "16px",
-                      border: `1px solid ${Colors.primary}`,
-                      boxShadow: `5px 10px ${Colors.white} inset`
-                    }}
-                  >
-                    <CardMedia
-                      component={"img"}
-                      src={item.image}
+                      <Typography variant='h4' sx={{ fontSize: { xl: "36px", lg: "36px", md: "36px", sm: "32px", xs: "32px" } }}>{item.title}</Typography>
+                      <Button
+                        size={"small"}
+                        sx={{
+                          display: { xl: "flex", lg: "flex", md: "flex", sm: "none", xs: "none" },
+                          gap: "8px",
+                          color: Colors.white,
+                          ":hover": {
+                            backgroundColor: `${Colors.primary}`,
+                            boxShadow: `0px 0px 5px 2px ${Colors.primary1}`,
+                          }
+                        }}
+                        variant={"contained"}
+                        onClick={() => window.open(item.link)}
+                        endIcon={<Launch sx={{ color: Colors.white }} />}
+                      >
+                        Visit
+                      </Button>
+                    </Box>
+                  </Grid>
+                  <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
+                    <Box
                       sx={{
-                        aspectRatio: "14/7",
-                        width: "100%",
-                        objectFit: "cover",
-                        objectPosition: "top",
-                        borderRadius: "8px",
-                        border: `1px solid ${Colors.primary}`
+                        p: 2,
+                        borderRadius: "16px",
+                        boxShadow: `#48CFCB 1px 1px 5px 0px inset, #48cfcb -1px -1px 5px 0px inset, #48cfcb 1px 1px 2px 0px, #48cfcb -1px -1px 2px 0px`
                       }}
-                    />
-                  </Box>
-                </Grid>
-                <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
-                  <Box
-                    sx={{
-                      p: 1
-                    }}
-                  >
-                    <Typography variant='body2'>{item.description}</Typography>
-                  </Box>
-                </Grid>
-                <Grid item xl={9} lg={9} md={9} sm={12} xs={12} sx={{ display: { xl: "none", lg: "none", md: "none", sm: "flex", xs: "flex" } }}>
-                  <Box
-                    sx={{
-                      p: 1,
-                      width: "100%"
-                    }}
-                  >
-                    <Button
-                      fullWidth={true}
-                      size={"large"}
-                      sx={{
-                        gap: "8px",
-                        color: Colors.white,
-                        ":hover": {
-                          backgroundColor: `${Colors.primary}`,
-                          boxShadow: `0px 0px 5px 2px ${Colors.primary1}`,
-                        }
-                      }}
-                      variant={"contained"}
-                      onClick={() => window.open(item.link)}
-                      endIcon={<Launch sx={{ color: Colors.white }} />}
                     >
-                      Visit
-                    </Button>
-                  </Box>
+                      <CardMedia
+                        component={"img"}
+                        src={item.image}
+                        sx={{
+                          aspectRatio: "16/7",
+                          width: "100%",
+                          objectFit: "cover",
+                          objectPosition: "top",
+                          borderRadius: "8px",
+                          border: `1px solid ${Colors.primary}`
+                        }}
+                      />
+                    </Box>
+                  </Grid>
+                  <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
+                    <Box
+                      sx={{
+                        p: 1
+                      }}
+                    >
+                      <Typography variant='body2'>{item.description}</Typography>
+                    </Box>
+                  </Grid>
+                  <Grid item xl={9} lg={9} md={9} sm={12} xs={12} sx={{ display: { xl: "none", lg: "none", md: "none", sm: "flex", xs: "flex" } }}>
+                    <Box
+                      sx={{
+                        p: 1,
+                        width: "100%"
+                      }}
+                    >
+                      <Button
+                        fullWidth={true}
+                        size={"large"}
+                        sx={{
+                          gap: "8px",
+                          color: Colors.white,
+                          ":hover": {
+                            backgroundColor: `${Colors.primary}`,
+                            boxShadow: `0px 0px 5px 2px ${Colors.primary1}`,
+                          }
+                        }}
+                        variant={"contained"}
+                        onClick={() => window.open(item.link)}
+                        endIcon={<Launch sx={{ color: Colors.white }} />}
+                      >
+                        Visit
+                      </Button>
+                    </Box>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </Box>
-    </Container>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Box>
+      </Container>
+    </Fragment>
   )
 }
 

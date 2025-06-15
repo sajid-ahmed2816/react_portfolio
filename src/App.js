@@ -1,13 +1,12 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
+import "@fontsource/noto-sans";
+import "@fontsource/poppins";
 import Colors from './assets/style';
 import routes from './routes/routes';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './layout';
-import Home from './views/Home';
 import ToasterContainer from './Components/Toaster';
-import "@fontsource/noto-sans";
-import "@fontsource/poppins"
 
 const theme = createTheme({
   palette: {
@@ -60,8 +59,17 @@ const theme = createTheme({
       fontSize: "12px",
       color: Colors.black
     }
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 768,
+      md: 1280,
+      lg: 1440,
+      xl: 1920
+    }
   }
-})
+});
 
 function App() {
   return (

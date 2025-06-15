@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import InputField from '../../Components/InputField';
 import { PrimaryButton, SecondaryButton } from '../../Components/Buttons';
 import { SuccessToaster } from '../../Components/Toaster';
+import ParticlesCanvas from '../../Components/Custom';
 
 function Contact() {
   const [loading, setLoading] = useState(false);
@@ -47,14 +48,9 @@ function Contact() {
   }
 
   return (
-    <Container>
-      <Box
-        sx={{
-          height: "calc(100vh - 66px)",
-          display: 'flex',
-          alignItems: "center"
-        }}
-      >
+    <Box component={"section"} sx={{ height: "100vh", pt: { xl: 0, lg: 0, md: 0, sm: 3, xs: "56px" } }}>
+      <ParticlesCanvas position={"fixed"} zIndex={-1} />
+      <Container maxWidth={"xl"} sx={{ height: "100%" }}>
         <Grid
           container
           sx={{
@@ -170,8 +166,8 @@ function Contact() {
             </Box>
           </Grid>
         </Grid>
-      </Box>
-    </Container>
+      </Container>
+    </Box>
   )
 }
 
