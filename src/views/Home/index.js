@@ -9,7 +9,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { ArrowForwardIosSharp } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
-import Magnetic from '../../Components/Magnetic';
 import ParticlesCanvas from '../../Components/Custom';
 
 const CustomAccordion = styled((props) => (
@@ -106,9 +105,9 @@ const qualifications = [
 ];
 
 const experiences = [
-  { year: '2023 - continue', position: 'Frontend / ReactJs Developer', organization: 'MangoTech Solutions' },
+  { year: '2025 - continue', position: 'React JS Developer', organization: 'GE Solucions' },
+  { year: '2023 - 2025', position: 'Frontend / React JS Developer', organization: 'MangoTech Solutions' },
   { year: '2022 - 2023', position: 'MERN Stack Developer', organization: 'WeSudo' },
-  { year: '2020 - 2022', position: 'Document Processing Executive', organization: 'Systems Limited' },
 ];
 
 const faqs = [
@@ -137,6 +136,9 @@ const faqs = [
 function Home() {
   const [loading, setLoading] = useState(false);
   const [expanded, setExpanded] = useState('panel0');
+  
+  const containerRef = useRef(null);
+
   const navigate = useNavigate();
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -177,11 +179,22 @@ function Home() {
   return (
     <Grid container>
       <Grid item md={12}>
-        <Grid container spacing={2}>
-          <Grid item md={12}>
+        <Grid container>
+          <Grid 
+          item 
+          md={12}
+          sx={{
+            background:"linear-gradient(36deg, #c0e5ff 10%, #E6D9FA 100%)"
+          }}
+          >
             {/* Intro Sec */}
-            <Box component={"section"} sx={{ position: "relative" }}>
-              <ParticlesCanvas position={"absolute"} zIndex={-1} />
+            <Box 
+              component={"section"} 
+              sx={{ 
+                width: "100%", 
+              }}
+              >
+              <ParticlesCanvas position={"absolute"} zIndex={1} />
               <Container maxWidth={"xl"}>
                 <Grid
                   container
@@ -233,7 +246,7 @@ function Home() {
                                 fontSize: { lg: "48px", md: "40px", sm: "28px", xs: "18px" },
                                 fontWeight: 700,
                                 textAlign: { xs: "center", md: "left" },
-                                background: `linear-gradient(to right, #48CFCB, #229799)`,
+                                background: `linear-gradient(to right, #48AFCF, #229799)`,
                                 "-webkit-background-clip": "text",
                                 "-webkit-text-fill-color": "transparent",
                               }}
@@ -347,7 +360,7 @@ function Home() {
                             position: "relative",
                             height: "100%",
                             borderRadius: "16px",
-                            boxShadow: `#48cfcb 1px 1px 5px 0px inset, #48cfcb -1px -1px 5px 0px inset, #e695ff 1px 1px 2px 0px, #e695ff -1px -1px 2px 0px`
+                            boxShadow: `#48AFCF 1px 1px 5px 0px inset, #48AFCF -1px -1px 5px 0px inset, #e695ff 1px 1px 2px 0px, #e695ff -1px -1px 2px 0px`
                           }}
                           data-aos="zoom-in"
                         >
@@ -547,7 +560,6 @@ function Home() {
 
               {/* Skills Sec */}
               <Box component={"section"} sx={{ background: Colors.white, position: "relative", py: { md: 0, xs: 2 } }}>
-                <ParticlesCanvas position={"absolute"} zIndex={0} />
                 <Container maxWidth={"xl"}>
                   <Grid container justifyContent={"center"}
                     sx={{

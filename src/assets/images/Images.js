@@ -12,6 +12,10 @@ const Images = {
   cigarMaster: require("./Screenshot 2025-05-07 020118.png"),
   home_bg: require("./home_bg.jpg"),
   home_bg_2: require("./home_bg_2.jpg"),
+  kids_learning: require("./kids_learning.png"),
+  learning_hub: require("./learning_hub.png"),
+  wizard_z: require("./gsap_wizard.png"),
+  strindberg_bilvard: require("./strindberg_bilvard.png"),
 }
 
 export const Html = () => {

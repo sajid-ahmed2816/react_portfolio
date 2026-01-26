@@ -37,7 +37,6 @@ function About() {
         py: { xl: 2, lg: 2, md: 2, sm: 2, xs: 2 },
       }}
     >
-      <ParticlesCanvas position={"fixed"} zIndex={-1} />
       <Container maxWidth={"xl"}>
         <Grid container justifyContent={"center"} sx={{ pt: { sm: 0, xs: 8 } }}>
           <Grid item md={10}>
@@ -64,7 +63,7 @@ function About() {
                         sx={{
                           borderRadius: "16px",
                           p: 2,
-                          boxShadow: `#48CFCB 1px 1px 5px 0px inset, #48cfcb -1px -1px 5px 0px inset, #48cfcb 1px 1px 2px 0px, #48cfcb -1px -1px 2px 0px`
+                          boxShadow: `#48AFCF 1px 1px 5px 0px inset, #48AFCF -1px -1px 5px 0px inset, #48AFCF 1px 1px 2px 0px, #48AFCF -1px -1px 2px 0px`
                         }}
                       >
                         <CardMedia
@@ -154,7 +153,7 @@ function About() {
                           width: "100%",
                           borderRadius: "16px",
                           p: 2,
-                          boxShadow: `#48CFCB 1px 1px 5px 0px inset, #48cfcb -1px -1px 5px 0px inset, #48cfcb 1px 1px 2px 0px, #48cfcb -1px -1px 2px 0px`
+                          boxShadow: `#48AFCF 1px 1px 5px 0px inset, #48AFCF -1px -1px 5px 0px inset, #48AFCF 1px 1px 2px 0px, #48AFCF -1px -1px 2px 0px`
                         }}
                       >
                         <CardMedia

@@ -48,8 +48,20 @@ function Contact() {
   }
 
   return (
-    <Box component={"section"} sx={{ height: "100vh", pt: { xl: 0, lg: 0, md: 0, sm: 3, xs: "56px" } }}>
-      <ParticlesCanvas position={"fixed"} zIndex={-1} />
+    <Box
+      component={"section"}
+      sx={{
+        height: "100vh",
+        background: "linear-gradient(36deg, #C4C0FF 10%, #E6D9FA 100%)",
+        pt: {
+          xl: 0,
+          lg: 0,
+          md: 0,
+          sm: 3,
+          xs: "56px"
+        }
+      }}
+    >
       <Container maxWidth={"xl"} sx={{ height: "100%" }}>
         <Grid
           container
@@ -59,7 +71,7 @@ function Contact() {
             justifyContent: "center",
           }}
         >
-          <Grid item md={10}>
+          <Grid item md={6}>
             <Box
               component={"form"}
               onSubmit={handleSubmit(submitForm)}
@@ -69,7 +81,7 @@ function Contact() {
                   <Typography
                     variant='h2'
                     sx={{
-                      fontSize: { md: "64px", sm: "52px", xs: "52px" }
+                      fontSize: { md: "48px", sm: "32px", xs: "32px" }
                     }}
                   >
                     Get A Qoute

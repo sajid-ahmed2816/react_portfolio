@@ -15,11 +15,34 @@ import 'swiper/css/scrollbar';
 import Images from '../../assets/images/Images';
 import { Launch } from '@mui/icons-material';
 import Colors from '../../assets/style';
-import ParticlesCanvas from '../../Components/Custom';
 
 
 function Project() {
   const projectsData = [
+    {
+      title: "RU Kids Club ",
+      description: "Converted a Figma landing page into a fully responsive website using HTML, CSS, and Tailwind CSS, ensuring pixel-perfect design, clean code structure, and smooth responsiveness across all screen sizes with cross-browser compatibility.",
+      link: "https://ru-kids-learning.netlify.app/",
+      image: Images.kids_learning
+    },
+    {
+      title: "Learn Hub",
+      description: "This website is adapted from a Figma design into a HTML & CSS website, utilizing TailwindCSS for reponsiveness. The site is fully media responsive, ensuring it looks great on any device with cross-browser compatibility.",
+      link: "https://hub-learning-web.netlify.app/",
+      image: Images.learning_hub
+    },
+    {
+      title: "Tara & Shine",
+      description: "This website is adapted from a Figma design into a React.js application, utilizing MUI for styling. The site is fully media responsive, ensuring it looks great on any device. By combining React.js for dynamic functionality and MUI for a consistent.",
+      link: "https://tara-web.netlify.app/",
+      image: Images.taraShine
+    },
+    {
+      title: "WizardZ",
+      description: "This website is adapted from a Figma design into a React.js application, utilizing TailwindCSS for styling and GSAP for creative animation. The site is fully media responsive, ensuring it looks and feel great on any device. By combining React.js and GSAP for modern aesthetic.",
+      link: "https://react-wizard-gsap.vercel.app/",
+      image: Images.wizard_z
+    },
     {
       title: "Todo App",
       description: "A task management tool developed with React.js and Firebase. It offers real-time updates with Firebase, a responsive design for all devices, and intuitive task management. The frontend is built with React.js, and the backend is powered by Firebase.",
@@ -33,40 +56,22 @@ function Project() {
       image: Images.quizApp
     },
     {
-      title: "Tara & Shine",
-      description: "This website is adapted from a Figma design into a React.js application, utilizing MUI for styling. The site is fully media responsive, ensuring it looks great on any device. By combining React.js for dynamic functionality and MUI for a consistent, modern aesthetic, the website delivers a seamless and visually appealing user experience.",
-      link: "https://tara-web.netlify.app/",
-      image: Images.taraShine
-    },
-    {
       title: "Ecommerce Website",
       description: "This is a e-commerce web app, developed in React.js, utilizing react-bootstrap for styling the UI, used fakestore API to fetch products, used google maps API for store locater. Admin dashboard and backend is under developement, In future this app will be a fullstack MERN App.",
       link: "https://e-commerce-react-js-web.netlify.app/",
       image: Images.ecommerceWeb
     },
     {
-      title: "Scriptio Web App",
-      description: "This is a e-commerce web app, developed in React.js, utilizing MUI for styling the UI, used RESTful APIs to fetch products, used google places API to fetch and show user current location and address. Created Custom CMS for admin to control product, categories, offers, order, pharmacies and manage blog content of the website.",
-      link: "https://e-rx.info/",
-      image: Images.scriptio
+      title: "Strindberg Bilvard",
+      description: "Converted a Figma landing page web application using Next.js with a custom admin dashboard, styled and made fully responsive using Material UI (MUI). Implemented a clean, scalable layout with optimized components, ensuring smooth performance and consistent UI across all screen sizes.",
+      link: "https://strindbergs-bilvard.vercel.app/",
+      image: Images.strindberg_bilvard
     },
-    {
-      title: "Adstreet Blog Web App",
-      description: "This is a blog web app, developed in React.js, utilizing MUI for styling the UI, used RESTful APIs to fetch blogs and other content to show dynamic data all over the website, used google places API to fetch and show the location of admin created events. Created Custom CMS for admin to control banners, blogs, contents, and events on the website.",
-      link: "https://adstreet.com.pk/",
-      image: Images.adstreet
-    },
-    {
-      title: "Cigar Master Web App",
-      description: "This is a OTT web app, developed in React.js, utilizing MUI for styling the UI, used RESTful APIs to fetch blogs and videos, other content to show dynamic data all over the website. Created Custom CMS for admin to control videos, blogs, contents, offers and discounts on the website, this project is under development.",
-      link: "https://cigar-web.surge.sh/",
-      image: Images.cigarMaster
-    },
-  ]
+  ];
+  
   return (
     <Fragment>
-      <ParticlesCanvas position={"fixed"} zIndex={-1} />
-      <Container maxWidth={"xl"} sx={{ height: "100vh" }}>
+      <Container maxWidth={"xl"}>
         <Box
           sx={{
             display: 'flex',
@@ -124,7 +129,7 @@ function Project() {
                       sx={{
                         p: 2,
                         borderRadius: "16px",
-                        boxShadow: `#48CFCB 1px 1px 5px 0px inset, #48cfcb -1px -1px 5px 0px inset, #48cfcb 1px 1px 2px 0px, #48cfcb -1px -1px 2px 0px`
+                        boxShadow: `#48AFCF 1px 1px 5px 0px inset, #48AFCF -1px -1px 5px 0px inset, #48AFCF 1px 1px 2px 0px, #48AFCF -1px -1px 2px 0px`
                       }}
                     >
                       <CardMedia
