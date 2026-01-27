@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Box, CardMedia, Container, Grid, Typography, IconButton, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import Images, { Html, CSS, Javascript, Mongodb, ExpressJs, ReactJs, NodeJs, Firebase, Redux, TailwindCSS, Bootstrap, MaterialUi, LinkedIn, Github } from '../../assets/images/Images';
 import { TypeAnimation } from 'react-type-animation';
