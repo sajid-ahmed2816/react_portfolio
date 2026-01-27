@@ -1,13 +1,11 @@
+import { Box } from "@mui/material";
+import { Outlet } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Box, Toolbar } from "@mui/material";
-import { Outlet } from 'react-router-dom';
 import "../App.css"
-import ParticlesCanvas from "../Components/Custom";
-import { useLocation } from "react-router-dom";
 
 function Layout() {
-  const { pathname } = useLocation();
   return (
     <Box sx={{ display: "flex", flexDirection: "column", width: "100%", overflow: "hidden" }}>
       <Header />

@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
-import { Box, Button, Container, Grid, Typography } from '@mui/material'
+import { useState } from 'react'
+import { Box, Container, Grid, Typography } from '@mui/material'
 import { useForm } from "react-hook-form";
 import InputField from '../../Components/InputField';
 import { PrimaryButton, SecondaryButton } from '../../Components/Buttons';
 import { SuccessToaster } from '../../Components/Toaster';
-import ParticlesCanvas from '../../Components/Custom';
 
 function Contact() {
   const [loading, setLoading] = useState(false);

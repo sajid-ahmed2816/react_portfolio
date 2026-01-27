@@ -1,5 +1,4 @@
-import React from 'react';
-import { AppBar, Box, Container, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import Colors from '../../assets/style';
 
 function Footer() {

@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react';
-import { Box, CardMedia, Container, Grid, Typography, IconButton, Accordion, AccordionActions, AccordionSummary, AccordionDetails, Button } from '@mui/material';
+import { Fragment, useEffect, useRef, useState } from 'react';
+import { Box, CardMedia, Container, Grid, Typography, IconButton, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import Images, { Html, CSS, Javascript, Mongodb, ExpressJs, ReactJs, NodeJs, Firebase, Redux, TailwindCSS, Bootstrap, MaterialUi, LinkedIn, Github } from '../../assets/images/Images';
 import { TypeAnimation } from 'react-type-animation';
 import Colors from '../../assets/style';
@@ -134,10 +134,7 @@ const faqs = [
 ]
 
 function Home() {
-  const [loading, setLoading] = useState(false);
   const [expanded, setExpanded] = useState('panel0');
-  
-  const containerRef = useRef(null);
 
   const navigate = useNavigate();
 

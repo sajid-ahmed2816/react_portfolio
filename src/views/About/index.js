@@ -1,22 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Box, CardMedia, Chip, Container, Grid, Stack, Typography } from '@mui/material';
+import {  useEffect } from 'react';
+import { Box, CardMedia,  Container, Grid, Typography } from '@mui/material';
 import Images from '../../assets/images/Images';
 import Colors from '../../assets/style';
 import AOS from "aos";
 import "aos/dist/aos.css";
-import ParticlesCanvas from '../../Components/Custom';
-
-const hobbies = [
-  "Programming",
-  "Coding",
-  "Learning",
-  "Gaming",
-  "Technology",
-  "Movies",
-  "Music",
-  "Travelling",
-  "History"
-]
 
 function About() {
   useEffect(() => {

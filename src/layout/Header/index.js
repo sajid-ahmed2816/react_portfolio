@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { AppBar, Box, Toolbar, IconButton, Typography, Container, Button, MenuItem, Drawer, useScrollTrigger, Slide, List, Grid } from '@mui/material';
-import { LogoDev, MenuOpen, Menu } from '@mui/icons-material';
+import { MenuOpen, Menu } from '@mui/icons-material';
 import Navigation from '../../Navigation';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Colors from '../../assets/style';
@@ -133,10 +133,10 @@ function Header() {
                         my: 2,
                         color: 'white',
                         display: 'block',
-                        border: pathname == page.path ? `1px solid ${Colors.primary}` : "1px solid transparent",
+                        border: pathname === page.path ? `1px solid ${Colors.primary}` : "1px solid transparent",
                         ":hover": {
                           ".button-text": {
-                            borderRight: pathname == page.path ? "4px solid transparent" : `4px solid ${Colors.primary}`,
+                            borderRight: pathname === page.path ? "4px solid transparent" : `4px solid ${Colors.primary}`,
                           }
                         },
                       }}
