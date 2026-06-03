@@ -20,14 +20,14 @@ export const PrimaryButton = ({
         color: Colors.white,
         ":hover": {
           backgroundColor: Colors.primary,
-          boxShadow: `0px 0px 5px 2px ${Colors.primary1}`
+          boxShadow: `0px 0px 0px 2px ${Colors.primary2}`
         }
       }}
     >
       {loading
         ? <CircularProgress
           sx={{
-            color: Colors.secondary,
+            color: Colors.primary2,
             width: "26px !important",
             height: "26px !important",
           }}
@@ -51,7 +51,7 @@ export const SecondaryButton = ({
         color: Colors.primary1,
         ":hover": {
           borderColor: Colors.primary,
-          boxShadow: `0px 0px 5px 2px ${Colors.primary}`
+          boxShadow: `0px 0px 0px 1px ${Colors.primary2}`
         }
       }}
       onClick={onClick}

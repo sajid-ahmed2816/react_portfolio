@@ -11,7 +11,7 @@ import ToasterContainer from './Components/Toaster';
 const theme = createTheme({
   palette: {
     primary: {
-      main: Colors.primary,
+      main: Colors.primary2,
     },
     secondary: {
       main: Colors.secondary,

@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState, useRef } from 'react';
 import { Box, CardMedia, Container, Grid, Typography, IconButton, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import Images, { Html, CSS, Javascript, Mongodb, ExpressJs, ReactJs, NodeJs, Firebase, Redux, TailwindCSS, Bootstrap, MaterialUi, LinkedIn, Github } from '../../assets/images/Images';
 import { TypeAnimation } from 'react-type-animation';
@@ -10,6 +10,7 @@ import "aos/dist/aos.css";
 import { ArrowForwardIosSharp } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 import ParticlesCanvas from '../../Components/Custom';
+import GlowGrid from '../../Components/Glowgrid';
 
 const CustomAccordion = styled((props) => (
   <Accordion disableGutters elevation={0} {...props} />
@@ -135,6 +136,35 @@ const faqs = [
 
 function Home() {
   const [expanded, setExpanded] = useState('panel0');
+  const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
+  const containerRef = useRef(null);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+  // Container size track karna
+  useEffect(() => {
+    const updateSize = () => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setDimensions({ width: rect.width, height: rect.height });
+      }
+    };
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+
+  // Mouse events container par
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePos({ x: -100, y: -100 });
+  };
 
   const navigate = useNavigate();
 
@@ -177,21 +207,30 @@ function Home() {
     <Grid container>
       <Grid item md={12}>
         <Grid container>
-          <Grid 
-          item 
-          md={12}
-          sx={{
-            background:"linear-gradient(36deg, #c0e5ff 10%, #E6D9FA 100%)"
-          }}
+          <Grid
+            item
+            md={12}
+            sx={{
+              background: "linear-gradient(36deg, #072131 10%, #001025 100%)"
+            }}
           >
             {/* Intro Sec */}
-            <Box 
-              component={"section"} 
-              sx={{ 
-                width: "100%", 
+            <Box
+              ref={containerRef}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              component={"section"}
+              sx={{
+                width: "100%",
               }}
-              >
-              <ParticlesCanvas position={"absolute"} zIndex={1} />
+            >
+              <GlowGrid
+
+                mousePos={mousePos}
+                width={dimensions.width}
+                height={dimensions.height}
+              />
+              {/* <ParticlesCanvas position={"absolute"} zIndex={1} /> */}
               <Container maxWidth={"xl"}>
                 <Grid
                   container
@@ -218,7 +257,7 @@ function Home() {
                           <Grid item md={12} sm={12} xs={12} data-aos="fade-down">
                             <Typography
                               sx={{
-                                color: Colors.black,
+                                color: Colors.white,
                                 fontSize: { lg: "64px", md: "48px", sm: "36px", xs: "24px" },
                                 textAlign: { xs: "center", md: "left" }
                               }}
@@ -227,7 +266,7 @@ function Home() {
                               <Typography
                                 component={"span"}
                                 sx={{
-                                  color: Colors.white,
+                                  color: Colors.secondary,
                                   fontSize: { lg: "64px", md: "48px", sm: "36px", xs: "24px" },
                                   textShadow: `${Colors.primary} -1px -1px 2px, ${Colors.primary1} 1px -1px 2px, ${Colors.primary} -1px 1px 2px, ${Colors.secondary} 1px 1px 2px`
                                 }}
@@ -239,13 +278,13 @@ function Home() {
                           <Grid item md={12} sm={12} xs={12}>
                             <Typography
                               sx={{
-                                // color: Colors.secondary,
+                                color: Colors.primary2,
                                 fontSize: { lg: "48px", md: "40px", sm: "28px", xs: "18px" },
                                 fontWeight: 700,
                                 textAlign: { xs: "center", md: "left" },
-                                background: `linear-gradient(to right, #48AFCF, #229799)`,
-                                "-webkit-background-clip": "text",
-                                "-webkit-text-fill-color": "transparent",
+                                // background: `linear-gradient(to right, #48AFCF, #229799)`,
+                                // "-webkit-background-clip": "text",
+                                // "-webkit-text-fill-color": "transparent",
                               }}
                             >
                               <TypeAnimation
@@ -295,7 +334,7 @@ function Home() {
                               <IconButton
                                 sx={{
                                   p: 0,
-                                  color: Colors.primary,
+                                  color: Colors.primary2,
                                   transition: "all .3s ease-in-out",
                                   ":hover": {
                                     color: Colors.primary1
@@ -311,7 +350,7 @@ function Home() {
                               <IconButton
                                 sx={{
                                   p: 0,
-                                  color: Colors.primary,
+                                  color: Colors.primary2,
                                   ":hover": {
                                     color: Colors.primary1
                                   }
