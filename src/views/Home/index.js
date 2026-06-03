@@ -9,7 +9,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { ArrowForwardIosSharp } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
-import ParticlesCanvas from '../../Components/Custom';
+// import ParticlesCanvas from '../../Components/Custom';
 import GlowGrid from '../../Components/Glowgrid';
 
 const CustomAccordion = styled((props) => (
