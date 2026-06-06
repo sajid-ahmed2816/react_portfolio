@@ -1,5 +1,5 @@
-import {  useEffect } from 'react';
-import { Box, CardMedia,  Container, Grid, Typography } from '@mui/material';
+import { useEffect } from 'react';
+import { Box, CardMedia, Container, Grid, Typography } from '@mui/material';
 import Images from '../../assets/images/Images';
 import Colors from '../../assets/style';
 import AOS from "aos";
@@ -16,12 +16,14 @@ function About() {
 
   return (
     <Box
+      component={"section"}
       sx={{
         width: "100%",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         py: { xl: 2, lg: 2, md: 2, sm: 2, xs: 2 },
+        background: "linear-gradient(36deg, #072131 10%, #001025 100%)"
       }}
     >
       <Container maxWidth={"xl"}>
@@ -50,7 +52,7 @@ function About() {
                         sx={{
                           borderRadius: "16px",
                           p: 2,
-                          boxShadow: `#48AFCF 1px 1px 5px 0px inset, #48AFCF -1px -1px 5px 0px inset, #48AFCF 1px 1px 2px 0px, #48AFCF -1px -1px 2px 0px`
+                          boxShadow: `#00ffffc9 1px 1px 5px 0px inset, #00ffffc9 -1px -1px 5px 0px inset, #00ffffc9 1px 1px 2px 0px, #00ffffc9 -1px -1px 2px 0px`
                         }}
                       >
                         <CardMedia
@@ -82,7 +84,8 @@ function About() {
                         sx={{
                           lineHeight: "42px",
                           fontSize: "20px",
-                          p: 2
+                          p: 2,
+                          color: Colors.white
                         }}
                       >
                         Welcome to my portfolio! I am a skilled and passionate front-end developer with expertise in a variety of technologies. My proficiency includes React.js, allowing me to build powerful and dynamic user interfaces, ensuring that my designs are both aesthetically pleasing and highly functional. My deep understanding of HTML and CSS ensures that every project I undertake is built with a solid foundation and polished to perfection.
@@ -90,7 +93,6 @@ function About() {
                     </Box>
                   </Grid>
                 </Grid>
-
               </Grid>
               <Grid item md={12} sm={12} xs={12}>
                 <Grid
@@ -119,7 +121,8 @@ function About() {
                         sx={{
                           lineHeight: "42px",
                           fontSize: "20px",
-                          p: 2
+                          p: 2,
+                          color: Colors.white
                         }}
                       >
                         The MERN Stack combines MongoDB for data storage, Express.js for server-side operations, React.js for interactive user interfaces, and Node.js for server runtime. Together, they facilitate full-stack JavaScript development, offering efficiency and scalability for building modern web applications.
@@ -140,7 +143,7 @@ function About() {
                           width: "100%",
                           borderRadius: "16px",
                           p: 2,
-                          boxShadow: `#48AFCF 1px 1px 5px 0px inset, #48AFCF -1px -1px 5px 0px inset, #48AFCF 1px 1px 2px 0px, #48AFCF -1px -1px 2px 0px`
+                          boxShadow: `#00ffffc9 1px 1px 5px 0px inset, #00ffffc9 -1px -1px 5px 0px inset, #00ffffc9 1px 1px 2px 0px, #00ffffc9 -1px -1px 2px 0px`
                         }}
                       >
                         <CardMedia

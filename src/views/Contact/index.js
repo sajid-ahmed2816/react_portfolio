@@ -1,13 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Box, Container, Grid, Typography } from '@mui/material'
 import { useForm } from "react-hook-form";
 import InputField from '../../Components/InputField';
 import { PrimaryButton, SecondaryButton } from '../../Components/Buttons';
 import { SuccessToaster } from '../../Components/Toaster';
+import GlowGrid from '../../Components/Glowgrid';
+import Colors from '../../assets/style';
 
 function Contact() {
   const [loading, setLoading] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+
+  const containerRef = useRef(null)
 
   const submitForm = async (formData) => {
     setLoading(true)
@@ -36,7 +42,7 @@ function Contact() {
     } finally {
       setLoading(false)
     }
-  }
+  };
 
   const handleClear = () => {
     setValue("fName", "")
@@ -44,6 +50,32 @@ function Contact() {
     setValue("contact", "")
     setValue("email", "")
     setValue("message", "")
+  };
+
+  // Container size track karna
+  useEffect(() => {
+    const updateSize = () => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setDimensions({ width: rect.width, height: rect.height });
+      }
+    };
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+
+  // Mouse events container par
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePos({ x: -100, y: -100 });
   }
 
   return (
@@ -51,7 +83,7 @@ function Contact() {
       component={"section"}
       sx={{
         height: "100vh",
-        background: "linear-gradient(36deg, #C4C0FF 10%, #E6D9FA 100%)",
+        background: "linear-gradient(36deg, #072131 10%, #001025 100%)",
         pt: {
           xl: 0,
           lg: 0,
@@ -61,7 +93,18 @@ function Contact() {
         }
       }}
     >
-      <Container maxWidth={"xl"} sx={{ height: "100%" }}>
+      <Container
+        ref={containerRef}
+        maxWidth={"xl"}
+        sx={{ height: "100%" }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        <GlowGrid
+          mousePos={mousePos}
+          width={dimensions.width}
+          height={dimensions.height}
+        />
         <Grid
           container
           sx={{
@@ -80,7 +123,8 @@ function Contact() {
                   <Typography
                     variant='h2'
                     sx={{
-                      fontSize: { md: "48px", sm: "32px", xs: "32px" }
+                      fontSize: { md: "48px", sm: "32px", xs: "32px" },
+                      color: Colors.white
                     }}
                   >
                     Get A Qoute

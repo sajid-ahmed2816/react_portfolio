@@ -249,6 +249,7 @@ function Home() {
                       sx={{
                         alignItems: "center",
                         pt: { xl: 6, lg: 6, md: 6, sm: 4, xs: 9 },
+                        pb: { xs: 3 },
                         flexWrap: "wrap-reverse",
                       }}
                     >
@@ -282,7 +283,7 @@ function Home() {
                                 fontSize: { lg: "48px", md: "40px", sm: "28px", xs: "18px" },
                                 fontWeight: 700,
                                 textAlign: { xs: "center", md: "left" },
-                                // background: `linear-gradient(to right, #48AFCF, #229799)`,
+                                // background: `linear-gradient(to right, #00ffffc9, #229799)`,
                                 // "-webkit-background-clip": "text",
                                 // "-webkit-text-fill-color": "transparent",
                               }}
@@ -396,7 +397,7 @@ function Home() {
                             position: "relative",
                             height: "100%",
                             borderRadius: "16px",
-                            boxShadow: `#48AFCF 1px 1px 5px 0px inset, #48AFCF -1px -1px 5px 0px inset, #e695ff 1px 1px 2px 0px, #e695ff -1px -1px 2px 0px`
+                            boxShadow: `#00ffffc9 1px 1px 5px 0px inset, #00ffffc9 -1px -1px 5px 0px inset, #e695ff 1px 1px 2px 0px, #e695ff -1px -1px 2px 0px`
                           }}
                           data-aos="zoom-in"
                         >
@@ -410,6 +411,7 @@ function Home() {
                               component={"img"}
                               src={Images.heroImage}
                               sx={{
+                                opacity: 0.4,
                                 border: `1px solid ${Colors.primary}`,
                                 height: { md: "480px", sm: "400px", xs: "340px" },
                                 width: "100%",
@@ -595,13 +597,22 @@ function Home() {
               {/* Q & E Sec */}
 
               {/* Skills Sec */}
-              <Box component={"section"} sx={{ background: Colors.white, position: "relative", py: { md: 0, xs: 2 } }}>
-                <Container maxWidth={"xl"}>
+              <Box component={"section"} sx={{ background: "linear-gradient(36deg, #072131 10%, #001025 100%)", position: "relative", py: { md: 0, xs: 2 } }}>
+                <Container
+                  maxWidth={"xl"}
+                  onMouseMove={handleMouseMove}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <GlowGrid
+                    mousePos={mousePos}
+                    width={dimensions.width}
+                    height={dimensions.height}
+                  />
                   <Grid container justifyContent={"center"}
                     sx={{
                       rowGap: "20px",
                       height: { xl: "100vh", lg: "100vh", md: "100vh", sm: "100vh", xs: "100%" },
-                      alignItems: "center"
+                      alignItems: "center",
                     }}
                   >
                     <Grid item md={10}>
@@ -623,7 +634,8 @@ function Home() {
                               sx={{
                                 fontSize: { md: "48px", xs: "40px" },
                                 fontWeight: 600,
-                                textTransform: "uppercase"
+                                textTransform: "uppercase",
+                                color: Colors.white
                               }}
                             >
                               My Skills
@@ -646,15 +658,16 @@ function Home() {
                                 <Box
                                   className="skill-container"
                                   sx={{
+                                    opacity: 0.8,
                                     display: "flex",
                                     flexDirection: "column",
                                     alignItems: "center",
                                     p: 2,
-                                    boxShadow: `0px 0px 5px 1px ${Colors.primary1}`,
+                                    boxShadow: `0px 0px 5px 1px ${Colors.primary2}`,
                                     borderRadius: "8px",
                                     color: Colors.white,
                                     transition: "all .3s",
-                                    background: Colors.primary,
+                                    background: Colors.primary2,
                                     ":hover": {
                                       background: Colors.primary1,
                                       boxShadow: `0px 0px 5px 1px ${Colors.secondary}`,

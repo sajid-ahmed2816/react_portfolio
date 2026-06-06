@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 
-const GlowGrid = ({ mousePos, width, height }) => {
+const GlowGrid = ({ mousePos, width, height, children }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -70,7 +70,9 @@ const GlowGrid = ({ mousePos, width, height }) => {
         pointerEvents: 'none',  // ⚡ Important: content ko block nahi karega
         zIndex: 0,
       }}
-    />
+    >
+      {children}
+    </canvas>
   );
 };
 

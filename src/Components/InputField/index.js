@@ -18,24 +18,27 @@ function InputField({
       InputLabelProps={{
         sx: {
           ":hover": {
-            color: Colors.primary1,
+            color: Colors.primary2,
           },
-          color: Colors.primary1,
+          color: Colors.primary2,
           '&.Mui-focused': {
-            color: Colors.primary,
+            color: Colors.primary2,
           },
         }
       }}
       label={label}
       sx={{
         "& .MuiOutlinedInput-root": {
-          "& fieldset": { borderWidth: "1px", borderColor: Colors.primary1 },
+          "& fieldset": { borderWidth: "1px", borderColor: Colors.primary2 },
           "&.Mui-focused fieldset": {
-            borderColor: Colors.primary,
+            borderColor: Colors.primary2,
           },
           "&:hover fieldset": {
-            borderColor: Colors.primary,
+            borderColor: Colors.primary2,
           },
+        },
+        "& .MuiInputBase-input": {
+          color: Colors.white, // or '#fff'
         },
       }}
       error={error}
