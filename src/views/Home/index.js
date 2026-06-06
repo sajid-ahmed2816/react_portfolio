@@ -13,7 +13,7 @@ import { styled } from '@mui/material/styles';
 import GlowGrid from '../../Components/Glowgrid';
 
 const CustomAccordion = styled((props) => (
-  <Accordion disableGutters elevation={0} {...props} />
+  <Accordion disableGutters elevation={0} {...props} sx={{ background: "#072131" }} />
 ))(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
   '&:not(:last-child)': {
@@ -26,7 +26,7 @@ const CustomAccordion = styled((props) => (
 
 const CustomAccordionSummary = styled((props) => (
   <AccordionSummary
-    expandIcon={<ArrowForwardIosSharp sx={{ fontSize: '0.9rem' }} />}
+    expandIcon={<ArrowForwardIosSharp sx={{ fontSize: '0.9rem', color: Colors.white }} />}
     {...props}
   />
 ))(({ theme }) => ({
@@ -37,6 +37,7 @@ const CustomAccordionSummary = styled((props) => (
   },
   '& .MuiAccordionSummary-content': {
     marginLeft: theme.spacing(1),
+    color: Colors.white
   },
   ...theme.applyStyles('dark', {
     backgroundColor: 'rgba(255, 255, 255, .05)',
@@ -46,6 +47,7 @@ const CustomAccordionSummary = styled((props) => (
 const CustomAccordionDetails = styled(AccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
   borderTop: '1px solid rgba(0, 0, 0, .125)',
+  color: `${Colors.primary2} !important`
 }));
 
 const skills = [
@@ -225,7 +227,6 @@ function Home() {
               }}
             >
               <GlowGrid
-
                 mousePos={mousePos}
                 width={dimensions.width}
                 height={dimensions.height}
@@ -433,7 +434,7 @@ function Home() {
           <Grid item md={12}>
             <Box
               sx={{
-                background: `url(${Images.home_bg_2})`,
+                background: "linear-gradient(36deg, #072131 10%, #001025 100%)",
                 backgroundAttachment: "fixed",
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
@@ -472,9 +473,9 @@ function Home() {
                                 sx={{
                                   fontSize: { md: "48px", xs: "40px" },
                                   textAlign: { md: "left", sm: "center", xs: "center" },
-                                  color: Colors.secondary,
                                   fontWeight: 600,
-                                  textTransform: "uppercase"
+                                  textTransform: "uppercase",
+                                  color: Colors.white
                                 }}
                               >
                                 My Qualification
@@ -495,21 +496,23 @@ function Home() {
                                         width: "10px",
                                         height: "10px",
                                         borderRadius: "50%",
-                                        background: Colors.secondary,
-                                        boxShadow: `0px 0px 5px 1px ${Colors.primary1}`
+                                        background: Colors.primary2,
+                                        boxShadow: `0px 0px 1px 2px ${Colors.primary2}`,
+                                        padding: "2px",
+                                        border: `2px solid ${Colors.secondary}`
                                       }}
                                     />
                                     <Box sx={{ ml: 2 }}>
-                                      <Typography sx={{ fontSize: "18px", color: Colors.secondary }}>
+                                      <Typography sx={{ fontSize: "18px", color: Colors.primary1 }}>
                                         {qualification.year}
                                       </Typography>
                                       <Box>
-                                        <Typography sx={{ fontSize: "20px", fontWeight: 600, color: Colors.secondary }}>
+                                        <Typography sx={{ fontSize: "20px", fontWeight: 600, color: Colors.white }}>
                                           {qualification.qualification}
                                         </Typography>
                                       </Box>
                                       <Box>
-                                        <Typography sx={{ fontSize: "18px", color: Colors.primary1 }}>
+                                        <Typography sx={{ fontSize: "18px", color: Colors.primary2 }}>
                                           {qualification.institution}
                                         </Typography>
                                       </Box>
@@ -537,9 +540,9 @@ function Home() {
                                 sx={{
                                   fontSize: { md: "48px", xs: "40px" },
                                   textAlign: { md: "left", sm: "center", xs: "center" },
-                                  color: Colors.secondary,
                                   fontWeight: 600,
-                                  textTransform: "uppercase"
+                                  textTransform: "uppercase",
+                                  color: Colors.white
                                 }}
                               >
                                 My Experience
@@ -558,26 +561,28 @@ function Home() {
                                         width: "10px",
                                         height: "10px",
                                         borderRadius: "50%",
-                                        background: Colors.secondary,
-                                        boxShadow: `0px 0px 5px 1px ${Colors.primary1}`
+                                        background: Colors.primary2,
+                                        boxShadow: `0px 0px 1px 2px ${Colors.primary2}`,
+                                        padding: "2px",
+                                        border: `2px solid ${Colors.secondary}`
                                       }}
                                     />
                                     <Box sx={{ ml: 2 }}>
                                       <Typography
                                         sx={{
                                           fontSize: "19px",
-                                          color: Colors.secondary
+                                          color: Colors.primary1
                                         }}
                                       >
                                         {experience.year}
                                       </Typography>
                                       <Box>
-                                        <Typography sx={{ fontSize: "20px", fontWeight: 600, color: Colors.secondary }}>
+                                        <Typography sx={{ fontSize: "20px", fontWeight: 600, color: Colors.white }}>
                                           {experience.position}
                                         </Typography>
                                       </Box>
                                       <Box>
-                                        <Typography sx={{ fontSize: "18px", color: Colors.primary1 }}>
+                                        <Typography sx={{ fontSize: "18px", color: Colors.primary2 }}>
                                           {experience.organization}
                                         </Typography>
                                       </Box>
@@ -727,7 +732,8 @@ function Home() {
                               sx={{
                                 fontSize: { md: "48px", xs: "40px" },
                                 fontWeight: 600,
-                                textTransform: "uppercase"
+                                textTransform: "uppercase",
+                                color: Colors.white
                               }}
                             >
                               Faqs
@@ -742,7 +748,7 @@ function Home() {
                                 sx={{
                                   borderRadius: "16px",
                                   p: 2,
-                                  boxShadow: `#c6c6c6 1px 1px 5px 0px inset, #c6c6c6 -1px -1px 5px 0px inset, #c6c6c6 1px 1px 2px 0px, #c6c6c6 -1px -1px 2px 0px`
+                                  boxShadow: `#00ffffc9 1px 1px 5px 0px inset, #00ffffc9 -1px -1px 5px 0px inset, #00ffffc9 1px 1px 2px 0px, #00ffffc9 -1px -1px 2px 0px`
                                 }}
                               >
                                 <CardMedia
@@ -761,7 +767,12 @@ function Home() {
                             <Grid item xl={6} lg={6} md={7} sm={6} xs={12}>
                               <Box data-aos="fade-bottom">
                                 {faqs.map((item, ind) => (
-                                  <CustomAccordion key={ind} disableGutters expanded={expanded === `panel${ind}`} onChange={handleChange(`panel${ind}`)}>
+                                  <CustomAccordion
+                                    key={ind}
+                                    disableGutters
+                                    expanded={expanded === `panel${ind}`}
+                                    onChange={handleChange(`panel${ind}`)}
+                                  >
                                     <CustomAccordionSummary
                                       aria-controls={`panel${ind}-content`}
                                       id={`panel${ind}-header`}
