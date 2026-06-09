@@ -8,7 +8,8 @@ import routes from './routes/routes';
 import Layout from './layout';
 import ToasterContainer from './Components/Toaster';
 import { useEffect } from 'react';
-import Aos from 'aos';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const theme = createTheme({
   palette: {
@@ -75,7 +76,7 @@ const theme = createTheme({
 
 function App() {
   useEffect(() => {
-    Aos.init({
+    AOS.init({
       disable: "phone",
       duration: 700,
       easing: "ease-out-cubic",

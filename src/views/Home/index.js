@@ -1,12 +1,10 @@
-import { Fragment, useEffect, useState, useRef, cloneElement } from 'react';
+import { useEffect, useState, useRef, cloneElement } from 'react';
 import { Box, CardMedia, Container, Grid, Typography, IconButton, Accordion, AccordionSummary, AccordionDetails, Button } from '@mui/material';
-import Images, { Html, CSS, Javascript, Mongodb, ExpressJs, ReactJs, NodeJs, Firebase, Redux, TailwindCSS, Bootstrap, MaterialUi, LinkedIn, Github } from '../../assets/images/Images';
+import Images, { Mongodb, ExpressJs, ReactJs, NodeJs, Firebase, Redux, TailwindCSS, MaterialUi, LinkedIn, Github } from '../../assets/images/Images';
 import { TypeAnimation } from 'react-type-animation';
 import Colors from '../../assets/style';
 import { useNavigate } from 'react-router-dom';
 import { PrimaryButton, SecondaryButton } from '../../Components/Buttons';
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { Api, ArrowForwardIosSharp, Dashboard, ShoppingCart, Web } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 // import ParticlesCanvas from '../../Components/Custom';

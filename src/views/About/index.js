@@ -1,9 +1,8 @@
-import { Fragment, useEffect } from 'react';
+import { Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, CardMedia, Container, Grid, Typography } from '@mui/material';
 import Images from '../../assets/images/Images';
 import Colors from '../../assets/style';
-import AOS from "aos";
 import "aos/dist/aos.css";
 import { SecondaryButton } from '../../Components/Buttons';
 

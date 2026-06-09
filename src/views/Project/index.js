@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react'
+import React, { Fragment } from 'react'
 import { Box, Button, CardMedia, Container, Grid, Typography } from '@mui/material'
 
 // Import Swiper React components
@@ -15,7 +15,6 @@ import 'swiper/css/scrollbar';
 import Images from '../../assets/images/Images';
 import { Launch } from '@mui/icons-material';
 import Colors from '../../assets/style';
-import GlowGrid from '../../Components/Glowgrid';
 
 const projectsData = [
   {
@@ -69,36 +68,6 @@ const projectsData = [
 ]
   ;
 function Project() {
-  const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const containerRef = useRef(null)
-
-  // Container size track karna
-  useEffect(() => {
-    const updateSize = () => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        setDimensions({ width: rect.width, height: rect.height });
-      }
-    };
-    updateSize();
-    window.addEventListener('resize', updateSize);
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-
-  // Mouse events container par
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setMousePos({ x: -100, y: -100 });
-  };
-
   return (
     <Fragment>
       <Box
@@ -109,17 +78,7 @@ function Project() {
           height: "100%"
         }}
       >
-        <Container
-          ref={containerRef}
-          maxWidth={"xl"}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-        >
-          <GlowGrid
-            mousePos={mousePos}
-            width={dimensions.width}
-            height={dimensions.height}
-          />
+        <Container maxWidth={"xl"}>
           <Box
             sx={{
               display: 'flex',
