@@ -1,5 +1,5 @@
-import { Fragment, useEffect, useState, useRef } from 'react';
-import { Box, CardMedia, Container, Grid, Typography, IconButton, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Fragment, useEffect, useState, useRef, cloneElement } from 'react';
+import { Box, CardMedia, Container, Grid, Typography, IconButton, Accordion, AccordionSummary, AccordionDetails, Button } from '@mui/material';
 import Images, { Html, CSS, Javascript, Mongodb, ExpressJs, ReactJs, NodeJs, Firebase, Redux, TailwindCSS, Bootstrap, MaterialUi, LinkedIn, Github } from '../../assets/images/Images';
 import { TypeAnimation } from 'react-type-animation';
 import Colors from '../../assets/style';
@@ -7,10 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import { PrimaryButton, SecondaryButton } from '../../Components/Buttons';
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { ArrowForwardIosSharp } from '@mui/icons-material';
+import { Api, ArrowForwardIosSharp, Dashboard, ShoppingCart, Web } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 // import ParticlesCanvas from '../../Components/Custom';
 import GlowGrid from '../../Components/Glowgrid';
+import AnimatedCounter from '../../Components/Stats';
 
 const CustomAccordion = styled((props) => (
   <Accordion disableGutters elevation={0} {...props} sx={{ background: "#072131" }} />
@@ -50,67 +51,107 @@ const CustomAccordionDetails = styled(AccordionDetails)(({ theme }) => ({
   color: `${Colors.primary2} !important`
 }));
 
-const skills = [
+const techCategories = [
   {
-    name: "HTML",
-    icon: <Html />,
+    category: "Frontend",
+    items: [
+      { name: "React.js", desc: "Building dynamic, reusable UI components.", icon: <ReactJs /> },
+      { name: "TailwindCSS", desc: "Utility-first CSS for rapid custom designs.", icon: <TailwindCSS /> },
+      { name: "Material UI", desc: "Beautiful, accessible component library.", icon: <MaterialUi /> },
+    ]
   },
   {
-    name: "CSS",
-    icon: <CSS />,
+    category: "Backend",
+    items: [
+      { name: "Node.js", desc: "Scalable server-side runtime.", icon: <NodeJs /> },
+      { name: "Express.js", desc: "Robust API & server framework.", icon: <ExpressJs /> },
+      { name: "MongoDB", desc: "NoSQL database for flexible data storage.", icon: <Mongodb /> },
+    ]
   },
   {
-    name: "JavaScript",
-    icon: <Javascript />,
+    category: "Tools & Others",
+    items: [
+      { name: "Git / GitHub", desc: "Version control & collaboration.", icon: <Github /> },
+      { name: "Firebase", desc: "Realtime backend & authentication.", icon: <Firebase /> },
+      { name: "Redux", desc: "State management for complex apps.", icon: <Redux /> },
+    ]
   },
-  {
-    name: "TailwindCSS",
-    icon: <TailwindCSS />,
-  },
-  {
-    name: "Bootstrap",
-    icon: <Bootstrap />,
-  },
-  {
-    name: "Material UI",
-    icon: <MaterialUi />,
-  },
-  {
-    name: "Firebase",
-    icon: <Firebase />,
-  },
-  {
-    name: "Redux",
-    icon: <Redux />,
-  },
-  {
-    name: "MongoDB",
-    icon: <Mongodb />,
-  },
-  {
-    name: "Express.js",
-    icon: <ExpressJs />,
-  },
-  {
-    name: "React.js",
-    icon: <ReactJs />,
-  },
-  {
-    name: "Node.js",
-    icon: <NodeJs />,
-  },
-]
-
-const qualifications = [
-  { year: '2022', qualification: 'Diploma', institution: 'Sir Adamjee Institute' },
-  { year: '2016', qualification: 'Intermediate', institution: 'Government Degree College' },
-  { year: '2013', qualification: 'Matriculation', institution: 'Hill Crest School System' },
 ];
 
-const experiences = [
-  { year: '2025 - continue', position: 'React JS Developer', organization: 'GE Solucions' },
-  { year: '2023 - 2025', position: 'Frontend / React JS Developer', organization: 'MangoTech Solutions' },
-  { year: '2022 - 2023', position: 'MERN Stack Developer', organization: 'WeSudo' },
+const services = [
+  {
+    icon: <Web sx={{ fontSize: 40, color: Colors.primary2 }} />,
+    title: "Landing Pages & Websites",
+    desc: "Pixel-perfect, high-converting landing pages built from Figma designs. Fully responsive and optimized for speed.",
+  },
+  {
+    icon: <Dashboard sx={{ fontSize: 40, color: Colors.primary2 }} />,
+    title: "Web Applications",
+    desc: "Interactive dashboards, SaaS tools, and admin panels powered by React and Node.js for seamless user experiences.",
+  },
+  {
+    icon: <ShoppingCart sx={{ fontSize: 40, color: Colors.primary2 }} />,
+    title: "E-commerce Solutions",
+    desc: "Full-featured online stores with secure payment integration, inventory management, and mobile-first design.",
+  },
+  {
+    icon: <Api sx={{ fontSize: 40, color: Colors.primary2 }} />,
+    title: "API Development & Integration",
+    desc: "Custom RESTful APIs and third-party service integration to connect your app with the tools you need.",
+  },
+];
+
+const processSteps = [
+  { step: "01", title: "Discovery", desc: "We discuss your goals, audience, and requirements to define the perfect solution." },
+  { step: "02", title: "Design & Prototype", desc: "I create wireframes and UI mockups for your approval before writing a single line of code." },
+  { step: "03", title: "Development", desc: "Clean, scalable code is written with regular progress updates and feedback loops." },
+  { step: "04", title: "Launch & Support", desc: "Rigorous testing, deployment, and ongoing maintenance to keep your app running smoothly." },
+];
+
+const stats = [
+  { label: "Projects Completed", value: 10, suffix: "+" },
+  { label: "Happy Clients", value: 5, suffix: "+" },
+  { label: "Years Experience", value: 3, suffix: "+" },
+  { label: "Pixel-Perfect Delivery", value: 100, suffix: "%" },
+];
+
+const testimonials = [
+  {
+    quote: "Sajid delivered our landing page ahead of schedule, exactly matching the Figma design. Highly recommend his frontend skills.",
+    name: "Ahmed Khan",
+    role: "Project Manager, MangoTech",
+  },
+  {
+    quote: "Great communication and clean code. He built our dashboard in record time with all the features we needed.",
+    name: "Sara Ali",
+    role: "CEO, WeSudo",
+  },
+  {
+    quote: "Professional MERN stack developer. Our e-commerce site is now faster and looks amazing on mobile devices.",
+    name: "Usman Raza",
+    role: "Founder, GE Solucions",
+  },
+];
+
+const blogPosts = [
+  {
+    title: "Why a Custom Website Outperforms Templates",
+    excerpt: "Discover how custom development boosts speed, SEO, and user engagement...",
+    link: "https://medium.com/@yourhandle/why-custom-website",
+    date: "May 2026"
+  },
+  {
+    title: "Getting Started with MERN Stack in 2026",
+    excerpt: "A beginner's guide to building full-stack apps with MongoDB, Express, React, and Node...",
+    link: "https://dev.to/yourhandle/mern-stack",
+    date: "April 2026"
+  },
+  {
+    title: "5 React Performance Optimization Tips",
+    excerpt: "Improve your app's speed with these simple yet effective techniques...",
+    link: "https://medium.com/@yourhandle/react-perf",
+    date: "March 2026"
+  },
 ];
 
 const faqs = [
@@ -134,7 +175,9 @@ const faqs = [
     question: "Will my web application be cross-browser compatible and mobile responsive?",
     answer: "Yes, I ensure that all web applications I develop work flawlessly across different browsers and devices, delivering a consistent user experience."
   },
-]
+];
+
+const whiteHeading = { fontSize: { md: "48px", xs: "40px" }, fontWeight: 600, textTransform: "uppercase", color: Colors.white };
 
 function Home() {
   const [expanded, setExpanded] = useState('panel0');
@@ -196,14 +239,6 @@ function Home() {
   //     setLoading(false);
   //   }
   // };
-
-  useEffect(() => {
-    AOS.init({
-      disable: "phone",
-      duration: 700,
-      easing: "ease-out-cubic",
-    });
-  }, []);
 
   return (
     <Grid container>
@@ -284,9 +319,6 @@ function Home() {
                                 fontSize: { lg: "48px", md: "40px", sm: "28px", xs: "18px" },
                                 fontWeight: 700,
                                 textAlign: { xs: "center", md: "left" },
-                                // background: `linear-gradient(to right, #00ffffc9, #229799)`,
-                                // "-webkit-background-clip": "text",
-                                // "-webkit-text-fill-color": "transparent",
                               }}
                             >
                               <TypeAnimation
@@ -299,7 +331,11 @@ function Home() {
                                   1000,
                                   'React JS Developer',
                                   1000,
-                                  'UI/UX Developer',
+                                  'Backend Developer',
+                                  1000,
+                                  'Node JS Developer',
+                                  1000,
+                                  'HTML/CSS Developer',
                                   1000,
                                   'Quick Learner',
                                   1000,
@@ -314,14 +350,28 @@ function Home() {
                           </Grid>
                           <Grid item md={12} sm={12} xs={12} data-aos="fade-left">
                             <Typography
+                              variant={"h1"}
                               sx={{
-                                fontSize: 18,
+                                fontSize: 24,
                                 fontWeight: 600,
-                                color: "#8D8D8D",
+                                color: Colors.white,
                                 lineHeight: 2,
                               }}
                             >
-                              Skilled in building dynamic web applications using MongoDB, Express.js, React.js, and Node.js. I excel at turning designs into functional apps with robust features and seamless API integration.
+                              I build fast, conversion-focused web apps that grow your business.
+                            </Typography>
+                          </Grid>
+                          <Grid item md={12} sm={12} xs={12} data-aos="fade-left">
+                            <Typography
+                              variant={"h1"}
+                              sx={{
+                                fontSize: 16,
+                                fontWeight: 400,
+                                color: "#c0c0c0",
+                                lineHeight: 2,
+                              }}
+                            >
+                              Custom MERN stack solutions delivered on time. Let’s turn your idea into a live product.
                             </Typography>
                           </Grid>
                           <Grid item md={12} sm={12} xs={12} data-aos="fade-right">
@@ -345,7 +395,7 @@ function Home() {
                                   //   filter: `drop-shadow(0px 0px 2px ${Colors.secondary})`
                                   // }
                                 }}
-                                onClick={() => window.open("https://linkedin.com/in/sajid-ahmed-9b5089279")}
+                                onClick={() => window.open("https://www.linkedin.com/in/sajid-ahmed-8a60073a7")}
                               >
                                 <LinkedIn />
                               </IconButton>
@@ -380,7 +430,7 @@ function Home() {
                                 <SecondaryButton
                                   fullWidth={true}
                                   onClick={() => navigate("/contact")}
-                                  title={"Contact Me"}
+                                  title={"Start a Project"}
                                 />
                               </Grid>
                             </Grid>
@@ -398,7 +448,7 @@ function Home() {
                             position: "relative",
                             height: "100%",
                             borderRadius: "16px",
-                            boxShadow: `#00ffffc9 1px 1px 5px 0px inset, #00ffffc9 -1px -1px 5px 0px inset, #e695ff 1px 1px 2px 0px, #e695ff -1px -1px 2px 0px`
+                            boxShadow: `1px 1px 5px 0px inset #4c00ff, -1px -1px 5px 0px inset #5f1cfc, 1px 1px 2px 0px #c300ff, -1px -1px 2px 0px #e695ff`
                           }}
                           data-aos="zoom-in"
                         >
@@ -410,10 +460,10 @@ function Home() {
                           >
                             <CardMedia
                               component={"img"}
-                              src={Images.heroImage}
+                              src={Images.developerImage}
                               sx={{
-                                opacity: 0.4,
-                                border: `1px solid ${Colors.primary}`,
+                                opacity: 0.6,
+                                border: `1px solid ${Colors.primary2}`,
                                 height: { md: "480px", sm: "400px", xs: "340px" },
                                 width: "100%",
                                 objectFit: "cover",
@@ -441,257 +491,200 @@ function Home() {
                 display: "flex",
                 flexDirection: "column",
                 gap: { md: "120px", sm: "80px", xs: "80px" },
-                pt: { xl: 0, lg: 0, md: 3, sm: 12, xs: 12 },
+                pt: { xl: 15, lg: 15, md: 15, sm: 12, xs: 12 },
               }}
             >
-              {/* Q & E Sec */}
+              {/* Service Sec */}
               <Box component={"section"}>
-                <Container maxWidth={"xl"}>
-                  <Grid
-                    container
-                    sx={{
-                      height: { xl: "100vh", lg: "100vh", md: "100vh", sm: "100vh", xs: "100%" },
-                      justifyContent: "center",
-                      alignItems: "center"
-                    }}
-                  >
-                    <Grid ite md={10}>
-                      <Grid container>
-                        {/* Qualification Section */}
-                        <Grid item md={6} sm={6} xs={12} >
+                <Container maxWidth="xl">
+                  <Grid container justifyContent="center">
+                    <Grid item md={10}>
+                      <Grid container spacing={4}>
+                        <Grid item md={12}>
+                          <Typography
+                            variant="h3"
+                            sx={{
+                              fontSize: { md: "48px", xs: "40px" },
+                              fontWeight: 600,
+                              textTransform: "uppercase",
+                              color: Colors.white,
+                              textAlign: "center"
+                            }}
+                            data-aos="fade-up"
+                          >
+                            What I Do
+                          </Typography>
+                        </Grid>
+                        <Grid item md={12}>
+                          <Grid container spacing={4}>
+                            {services.map((service, index) => (
+                              <Grid item xl={3} lg={3} md={6} sm={6} xs={12} key={index} data-aos="flip-left">
+                                <Box
+                                  sx={{
+                                    p: 3,
+                                    borderRadius: "12px",
+                                    background: "rgba(7, 33, 49, 0.8)",
+                                    border: `1px solid ${Colors.primary2}`,
+                                    boxShadow: `0 0 10px rgba(0, 255, 255, 0.1)`,
+                                    transition: "all 0.3s",
+                                    height: "100%",
+                                    ":hover": {
+                                      borderColor: Colors.secondary,
+                                      boxShadow: `0 0 20px rgba(0, 255, 255, 0.3)`,
+                                      transform: "translateY(-5px)",
+                                    },
+                                  }}
+                                >
+                                  <Box mb={2}>{service.icon}</Box>
+                                  <Typography sx={{ color: Colors.white, fontWeight: 600, fontSize: 20, mb: 1 }}>
+                                    {service.title}
+                                  </Typography>
+                                  <Typography sx={{ color: Colors.primary2, fontSize: 15 }}>
+                                    {service.desc}
+                                  </Typography>
+                                </Box>
+                              </Grid>
+                            ))}
+                          </Grid>
+                        </Grid>
+                        <Grid item md={12}>
                           <Box
                             sx={{
-                              display: "flex",
-                              flexDirection: "column",
-                              alignItems: "center",
-                              gap: "20px",
+                              textAlign: 'center',
+                              p: { md: 4, xs: 2 },
+                              borderRadius: '16px',
+                              background: `linear-gradient(135deg, #2c4949, ${Colors.secondary})`,
+                              border: `1px solid ${Colors.primary2}`,
+                              boxShadow: `0 0 12px ${Colors.primary2}`,
                             }}
                           >
-                            <Box data-aos="fade-right">
-                              <Typography
-                                variant="h3"
-                                sx={{
-                                  fontSize: { md: "48px", xs: "40px" },
-                                  textAlign: { md: "left", sm: "center", xs: "center" },
-                                  fontWeight: 600,
-                                  textTransform: "uppercase",
-                                  color: Colors.white
-                                }}
-                              >
-                                My Qualification
-                              </Typography>
-                            </Box>
-
-                            <Box sx={{ position: "relative", p: 2 }}>
-                              {qualifications.map((qualification, index) => (
-                                <Fragment key={index}>
-                                  <Box sx={{ display: "flex", p: 2 }}
-                                    data-aos="fade-up"
-                                  >
-                                    <Box
-                                      sx={{
-                                        mt: "10px",
-                                        position: 'absolute',
-                                        transform: 'translateX(-50%)',
-                                        width: "10px",
-                                        height: "10px",
-                                        borderRadius: "50%",
-                                        background: Colors.primary2,
-                                        boxShadow: `0px 0px 1px 2px ${Colors.primary2}`,
-                                        padding: "2px",
-                                        border: `2px solid ${Colors.secondary}`
-                                      }}
-                                    />
-                                    <Box sx={{ ml: 2 }}>
-                                      <Typography sx={{ fontSize: "18px", color: Colors.primary1 }}>
-                                        {qualification.year}
-                                      </Typography>
-                                      <Box>
-                                        <Typography sx={{ fontSize: "20px", fontWeight: 600, color: Colors.white }}>
-                                          {qualification.qualification}
-                                        </Typography>
-                                      </Box>
-                                      <Box>
-                                        <Typography sx={{ fontSize: "18px", color: Colors.primary2 }}>
-                                          {qualification.institution}
-                                        </Typography>
-                                      </Box>
-                                    </Box>
+                            <Grid container justifyContent="center" spacing={4}>
+                              {stats.map((stat, i) => (
+                                <Grid item xl={3} lg={3} md={3} sm={6} xs={12} key={i} data-aos="zoom-in">
+                                  <Box sx={{ textAlign: "center", p: 2 }}>
+                                    <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                                    <Typography sx={{ color: Colors.primary2, fontSize: 18, mt: 1 }}>
+                                      {stat.label}
+                                    </Typography>
                                   </Box>
-                                </Fragment>
+                                </Grid>
                               ))}
-                            </Box>
+                            </Grid>
                           </Box>
                         </Grid>
-                        {/* Qualification Section */}
-                        {/* Experience Section */}
-                        <Grid item md={6} sm={6} xs={12}>
-                          <Box
-                            sx={{
-                              display: "flex",
-                              flexDirection: "column",
-                              alignItems: "center",
-                              gap: "20px",
-                            }}
-                          >
-                            <Box data-aos="fade-left">
-                              <Typography
-                                variant="h3"
-                                sx={{
-                                  fontSize: { md: "48px", xs: "40px" },
-                                  textAlign: { md: "left", sm: "center", xs: "center" },
-                                  fontWeight: 600,
-                                  textTransform: "uppercase",
-                                  color: Colors.white
-                                }}
-                              >
-                                My Experience
-                              </Typography>
-                            </Box>
-
-                            <Box sx={{ position: "relative", p: 2 }}>
-                              {experiences.map((experience, index) => (
-                                <Fragment key={index}>
-                                  <Box sx={{ display: "flex", p: 2 }} data-aos="fade-up">
-                                    <Box
-                                      sx={{
-                                        mt: "10px",
-                                        position: 'absolute',
-                                        transform: 'translateX(-50%)',
-                                        width: "10px",
-                                        height: "10px",
-                                        borderRadius: "50%",
-                                        background: Colors.primary2,
-                                        boxShadow: `0px 0px 1px 2px ${Colors.primary2}`,
-                                        padding: "2px",
-                                        border: `2px solid ${Colors.secondary}`
-                                      }}
-                                    />
-                                    <Box sx={{ ml: 2 }}>
-                                      <Typography
-                                        sx={{
-                                          fontSize: "19px",
-                                          color: Colors.primary1
-                                        }}
-                                      >
-                                        {experience.year}
-                                      </Typography>
-                                      <Box>
-                                        <Typography sx={{ fontSize: "20px", fontWeight: 600, color: Colors.white }}>
-                                          {experience.position}
-                                        </Typography>
-                                      </Box>
-                                      <Box>
-                                        <Typography sx={{ fontSize: "18px", color: Colors.primary2 }}>
-                                          {experience.organization}
-                                        </Typography>
-                                      </Box>
-                                    </Box>
-                                  </Box>
-                                </Fragment>
-                              ))}
-                            </Box>
-                          </Box>
-                        </Grid>
-                        {/* Experience Section */}
                       </Grid>
                     </Grid>
                   </Grid>
                 </Container>
               </Box>
-              {/* Q & E Sec */}
+              {/* Service Sec */}
 
               {/* Skills Sec */}
-              <Box component={"section"} sx={{ background: "linear-gradient(36deg, #072131 10%, #001025 100%)", position: "relative", py: { md: 0, xs: 2 } }}>
-                <Container
-                  maxWidth={"xl"}
-                  onMouseMove={handleMouseMove}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <GlowGrid
-                    mousePos={mousePos}
-                    width={dimensions.width}
-                    height={dimensions.height}
-                  />
-                  <Grid container justifyContent={"center"}
-                    sx={{
-                      rowGap: "20px",
-                      height: { xl: "100vh", lg: "100vh", md: "100vh", sm: "100vh", xs: "100%" },
-                      alignItems: "center",
-                    }}
+              <Box component={"section"}>
+                <Container maxWidth="xl">
+                  <Grid
+                    container
+                    justifyContent={"center"}
+                    alignItems={"center"}
                   >
                     <Grid item md={10}>
-                      <Grid
-                        container
-                        spacing={2}
-                      >
+                      <Grid container>
                         <Grid item md={12}>
-                          <Box
-                            sx={{
-                              display: "flex",
-                              alignItems: "center",
-                              height: "100%"
-                            }}
-                            data-aos="fade-up"
-                          >
-                            <Typography
-                              variant="h3"
-                              sx={{
-                                fontSize: { md: "48px", xs: "40px" },
-                                fontWeight: 600,
-                                textTransform: "uppercase",
-                                color: Colors.white
-                              }}
-                            >
-                              My Skills
-                            </Typography>
-                          </Box>
+                          <Typography sx={{ ...whiteHeading, textAlign: "center", mb: 6 }} data-aos="fade-up">
+                            My Tech Stack
+                          </Typography>
                         </Grid>
-                        <Grid item md={12}>
-                          <Grid container spacing={3} data-aos="fade-right">
-                            {skills.map((skill, ind) => (
-                              <Grid
-                                key={ind}
-                                item
-                                xl={3}
-                                lg={3}
-                                md={3}
-                                sm={4}
-                                xs={6}
-                                data-aos="fade-right"
-                              >
-                                <Box
-                                  className="skill-container"
-                                  sx={{
-                                    opacity: 0.8,
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "center",
-                                    p: 2,
-                                    boxShadow: `0px 0px 5px 1px ${Colors.primary2}`,
-                                    borderRadius: "8px",
-                                    color: Colors.white,
-                                    transition: "all .3s",
-                                    background: Colors.primary2,
-                                    ":hover": {
-                                      background: Colors.primary1,
-                                      boxShadow: `0px 0px 5px 1px ${Colors.secondary}`,
-                                      "& .icon-wrapper": {
-                                        transform: "rotateY(360deg)",
-                                      },
-                                    },
-                                  }}
-                                >
-                                  <Box className="icon-wrapper"
+                        {techCategories.map((cat, idx) => (
+                          <Box key={idx} mb={6}>
+                            <Typography sx={{ color: Colors.white, fontSize: 28, fontWeight: 600, mb: 3 }} data-aos="fade-right">
+                              {cat.category}
+                            </Typography>
+                            <Grid container spacing={3}>
+                              {cat.items.map((tech, i) => (
+                                <Grid item xl={4} lg={4} md={4} sm={6} xs={12} key={i} data-aos="fade-up" data-aos-delay={i * 100}>
+                                  <Box
                                     sx={{
-                                      transition: "transform .3s",
-                                      transform: "rotateY(0deg)",
+                                      p: 3,
+                                      borderRadius: "12px",
+                                      background: "rgba(7,33,49,0.6)",
+                                      border: `1px solid ${Colors.primary2}40`,
+                                      display: "flex",
+                                      alignItems: "center",
+                                      gap: 2,
+                                      transition: "0.3s",
+                                      ":hover": {
+                                        background: "rgba(0,255,255,0.05)",
+                                        borderColor: Colors.secondary,
+                                      }
                                     }}
                                   >
-                                    {skill.icon}
+                                    <Box sx={{ fontSize: 36 }}>{cloneElement(tech.icon, { fill: Colors.white })}</Box>
+                                    <Box>
+                                      <Typography sx={{ color: Colors.white, fontWeight: 600, fontSize: 18 }}>{tech.name}</Typography>
+                                      <Typography sx={{ color: Colors.primary2, fontSize: 14 }}>{tech.desc}</Typography>
+                                    </Box>
                                   </Box>
-                                  <Typography sx={{ color: Colors.white }}>
-                                    {skill.name}
+                                </Grid>
+                              ))}
+                            </Grid>
+                          </Box>
+                        ))}
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Container>
+              </Box>
+              {/* Skills Sec */}
+
+              {/* Process Sec */}
+              <Box component={"section"}>
+                <Container maxWidth="xl">
+                  <Grid
+                    container
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                  >
+                    <Grid item md={10}>
+                      <Grid container>
+                        <Grid item md={12}>
+                          <Typography sx={{ ...whiteHeading, textAlign: "center", mb: 6 }} data-aos="fade-up">
+                            How I Work
+                          </Typography>
+                        </Grid>
+                        <Grid item md={12}>
+                          <Grid container justifyContent="center" spacing={4}>
+                            {processSteps.map((step, i) => (
+                              <Grid item xl={3} lg={3} md={6} sm={6} xs={12} key={i} data-aos="fade-up" data-aos-delay={i * 100}>
+                                <Box
+                                  sx={{
+                                    textAlign: "center",
+                                    p: 3,
+                                    position: "relative",
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      display: "inline-flex",
+                                      justifyContent: "center",
+                                      alignItems: "center",
+                                      width: 80,
+                                      height: 80,
+                                      borderRadius: "50%",
+                                      border: `3px solid ${Colors.primary2}`,
+                                      color: Colors.primary2,
+                                      fontSize: 30,
+                                      fontWeight: 700,
+                                      mb: 2,
+                                      background: "rgba(0,255,255,0.05)",
+                                    }}
+                                  >
+                                    {step.step}
+                                  </Box>
+                                  <Typography sx={{ color: Colors.white, fontSize: 22, fontWeight: 600, mb: 1 }}>
+                                    {step.title}
+                                  </Typography>
+                                  <Typography sx={{ color: Colors.primary2, fontSize: 15 }}>
+                                    {step.desc}
                                   </Typography>
                                 </Box>
                               </Grid>
@@ -703,10 +696,158 @@ function Home() {
                   </Grid>
                 </Container>
               </Box>
-              {/* Skills Sec */}
+              {/* Process Sec */}
+
+              {/* Testimonials Sec */}
+              <Box component={"section"}>
+                <Container maxWidth="xl">
+                  <Grid
+                    container
+                    alignItems={"center"}
+                    justifyContent={"center"}
+                  >
+                    <Grid item md={10}>
+                      <Grid container>
+                        <Grid item md={12}>
+                          <Typography
+                            variant="h3"
+                            sx={{ ...whiteHeading, textAlign: "center", mb: 6 }}
+                            data-aos="fade-up"
+                          >
+                            What People Say
+                          </Typography>
+                        </Grid>
+                        <Grid item md={12}>
+                          <Grid container justifyContent="center" spacing={4}>
+                            {testimonials.map((t, i) => (
+                              <Grid item xl={4} lg={4} md={4} sm={6} xs={12} key={i} data-aos="zoom-in" data-aos-delay={i * 100}>
+                                <Box
+                                  sx={{
+                                    p: 4,
+                                    borderRadius: "16px",
+                                    background: `linear-gradient(135deg, rgba(0,16,37,0.9), rgba(7,33,49,0.9))`,
+                                    border: `1px solid ${Colors.primary2}40`,
+                                    boxShadow: `0 0 15px ${Colors.primary2}20`,
+                                    height: "100%",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    justifyContent: "space-between",
+                                    position: "relative",
+                                    ":before": {
+                                      content: '"“"',
+                                      position: "absolute",
+                                      top: -10,
+                                      left: 20,
+                                      fontSize: 60,
+                                      color: Colors.secondary,
+                                      opacity: 0.5,
+                                      lineHeight: 1,
+                                    },
+                                  }}
+                                >
+                                  <Typography sx={{ color: Colors.white, fontSize: 16, mb: 3, fontStyle: "italic" }}>
+                                    {t.quote}
+                                  </Typography>
+                                  <Box>
+                                    <Typography sx={{ color: Colors.primary1, fontWeight: 600, fontSize: 18 }}>
+                                      {t.name}
+                                    </Typography>
+                                    <Typography sx={{ color: Colors.primary2, fontSize: 14 }}>
+                                      {t.role}
+                                    </Typography>
+                                  </Box>
+                                </Box>
+                              </Grid>
+                            ))}
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Container>
+              </Box>
+              {/* Testimonials Sec */}
+
+              {/* Blogs Sec */}
+              <Box component={"section"}>
+                <Container maxWidth="xl">
+                  <Grid
+                    container
+                    alignItems={"center"}
+                    justifyContent={"center"}
+                  >
+                    <Grid item md={10}>
+                      <Grid container>
+                        <Grid item md={12}>
+                          <Box display="flex" justifyContent="space-between" alignItems="center" mb={6} >
+                            <Typography sx={{ ...whiteHeading }}>
+                              Insights & Articles
+                            </Typography>
+                            <Button
+                              variant="outlined"
+                              sx={{ borderColor: Colors.primary2, color: Colors.primary2, ":hover": { borderColor: Colors.secondary, color: Colors.secondary } }}
+                              onClick={() => window.open('https://medium.com/@yourhandle', '_blank')}
+                            >
+                              View All
+                            </Button>
+                          </Box>
+                        </Grid>
+                        <Grid item md={12}>
+                          <Grid container justifyContent="center" spacing={4}>
+                            {blogPosts.map((post, i) => (
+                              <Grid item xl={4} lg={4} md={4} sm={6} xs={12} key={i} data-aos="flip-up" data-aos-delay={i * 100}>
+                                <Box
+                                  sx={{
+                                    p: 4,
+                                    borderRadius: "16px",
+                                    background: "rgba(7,33,49,0.8)",
+                                    border: `1px solid ${Colors.primary2}30`,
+                                    height: "100%",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    justifyContent: "space-between",
+                                    transition: "0.3s",
+                                    ":hover": {
+                                      borderColor: Colors.secondary,
+                                      boxShadow: `0 0 20px ${Colors.primary2}40`,
+                                    }
+                                  }}
+                                >
+                                  <Box>
+                                    <Typography sx={{ color: Colors.primary2, fontSize: 14, mb: 1 }}>{post.date}</Typography>
+                                    <Typography sx={{ color: Colors.white, fontWeight: 600, fontSize: 20, mb: 2 }}>
+                                      {post.title}
+                                    </Typography>
+                                    <Typography sx={{ color: Colors.primary1, fontSize: 15, mb: 3 }}>
+                                      {post.excerpt}
+                                    </Typography>
+                                  </Box>
+                                  <Button
+                                    onClick={() => window.open(post.link, '_blank')}
+                                    sx={{
+                                      alignSelf: "flex-start",
+                                      color: "#A0A0A0",
+                                      textTransform: "none",
+                                      fontWeight: 600,
+                                      ":hover": { background: "transparent", textDecoration: "underline" }
+                                    }}
+                                  >
+                                    Read More →
+                                  </Button>
+                                </Box>
+                              </Grid>
+                            ))}
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Container>
+              </Box>
+              {/* Blogs Sec */}
 
               {/* Faqs Sec */}
-              <Box component={"section"} sx={{ py: { md: 0, xs: 2 } }}>
+              <Box component={"section"}>
                 <Container maxWidth={"xl"}>
                   <Grid container justifyContent={"center"}
                     sx={{ height: { xl: "100vh", lg: "100vh", md: "100vh", sm: "100%", xs: "100%" }, }}

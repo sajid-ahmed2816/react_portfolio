@@ -7,6 +7,8 @@ import Colors from './assets/style';
 import routes from './routes/routes';
 import Layout from './layout';
 import ToasterContainer from './Components/Toaster';
+import { useEffect } from 'react';
+import Aos from 'aos';
 
 const theme = createTheme({
   palette: {
@@ -72,6 +74,14 @@ const theme = createTheme({
 });
 
 function App() {
+  useEffect(() => {
+    Aos.init({
+      disable: "phone",
+      duration: 700,
+      easing: "ease-out-cubic",
+    });
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <ToasterContainer />

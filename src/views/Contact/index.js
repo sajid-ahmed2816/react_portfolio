@@ -9,11 +9,7 @@ import Colors from '../../assets/style';
 
 function Contact() {
   const [loading, setLoading] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
-
-  const containerRef = useRef(null)
 
   const submitForm = async (formData) => {
     setLoading(true)
@@ -52,32 +48,6 @@ function Contact() {
     setValue("message", "")
   };
 
-  // Container size track karna
-  useEffect(() => {
-    const updateSize = () => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        setDimensions({ width: rect.width, height: rect.height });
-      }
-    };
-    updateSize();
-    window.addEventListener('resize', updateSize);
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-
-  // Mouse events container par
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setMousePos({ x: -100, y: -100 });
-  }
-
   return (
     <Box
       component={"section"}
@@ -94,17 +64,9 @@ function Contact() {
       }}
     >
       <Container
-        ref={containerRef}
         maxWidth={"xl"}
         sx={{ height: "100%" }}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
       >
-        <GlowGrid
-          mousePos={mousePos}
-          width={dimensions.width}
-          height={dimensions.height}
-        />
         <Grid
           container
           sx={{

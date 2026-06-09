@@ -19,8 +19,8 @@ export const PrimaryButton = ({
       sx={{
         color: Colors.white,
         ":hover": {
-          backgroundColor: Colors.primary,
-          boxShadow: `0px 0px 0px 2px ${Colors.primary2}`
+          background: Colors.primary1,
+          boxShadow: `0px 0px 5px 1px ${Colors.secondary}`,
         }
       }}
     >

@@ -186,7 +186,6 @@ function Project() {
                           component={"img"}
                           src={item.image}
                           sx={{
-                            opacity: 0.5,
                             aspectRatio: "16/7",
                             width: "100%",
                             objectFit: "cover",
