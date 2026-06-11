@@ -1,15 +1,12 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
-import "@fontsource/noto-sans";
-import "@fontsource/poppins";
+import ToasterContainer from './Components/Toaster';
 import Colors from './assets/style';
 import routes from './routes/routes';
 import Layout from './layout';
-import ToasterContainer from './Components/Toaster';
-import { useEffect } from 'react';
-import AOS from "aos";
-import "aos/dist/aos.css";
+import "@fontsource/noto-sans";
+import "@fontsource/poppins";
 
 const theme = createTheme({
   palette: {
@@ -29,7 +26,6 @@ const theme = createTheme({
       fontSize: "72px",
       color: Colors.black
     },
-
     h2: {
       fontSize: "64px",
       color: Colors.black
@@ -75,14 +71,6 @@ const theme = createTheme({
 });
 
 function App() {
-  useEffect(() => {
-    AOS.init({
-      disable: "phone",
-      duration: 700,
-      easing: "ease-out-cubic",
-    });
-  }, []);
-
   return (
     <ThemeProvider theme={theme}>
       <ToasterContainer />

@@ -24,7 +24,13 @@ function Footer() {
       }}
     >
       {/* CTA Section */}
-      <Container maxWidth="xl" sx={{ py: { md: 7, xs: 5 } }}>
+      <Container
+        maxWidth="xl"
+        sx={{
+          pt: { md: 7, sm: 7, xs: 2 },
+          py: 2
+        }}
+      >
         <Grid container justifyContent="center">
           <Grid item md={10}>
             <Box
@@ -145,7 +151,7 @@ function Footer() {
                   </IconButton>
                 </Box>
                 <Typography sx={{ color: Colors.white, fontSize: 15, p: 1 }}>
-                  📧 sajid.ahmed2816@example.com
+                  📧 sajid.ahmed2816@gmail.com
                 </Typography>
                 <Typography sx={{ color: Colors.white, fontSize: 15, p: 1 }}>
                   📱 +92 324 0258505

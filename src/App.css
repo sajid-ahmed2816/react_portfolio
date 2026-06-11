@@ -40,7 +40,7 @@ html {
   background: #00ffffc9;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1280px) {
 
   .swiper-button-prev,
   .swiper-button-next {
@@ -48,7 +48,7 @@ html {
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1280px) {
   .swiper-scrollbar.swiper-scrollbar-horizontal {
     display: none;
   }
