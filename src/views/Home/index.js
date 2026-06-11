@@ -135,13 +135,13 @@ const blogPosts = [
   {
     title: "Why a Custom Website Outperforms Templates",
     excerpt: "Discover how custom development boosts speed, SEO, and user engagement...",
-    link: "https://medium.com/@yourhandle/why-custom-website",
+    link: "https://medium.com/@sajid.ahmed2816/why-a-custom-website-outperforms-templates-10f1676c6820",
     date: "May 2026"
   },
   {
     title: "Getting Started with MERN Stack in 2026",
     excerpt: "A beginner's guide to building full-stack apps with MongoDB, Express, React, and Node...",
-    link: "https://dev.to/yourhandle/mern-stack",
+    link: "https://medium.com/@sajid.ahmed2816/getting-started-with-mern-stack-in-2026-9257a6310b71",
     date: "April 2026"
   },
   {
@@ -784,7 +784,7 @@ function Home() {
                             <Button
                               variant="outlined"
                               sx={{ borderColor: Colors.primary2, color: Colors.primary2, ":hover": { borderColor: Colors.secondary, color: Colors.secondary } }}
-                              onClick={() => window.open('https://medium.com/@yourhandle', '_blank')}
+                              onClick={() => window.open('https://medium.com/@sajid.ahmed28', '_blank')}
                             >
                               View All
                             </Button>
