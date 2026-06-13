@@ -36,21 +36,21 @@ const projectsData = [
     description: "This website is adapted from a Figma design into a React.js application, utilizing MUI for styling. The site is fully media responsive, ensuring it looks great on any device. By combining React.js for dynamic functionality and MUI for a consistent.",
     link: "https://tara-web.netlify.app/",
     image: Images.taraShine,
-    techStacks: ["React", "Material UI", "Swiper", "React Hook Form"]
+    techStacks: ["React JS", "Material UI", "Swiper", "React Hook Form"]
   },
   {
     title: "WizardZ",
     description: "This website is adapted from a Figma design into a React.js application, utilizing TailwindCSS for styling and GSAP for creative animation. The site is fully media responsive, ensuring it looks and feel great on any device. By combining React.js and GSAP for modern aesthetic.",
     link: "https://react-wizard-gsap.vercel.app/",
     image: Images.wizard_z,
-    techStacks: ["React", "Material UI", "GSAP", "Swiper", "React Hook Form"]
+    techStacks: ["React JS", "Material UI", "GSAP", "Swiper", "React Hook Form"]
   },
   {
     title: "Todo App",
     description: "A task management tool developed with React.js and Firebase. It offers real-time updates with Firebase, a responsive design for all devices, and intuitive task management. The frontend is built with React.js, and the backend is powered by Firebase.",
     link: "https://app-reactjs-todo.netlify.app/",
     image: Images.todoApp,
-    techStacks: ["React", "Material UI", "Axios"]
+    techStacks: ["React JS", "Material UI", "Axios", "Firebase"]
   },
   {
     title: "Quiz App",
@@ -71,7 +71,7 @@ const projectsData = [
     description: "Converted a Figma landing page web application using Next.js with a custom admin dashboard, styled and made fully responsive using Material UI (MUI). Implemented a clean, scalable layout with optimized components, ensuring smooth performance and consistent UI across all screen sizes.",
     link: "https://strindbergs-bilvard.vercel.app/",
     image: Images.strindberg_bilvard,
-    techStacks: ["Next JS", "Material UI", "Axios", "React Hook Form"]
+    techStacks: ["MongoDB", "Express JS", "React JS", "Node JS", "Next JS", "Material UI", "Axios", "Swiper", "React Hook Form"]
   },
 ]
   ;

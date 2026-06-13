@@ -147,7 +147,7 @@ const blogPosts = [
   {
     title: "5 React Performance Optimization Tips",
     excerpt: "Improve your app's speed with these simple yet effective techniques...",
-    link: "https://medium.com/@yourhandle/react-perf",
+    link: "https://medium.com/@sajid.ahmed2816/5-react-performance-optimization-tips-387f8ad0ea20",
     date: "March 2026"
   },
 ];
@@ -784,7 +784,7 @@ function Home() {
                             <Button
                               variant="outlined"
                               sx={{ borderColor: Colors.primary2, color: Colors.primary2, ":hover": { borderColor: Colors.secondary, color: Colors.secondary } }}
-                              onClick={() => window.open('https://medium.com/@sajid.ahmed28', '_blank')}
+                              onClick={() => window.open('https://medium.com/@sajid.ahmed2816', '_blank')}
                             >
                               View All
                             </Button>
