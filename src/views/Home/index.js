@@ -136,19 +136,19 @@ const blogPosts = [
     title: "Why a Custom Website Outperforms Templates",
     excerpt: "Discover how custom development boosts speed, SEO, and user engagement...",
     link: "https://medium.com/@sajid.ahmed2816/why-a-custom-website-outperforms-templates-10f1676c6820",
-    date: "May 2026"
+    date: "June 2026"
   },
   {
     title: "Getting Started with MERN Stack in 2026",
     excerpt: "A beginner's guide to building full-stack apps with MongoDB, Express, React, and Node...",
     link: "https://medium.com/@sajid.ahmed2816/getting-started-with-mern-stack-in-2026-9257a6310b71",
-    date: "April 2026"
+    date: "June 2026"
   },
   {
     title: "5 React Performance Optimization Tips",
     excerpt: "Improve your app's speed with these simple yet effective techniques...",
     link: "https://medium.com/@sajid.ahmed2816/5-react-performance-optimization-tips-387f8ad0ea20",
-    date: "March 2026"
+    date: "June 2026"
   },
 ];
 

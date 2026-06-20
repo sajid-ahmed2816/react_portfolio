@@ -61,10 +61,10 @@ const projectsData = [
   },
   {
     title: "Ecommerce Website",
-    description: "This is a e-commerce web app, developed in React.js, utilizing react-bootstrap for styling the UI, used fakestore API to fetch products, used google maps API for store locater. Admin dashboard and backend is under developement, In future this app will be a fullstack MERN App.",
+    description: "This is an e-commerce web app developed in React.js, utilizing React-Bootstrap for UI styling. Seamlessly integrated REST APIs and admin dashboard for manage content. This project has successfully evolved into a complete fullstack MERN application.",
     link: "https://e-commerce-react-js-web.netlify.app/",
     image: Images.ecommerceWeb,
-    techStacks: ["MongoDB", "Express JS", "React JS", "Node JS", "React Bootstrap", "Swiper", "Axios"]
+    techStacks: ["MongoDB", "Express JS", "React JS", "Node JS", "React Bootstrap", "Swiper", "Axios", "Redux", "JWT", "OAuth"]
   },
   {
     title: "Strindberg Bilvard",

@@ -24,7 +24,15 @@ html {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  border: 1px solid #00ffffc9;
   background: #00ffffc9;
+  transition: 0.3s all ease-in-out;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  border: 1px solid #00ffffc9;
+  background: transparent;
 }
 
 .swiper-button-next:after,
@@ -33,6 +41,11 @@ html {
 .swiper-rtl .swiper-button-next:after {
   color: #FFFFFF;
   font-size: 20px;
+}
+
+.swiper-button-next:hover::after,
+.swiper-button-prev:hover::after {
+  color: #00ffffc9 !important;
 }
 
 .swiper-scrollbar-drag,
