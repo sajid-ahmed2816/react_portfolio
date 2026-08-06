@@ -6,6 +6,7 @@ import "aos/dist/aos.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import "../App.css"
+import AIChat from "../Components/AIChat";
 
 function Layout() {
   const { pathname } = useLocation();
@@ -34,6 +35,7 @@ function Layout() {
         overflow: "hidden"
       }}>
         <Outlet />
+        <AIChat />
       </Box>
       <Footer />
     </Box>

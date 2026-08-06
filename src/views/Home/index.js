@@ -282,7 +282,7 @@ function Home() {
                       spacing={2}
                       sx={{
                         alignItems: "center",
-                        pt: { xl: 6, lg: 6, md: 6, sm: 4, xs: 9 },
+                        pt: { xl: 6, lg: 6, md: 6, sm: 12, xs: 12 },
                         pb: { xs: 3 },
                         flexWrap: "wrap-reverse",
                       }}
@@ -545,7 +545,7 @@ function Home() {
                             ))}
                           </Grid>
                         </Grid>
-                        <Grid item md={12}>
+                        <Grid item md={12} sm={12}>
                           <Box
                             sx={{
                               textAlign: 'center',
@@ -554,6 +554,7 @@ function Home() {
                               background: `linear-gradient(135deg, #2c4949, ${Colors.secondary})`,
                               border: `1px solid ${Colors.primary2}`,
                               boxShadow: `0 0 12px ${Colors.primary2}`,
+                              width: "100%",
                             }}
                           >
                             <Grid container justifyContent="center" spacing={4}>
@@ -776,8 +777,16 @@ function Home() {
                   >
                     <Grid item md={10}>
                       <Grid container>
-                        <Grid item md={12}>
-                          <Box display="flex" justifyContent="space-between" alignItems="center" mb={6} >
+                        <Grid item md={12} sm={12} xs={12}>
+                          <Box
+                            sx={{
+                              mb: 6,
+                              width: "100%",
+                              display: "flex",
+                              justifyContent: "space-between",
+                              alignItems: "center",
+                            }}
+                          >
                             <Typography sx={{ ...whiteHeading }}>
                               Insights & Articles
                             </Typography>
@@ -848,7 +857,10 @@ function Home() {
               <Box component={"section"}>
                 <Container maxWidth={"xl"}>
                   <Grid container justifyContent={"center"}
-                    sx={{ height: { xl: "100vh", lg: "100vh", md: "100vh", sm: "100%", xs: "100%" }, }}
+                    sx={{
+                      height: { xl: "100vh", lg: "100vh", md: "100vh", sm: "100%", xs: "100%" },
+                      pb: 3
+                    }}
                     alignItems={"center"}
                   >
                     <Grid item md={10}>

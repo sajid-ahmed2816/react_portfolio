@@ -7,15 +7,15 @@ import "aos/dist/aos.css";
 import { SecondaryButton } from '../../Components/Buttons';
 
 const qualifications = [
-  { year: '2022', qualification: 'Diploma', institution: 'Sir Adamjee Institute' },
-  { year: '2016', qualification: 'Intermediate', institution: 'Government Degree College' },
-  { year: '2013', qualification: 'Matriculation', institution: 'Hill Crest School System' },
+  { year: '2021 -2022', qualification: 'Diploma', institution: 'Sir Adamjee Institute' },
+  { year: '2013 - 2016', qualification: 'Intermediate', institution: 'Government Degree College' },
+  { year: '2012 - 2013', qualification: 'Matriculation', institution: 'Hill Crest School System' },
 ];
 
 const experiences = [
-  { year: '2025 - continue', position: 'React JS Developer', organization: 'GE Solucions' },
-  { year: '2023 - 2025', position: 'Frontend / React JS Developer', organization: 'MangoTech Solutions' },
-  { year: '2022 - 2023', position: 'MERN Stack Developer', organization: 'WeSudo' },
+  { year: '09/2024 - 08/2026', position: 'Frontend / React JS Developer', organization: 'MangoTech Solutions' },
+  { year: '09/2023 - 07/2024', position: 'React JS Developer', organization: 'GE Solucions' },
+  { year: '01/2023 - 06/2023', position: 'MERN Stack Developer', organization: 'WeSudo' },
 ];
 
 function About() {
