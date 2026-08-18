@@ -3,7 +3,7 @@ const generateAnswer = require("./ai.service");
 
 const generateRAGAnswer = async (
   question,
-  category = null,
+  categories = null,
   conversationHistory = []
 ) => {
   // Build contextual query for vector search
@@ -14,7 +14,7 @@ const generateRAGAnswer = async (
       .join(" ")} ${question}`
     : question;
 
-  const documents = await searchKnowledge(searchQuery, 5, category);
+  const documents = await searchKnowledge(searchQuery, 5, categories);
 
   if (!documents.length) {
     return {

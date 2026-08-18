@@ -12,18 +12,12 @@ const searchKnowledge = async (query, limit = 5, categories = null) => {
     limit,
   };
 
-  if (categories) {
-    const categoryList = Array.isArray(categories)
-      ? categories
-      : [categories];
-
-    if (categoryList.length > 0) {
-      vectorSearch.filter = {
-        category: {
-          $in: categoryList,
-        },
-      };
-    }
+  if (categories && categories.length > 0) {
+    vectorSearch.filter = {
+      category: {
+        $in: categories,
+      },
+    };
   }
 
   const results = await Knowledge.aggregate([

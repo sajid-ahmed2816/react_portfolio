@@ -1,9 +1,13 @@
 const express = require("express");
 const Knowledge = require("../models/Knowledge");
+const ChatCache = require("../models/ChatCache");
 const generateEmbedding = require("../services/embedding.service");
 const searchKnowledge = require("../services/vector-search.service");
 const generateRAGAnswer = require("../services/rag.service");
 const detectCategory = require("../utils/detectCategory");
+const normalizeQuery = require("../utils/normalizeQuery");
+const searchCachedAnswer = require("../services/cache-search.service");
+const resolveCategories = require("../utils/resolveCategory");
 
 const router = express.Router();
 
@@ -92,16 +96,76 @@ router.post("/ask", async (req, res) => {
       });
     }
 
-    const category = detectCategory(query);
+    const normalizedQuery = normalizeQuery(query);
+    const categories = resolveCategories(query, conversationHistory);
 
-    const result = await generateRAGAnswer(query, category, conversationHistory);
+    const cached = await ChatCache.findOne({
+      question: normalizedQuery,
+    });
+
+    if (cached) {
+      console.log("Cache HIT:", normalizedQuery);
+
+      return res.status(200).json({
+        success: true,
+        data: {
+          answer: cached.answer,
+          sources: cached.sources,
+          cached: true,
+          cacheType: "exact",
+        },
+      });
+    };
+
+    const questionEmbedding = await generateEmbedding(query);
+    const semanticCached = await searchCachedAnswer(questionEmbedding, categories);
+
+    if (semanticCached) {
+      console.log(
+        "Semantic Cache HIT:",
+        semanticCached.question,
+        semanticCached.score
+      );
+
+      return res.status(200).json({
+        success: true,
+        data: {
+          answer: semanticCached.answer,
+          sources: semanticCached.sources,
+          cached: true,
+          cacheType: "semantic",
+          similarity: semanticCached.score,
+        },
+      });
+    };
+
+    const result = await generateRAGAnswer(query, categories, conversationHistory);
+
+    await ChatCache.create({
+      question: normalizedQuery,
+      embedding: questionEmbedding,
+      category: categories,
+      answer: result.answer,
+      sources: result.sources,
+    });
+
 
     res.status(200).json({
       success: true,
-      data: result,
+      data: {
+        ...result,
+        cached: false,
+      },
     });
   } catch (error) {
     console.error("AI answer generation failed:", error);
+
+    if (error.status === 429) {
+      return res.status(429).json({
+        success: false,
+        message: "AI is temporarily unavailable. Please try again shortly.",
+      });
+    }
 
     res.status(500).json({
       success: false,

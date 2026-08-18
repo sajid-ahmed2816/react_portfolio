@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Fab } from "@mui/material";
-import { SmartToy } from '@mui/icons-material';
+import { SmartToy, Send } from '@mui/icons-material';
+import ReactMarkdown from "react-markdown";
 import axios from "axios";
 import "./style.css";
 
@@ -35,6 +36,37 @@ function AIChat() {
     },
   ];
 
+  const typeAssistantMessage = (answer) => {
+    let index = 0;
+
+    setMessages((prev) => [
+      ...prev,
+      {
+        role: "assistant",
+        content: "",
+      },
+    ]);
+
+    const interval = setInterval(() => {
+      index++;
+
+      setMessages((prev) => {
+        const updated = [...prev];
+
+        updated[updated.length - 1] = {
+          ...updated[updated.length - 1],
+          content: answer.slice(0, index),
+        };
+
+        return updated;
+      });
+
+      if (index >= answer.length) {
+        clearInterval(interval);
+      }
+    }, 15);
+  };
+
   const sendMessage = async (customQuestion = null) => {
     setShowSuggestions(false);
     const question = customQuestion || input.trim();
@@ -55,33 +87,38 @@ function AIChat() {
     setLoading(true);
 
     try {
+      const conversationHistory = [
+        ...messages,
+        { role: "user", content: question, }
+      ];
+
       const response = await axios.post(`${API_URL}/knowledge/ask`, {
         query: question,
+        conversationHistory
       });
 
       const answer = response.data.data.answer;
 
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: answer,
-        },
-      ]);
+      typeAssistantMessage(answer);
     } catch (error) {
       console.error("AI chat error:", error);
+
+      let errorMessage = "Sorry, I'm unable to answer right now. Please try again later.";
+
+      if (error.response?.status === 429) {
+        errorMessage = "AI is temporarily unavailable. Please try again shortly.";
+      };
 
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          content:
-            "Sorry, I'm unable to answer right now. Please try again later.",
+          content: errorMessage
         },
       ]);
     } finally {
       setLoading(false);
-    }
+    };
   };
 
   const handleKeyDown = (event) => {
@@ -122,7 +159,13 @@ function AIChat() {
                 key={index}
                 className={`ai-message ${message.role}`}
               >
-                {message.content}
+                {message.role === "assistant" ? (
+                  <ReactMarkdown>
+                    {message.content}
+                  </ReactMarkdown>
+                ) : (
+                  message.content
+                )}
               </div>
             ))}
 
@@ -142,8 +185,8 @@ function AIChat() {
             )}
 
             {loading && (
-              <div className="ai-message assistant">
-                Thinking...
+              <div className="ai-message assistant typing-indicator">
+                <span></span>
               </div>
             )}
             <div ref={messagesEndRef} />
@@ -164,7 +207,7 @@ function AIChat() {
               onClick={() => sendMessage()}
               disabled={loading || !input.trim()}
             >
-              Send
+              <Send />
             </button>
           </div>
         </div>
