@@ -19,6 +19,7 @@ const knowledgeSchema = new mongoose.Schema(
         "education",
         "services",
         "contact",
+        "ai",
       ],
     },
 

@@ -321,6 +321,8 @@ function Home() {
                             >
                               <TypeAnimation
                                 sequence={[
+                                  'AI Integration & RAG',
+                                  1000,
                                   'Software Engineer',
                                   1000,
                                   'MERN Stack Developer',
