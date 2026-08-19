@@ -10,6 +10,9 @@
     "seed": "node seed/knowledge.seed.js",
     "generate-embeddings": "node seed/generate-embeddings.js"
   },
+  "engines": {
+    "node": "20.x"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -169,7 +169,7 @@ router.post("/ask", async (req, res) => {
 
     res.status(500).json({
       success: false,
-      message: error.message,
+      message: "Unable to process your request right now. Please try again shortly.",
     });
   }
 });

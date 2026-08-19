@@ -95,6 +95,8 @@ function AIChat() {
       const response = await axios.post(`${API_URL}/knowledge/ask`, {
         query: question,
         conversationHistory
+      }, {
+        timeout: 30000
       });
 
       const answer = response.data.data.answer;
@@ -107,6 +109,10 @@ function AIChat() {
 
       if (error.response?.status === 429) {
         errorMessage = "AI is temporarily unavailable. Please try again shortly.";
+      };
+
+      if (error.code === "ECONNABORTED" || error.code === "ETIMEDOUT") {
+        errorMessage = "The request took too long. Please try again.";
       };
 
       setMessages((prev) => [
