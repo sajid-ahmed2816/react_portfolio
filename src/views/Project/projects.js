@@ -1,5 +1,4 @@
 import Images from '../../assets/images/Images';
-const placeholder = '/projects/project-placeholder.svg';
 
 
 export const projects = [
