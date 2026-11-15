@@ -96,7 +96,7 @@ function Project() {
                       mb: 3,
                       color: 'var(--project-ink)',
                       fontSize: {
-                        xs: 'clamp(52px, 15vw, 76px)',
+                        xs: 'clamp(52px, 12vw, 76px)',
                         sm: 'clamp(54px, 8vw, 100px)'
                       },
                       fontWeight: 500,

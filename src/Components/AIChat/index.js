@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Fab } from "@mui/material";
-import { SmartToy, Send } from '@mui/icons-material';
+import { Send } from '@mui/icons-material';
 import ReactMarkdown from "react-markdown";
 import axios from "axios";
 import "./style.css";

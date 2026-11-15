@@ -49,7 +49,7 @@ function About() {
       sx={pageSx}
     >
       <Container maxWidth={"xl"}>
-        <Grid container justifyContent={"center"} sx={{ pt: { sm: 0, xs: 8 } }}>
+        <Grid container justifyContent={"center"}>
           <Grid item md={10}>
             <Grid container rowGap={"50px"}>
               <Grid item md={12} sm={12} xs={12}>
@@ -209,11 +209,9 @@ function About() {
                       </Typography>
                       <Typography
                         sx={{
-                          maxWidth: 650,
-                          lineHeight: 1.8,
-                          fontSize: { xs: 16, md: 18 },
-                          color: Colors.white,
-                          opacity: .82,
+                          lineHeight: 1.75,
+                          color: '#b6c4c1',
+                          fontSize: { xs: 14, sm: 16 },
                         }}
                       >
                         From the very first design concept to the final deployment, I believe every detail plays a role in creating a great digital experience. I focus on writing clean, maintainable code, crafting responsive and intuitive interfaces, and making thoughtful decisions that balance functionality with visual appeal. Whether it's refining a small interaction, improving performance, or building a complete web application, my goal is to turn ideas into meaningful, reliable, and user-friendly digital experiences that feel just as good to use as they are to look at.

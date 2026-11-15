@@ -27,14 +27,16 @@ function Header() {
         <Grid container justifyContent={"center"}>
           <Grid item md={10} xs={12}>
             <Toolbar sx={{
-              gap: "20px", justifyContent: "space-between", background: Colors.black + 40,
+              px: { md: 2.5, xs: 2.5 },
+              gap: "20px",
+              justifyContent: "space-between",
+              background: Colors.black + 40,
               borderRadius: "60px",
               backdropFilter: "blur(10px)",
               boxShadow: "0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12)"
-            }}>
-              <Box
-                sx={{ display: "flex" }}
-              >
+            }}
+            >
+              <Box sx={{ display: "flex" }}>
                 <Typography
                   variant="h6"
                   noWrap
@@ -45,7 +47,7 @@ function Header() {
                     display: 'flex',
                     justifyContent: "space-between",
                     fontWeight: 700,
-                    letterSpacing: '.3rem',
+                    letterSpacing: '.05rem',
                     color: Colors.white,
                     textDecoration: 'none',
                     alignItems: "center"
@@ -130,19 +132,38 @@ function Header() {
                       my: 2,
                       color: 'white',
                       display: 'block',
-                      border: pathname === page.path ? `1px solid ${Colors.primary}` : "1px solid transparent",
+                      borderRadius: "32px",
+                      background: pathname === page.path ? Colors.primary2 : "transparent",
+                      transition: "all 0.3s ease-in-out",
                       ":hover": {
-                        ".button-text": {
-                          borderRight: pathname === page.path ? "4px solid transparent" : `4px solid ${Colors.primary}`,
-                        }
+                        "::before": {
+                          width: "100%",
+                          height: "100%",
+                          background: pathname === page.path ? "transparent" : Colors.primary2,
+                        },
+                        "& .button-text": {
+                          color: Colors.black
+                        },
+                        background: pathname === page.path ? Colors.primary2 : "transparent"
                       },
+                      "::before": {
+                        content: "''",
+                        display: "block",
+                        width: 0,
+                        height: "100%",
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        zIndex: -1,
+                        transition: "all 0.3s ease-in-out",
+                        borderRadius: "32px"
+                      }
                     }}
                   >
                     <Typography variant='body2'
                       className='button-text'
                       sx={{
-                        borderRight: `4px solid transparent`,
-                        color: Colors.white,
+                        color: pathname === page.path ? Colors.black : Colors.white,
                         px: 1,
                       }}>
                       {page.name}
@@ -150,12 +171,11 @@ function Header() {
                   </Button>
                 ))}
               </Box>
-
             </Toolbar>
           </Grid>
         </Grid>
       </AppBar>
-    </Container>
+    </Container >
   );
 }
 export default Header;
