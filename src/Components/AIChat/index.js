@@ -4,6 +4,7 @@ import { SmartToy, Send } from '@mui/icons-material';
 import ReactMarkdown from "react-markdown";
 import axios from "axios";
 import "./style.css";
+import { ChatBot } from "../../assets/images/Images";
 
 
 function AIChat() {
@@ -221,16 +222,20 @@ function AIChat() {
 
       {!isOpen && (
         <Fab
-          color="primary"
           aria-label="add"
           sx={{
             position: "fixed",
             bottom: 20,
             right: 20,
+            background: "transparent",
+            boxShadow: "none",
+            ":hover": {
+              background: "transparent"
+            }
           }}
           onClick={() => setIsOpen(true)}
         >
-          <SmartToy />
+          <ChatBot />
         </Fab>
       )}
     </>

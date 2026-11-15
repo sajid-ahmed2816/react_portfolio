@@ -6,6 +6,29 @@ import Colors from '../../assets/style';
 import "aos/dist/aos.css";
 import { SecondaryButton } from '../../Components/Buttons';
 
+const pageSx = {
+  '--project-bg': '#001025',
+  '--project-panel': '#072131',
+  '--project-line': 'rgba(0, 255, 255, .14)',
+  '--project-muted': '#94aaa9',
+  '--project-ink': '#f1f5ef',
+  '--project-accent': '#00ffffc9',
+  minHeight: '100vh',
+  overflow: 'hidden',
+  pt: { xs: '105px', sm: '125px', md: '14vh' },
+  pb: { xs: 6, md: 9 },
+  color: 'var(--project-ink)',
+  fontFamily: 'Poppins, sans-serif',
+  background: 'radial-gradient(ellipse at 75% 5%, rgba(0, 255, 255, .08), transparent 32%), linear-gradient(36deg, #072131 10%, #001025 100%)',
+  '& *': { boxSizing: 'border-box' },
+  '@media (prefers-reduced-motion: reduce)': {
+    '& *, & *::before, & *::after': {
+      scrollBehavior: 'auto !important',
+      transitionDuration: '0.01ms !important'
+    }
+  },
+};
+
 const qualifications = [
   { year: '2021 -2022', qualification: 'Diploma', institution: 'Sir Adamjee Institute' },
   { year: '2013 - 2016', qualification: 'Intermediate', institution: 'Government Degree College' },
@@ -23,19 +46,102 @@ function About() {
   return (
     <Box
       component={"section"}
-      sx={{
-        width: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        py: { xl: 2, lg: 2, md: 2, sm: 2, xs: 2 },
-        background: "linear-gradient(36deg, #072131 10%, #001025 100%)"
-      }}
+      sx={pageSx}
     >
       <Container maxWidth={"xl"}>
         <Grid container justifyContent={"center"} sx={{ pt: { sm: 0, xs: 8 } }}>
           <Grid item md={10}>
             <Grid container rowGap={"50px"}>
+              <Grid item md={12} sm={12} xs={12}>
+                <Box sx={{ py: { md: 6, xs: 3 } }}>
+                  <Typography
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 1.25,
+                      color: Colors.primary2,
+                      fontSize: 11,
+                      fontWeight: 600,
+                      letterSpacing: '.17em',
+                      '&::before': {
+                        content: '""',
+                        width: 7,
+                        height: 7,
+                        borderRadius: '50%',
+                        bgcolor: Colors.primary2,
+                        boxShadow: '0 0 13px rgba(0,255,255,.45)'
+                      }
+                    }}
+                  >
+                    A LITTLE ABOUT ME
+                  </Typography>
+                  <Typography
+                    component="h1"
+                    sx={{
+                      mt: 3,
+                      mb: 3.25,
+                      color: Colors.white,
+                      fontSize: {
+                        xs: 'clamp(52px, 12vw, 76px)',
+                        sm: 'clamp(54px, 8vw, 100px)'
+                      },
+                      fontWeight: 500,
+                      lineHeight: .98,
+                      letterSpacing: '-.075em'
+                    }}
+                  >
+                    Building thoughtful
+                    <br />
+                    <Box
+                      component="span"
+                      sx={{ color: Colors.primary2 }}
+                    >
+                      digital experiences.
+                    </Box>
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: { xs: 'flex-start', sm: 'end' },
+                      justifyContent: 'space-between',
+                      flexDirection: { xs: 'column', sm: 'row' },
+                      gap: { xs: 1.75, sm: 3.75 }
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        maxWidth: 520,
+                        color: '#b6c4c1',
+                        fontSize: { xs: 14, sm: 16 },
+                        lineHeight: 1.75
+                      }}
+                    >
+                      I specialize in building full-stack web applications using MongoDB, Express.js, React, and Node.js. My strengths include developing RESTful APIs, designing scalable database structures, creating responsive user interfaces, and integrating seamless frontend-backend functionality. I also work with TypeScript, Next.js, and Tailwind CSS to deliver modern, maintainable web experiences. I enjoy turning ideas into practical digital solutions that provide smooth and engaging user experiences.
+                    </Typography>
+                    <Typography
+                      sx={{
+                        color: Colors.primary2,
+                        fontSize: 10,
+                        letterSpacing: '.15em',
+                        whiteSpace: 'nowrap'
+                      }}
+                    >
+                      <Box
+                        component="strong"
+                        sx={{
+                          mr: 1.1,
+                          color: Colors.white,
+                          fontSize: 28,
+                          fontWeight: 500,
+                          letterSpacing: '-.05em'
+                        }}
+                      >03+
+                      </Box>
+                      YEARS BUILDING FOR THE WEB
+                    </Typography>
+                  </Box>
+                </Box>
+              </Grid>
               <Grid item md={12} sm={12} xs={12}>
                 <Grid
                   container
@@ -88,13 +194,29 @@ function About() {
                       }}
                     >
                       <Typography
+                        component="h2"
                         sx={{
-                          lineHeight: "42px",
-                          fontSize: "20px",
+                          mt: 1,
+                          mb: 1,
+                          lineHeight: 1.2,
+                          fontSize: { xs: 28, md: 36 },
+                          fontWeight: 500,
+                          letterSpacing: '-.04em',
                           color: Colors.white,
                         }}
                       >
-                        You need a developer who understands both design and functionality, delivers on time, and communicates clearly. That’s where I come in – I’m Sajid, a MERN stack developer with 3+ years of experience turning complex ideas into smooth web apps. I focus on clean code, mobile‑first design, and transparent collaboration. Let’s discuss your project.
+                        Developer with a detail-first mindset.
+                      </Typography>
+                      <Typography
+                        sx={{
+                          maxWidth: 650,
+                          lineHeight: 1.8,
+                          fontSize: { xs: 16, md: 18 },
+                          color: Colors.white,
+                          opacity: .82,
+                        }}
+                      >
+                        From the very first design concept to the final deployment, I believe every detail plays a role in creating a great digital experience. I focus on writing clean, maintainable code, crafting responsive and intuitive interfaces, and making thoughtful decisions that balance functionality with visual appeal. Whether it's refining a small interaction, improving performance, or building a complete web application, my goal is to turn ideas into meaningful, reliable, and user-friendly digital experiences that feel just as good to use as they are to look at.
                       </Typography>
                       <SecondaryButton
                         fullWidth={false}

@@ -16,6 +16,9 @@ const Images = {
   learning_hub: require("./learning_hub.png"),
   wizard_z: require("./gsap_wizard.png"),
   strindberg_bilvard: require("./strindberg_bilvard.png"),
+  task_management: require("./task_management.png"),
+  weather_board: require("./weather_board.png"),
+  morroway: require("./morroway.png")
 }
 
 export const Html = (props) => {
@@ -220,6 +223,65 @@ export const LinkedIn = (props) => {
       {...props}
     >
       <path d="M480 20c133.333 0 246.667 46.667 340 140s140 206.667 140 340c0 132-46.667 245-140 339S613.333 980 480 980c-132 0-245-47-339-141S0 632 0 500c0-133.333 47-246.667 141-340S348 20 480 20M362 698V386h-96v312h96m-48-352c34.667 0 52-16 52-48s-17.333-48-52-48c-14.667 0-27 4.667-37 14s-15 20.667-15 34c0 32 17.333 48 52 48m404 352V514c0-44-10.333-77.667-31-101s-47.667-35-81-35c-44 0-76 16.667-96 50h-2l-6-42h-84c1.333 18.667 2 52 2 100v212h98V518c0-12 1.333-20 4-24 8-25.333 24.667-38 50-38 32 0 48 22.667 48 68v174h98" />
+    </svg>
+  );
+}
+
+export const ChatBot = (props) => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="80" height="80" fill="none"
+      style={{
+        width: "80px",
+        height: "80px",
+        maxWidth: "none",
+        flexShrink: 0
+      }}
+    >
+      <defs>
+        <linearGradient id="chat" x1="22" y1="15" x2="96" y2="100" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#023763" />
+          <stop offset="1" stop-color="#46b3e5" />
+        </linearGradient>
+        <linearGradient id="screen" x1="35" y1="30" x2="85" y2="78">
+          <stop stop-color="#252044" />
+          <stop offset="1" stop-color="#111827" />
+        </linearGradient>
+        <filter id="shadow" x="5" y="5" width="110" height="110" filterUnits="userSpaceOnUse">
+          <feGaussianBlur stdDeviation="5" />
+        </filter>
+      </defs>
+
+      <circle cx="60" cy="57" r="38" fill="#8B5CF6" opacity=".18" filter="url(#shadow)">
+        <animate attributeName="opacity" values=".12;.3;.12" dur="3s" repeatCount="indefinite" />
+      </circle>
+
+      <g>
+        <animateTransform attributeName="transform" type="translate" values="0 0;0 -2;0 0" dur="3s" repeatCount="indefinite" />
+        <path d="M60 17C38 17 21 32 21 53V58C21 77 36 91 55 91H57L47 103L70 91C87 87 99 73 99 55V53C99 32 82 17 60 17Z" fill="url(#chat)" />
+
+        <rect x="31" y="30" width="58" height="48" rx="17" fill="url(#screen)" />
+
+        <g fill="#A5F3FC">
+          <ellipse cx="48" cy="51" rx="4" ry="6">
+            <animate attributeName="ry" values="6;1;6" dur="4s" repeatCount="indefinite" />
+          </ellipse>
+          <ellipse cx="72" cy="51" rx="4" ry="6">
+            <animate attributeName="ry" values="6;1;6" dur="4s" repeatCount="indefinite" />
+          </ellipse>
+        </g>
+
+        <path d="M49 65Q60 73 71 65" stroke="#A5F3FC" stroke-width="2.5" stroke-linecap="round" />
+
+        <circle cx="82" cy="25" r="10" fill="#111827" stroke="#A78BFA" stroke-width="2" />
+        <path d="M82 19L84 23L88 25L84 27L82 31L80 27L76 25L80 23L82 19Z" fill="#C4B5FD" />
+      </g>
+
+      <circle cx="15" cy="49" r="3" fill="#A78BFA">
+        <animate attributeName="opacity" values="1;.2;1" dur="2s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="105" cy="69" r="3" fill="#67E8F9">
+        <animate attributeName="opacity" values=".2;1;.2" dur="2s" repeatCount="indefinite" />
+      </circle>
     </svg>
   );
 }
