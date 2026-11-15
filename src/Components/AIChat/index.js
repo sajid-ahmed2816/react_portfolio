@@ -147,7 +147,7 @@ function AIChat() {
         <div className="ai-chat">
           <div className="ai-chat-header">
             <div>
-              <h3>Sajid AI</h3>
+              <h3>Sajid's AI Assistant</h3>
               <span>Ask me about Sajid</span>
             </div>
 

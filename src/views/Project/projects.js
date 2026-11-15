@@ -8,7 +8,7 @@ export const projects = [
     description: 'A focused task management experience for planning work, tracking progress, and keeping everyday priorities in view.',
     link: 'https://task-management-frontend-live.vercel.app',
     image: Images.task_management,
-    tech: ['React', 'MERN', 'Dashboard'],
+    tech: ['MERN', 'Zustand', 'JWT'],
     featured: true
   },
   {
@@ -17,7 +17,7 @@ export const projects = [
     description: 'A clean weather dashboard that brings current conditions and useful forecast details into one easy-to-read view.',
     link: 'https://weatherboard-black.vercel.app',
     image: Images.weather_board,
-    tech: ['React', 'Weather API', 'Dashboard'],
+    tech: ['React', 'Weather API', 'PWA'],
     featured: true
   },
   {

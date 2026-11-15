@@ -282,7 +282,7 @@ function Home() {
                       spacing={2}
                       sx={{
                         alignItems: "center",
-                        pt: { xl: 10, lg: 10, md: 10, sm: 12, xs: 12 },
+                        pt: { xl: 6, lg: 6, md: 6, sm: 12, xs: 12 },
                         pb: { xs: 3 },
                         flexWrap: "wrap-reverse",
                       }}
