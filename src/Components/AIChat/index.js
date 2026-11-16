@@ -144,7 +144,7 @@ function AIChat() {
   return (
     <>
       {isOpen && (
-        <div className="ai-chat">
+        <div className="ai-chat" data-aos="fade-up-left">
           <div className="ai-chat-header">
             <div>
               <h3>Sajid's AI Assistant</h3>

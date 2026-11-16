@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { AppBar, Box, Toolbar, IconButton, Typography, Container, Button, MenuItem, Drawer, List, Grid } from '@mui/material';
-import { MenuOpen, Menu } from '@mui/icons-material';
+import { Menu, Download, Close } from '@mui/icons-material';
 import Navigation from '../../Navigation';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Colors from '../../assets/style';
+import { PrimaryButton } from '../../Components/Buttons';
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -68,19 +69,20 @@ function Header() {
                 <Drawer
                   open={open}
                   onClose={toggleDrawer(false)}
-                  anchor='right'
+                  anchor='top'
                   sx={{
                     display: { xs: 'block', md: 'none' },
                   }}
                   PaperProps={{
                     sx: {
-                      background: Colors.black,
-                      color: Colors.white
+                      background: "#001025b0",
+                      color: Colors.white,
+                      backdropFilter: "blur(8px)"
                     }
                   }}
                 >
                   <List>
-                    <MenuItem>
+                    <MenuItem sx={{ justifyContent: "space-between" }}>
                       <Typography
                         variant="h6"
                         noWrap
@@ -91,7 +93,7 @@ function Header() {
                           display: 'flex',
                           justifyContent: "space-between",
                           fontWeight: 700,
-                          letterSpacing: '.3rem',
+                          letterSpacing: '.05rem',
                           color: Colors.white,
                           textDecoration: 'none',
                           alignItems: "center",
@@ -100,14 +102,13 @@ function Header() {
                         Sajid.
                       </Typography>
                       <IconButton onClick={toggleDrawer(false)}>
-                        <MenuOpen sx={{ color: Colors.white, transform: "scaleX(-1)" }} />
+                        <Close sx={{ color: Colors.white, transform: "scaleX(-1)" }} />
                       </IconButton>
                     </MenuItem>
                     {Navigation.map((page, ind) => (
                       <MenuItem
                         key={ind}
                         sx={{
-                          justifyContent: "center",
                           ":hover": {
                             background: Colors.secondary,
                             color: Colors.primary
@@ -118,11 +119,27 @@ function Header() {
                         <Typography sx={{ textAlign: "center", color: Colors.white }}>{page.name}</Typography>
                       </MenuItem>
                     ))}
+                    <MenuItem>
+                      <a
+                        href="download/resume.pdf"
+                        download
+                        style={{
+                          color: Colors.white,
+                          textDecoration: "none",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 3
+                        }}
+                      >
+                        Download CV
+                        <Download />
+                      </a>
+                    </MenuItem>
                   </List>
                 </Drawer>
               </Box>
 
-              <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' }, justifyContent: "flex-end", gap: "20px" }}>
+              <Box sx={{ display: { xs: 'none', sm: 'flex' }, justifyContent: "flex-end", gap: "20px" }}>
                 {Navigation.map((page, ind) => (
                   <Button
                     component={Link}
@@ -135,6 +152,7 @@ function Header() {
                       borderRadius: "32px",
                       background: pathname === page.path ? Colors.primary2 : "transparent",
                       transition: "all 0.3s ease-in-out",
+                      textTransform: "capitalize",
                       ":hover": {
                         "::before": {
                           width: "100%",
@@ -170,6 +188,46 @@ function Header() {
                     </Typography>
                   </Button>
                 ))}
+              </Box>
+
+              <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
+                <a
+                  href="download/resume.pdf"
+                  download
+                >
+                  <PrimaryButton
+                    endIcon={<Download />}
+                    title={"Download CV"}
+                    sx={{
+                      borderRadius: "32px",
+                      textTransform: "capitalize",
+                      background: "transparent",
+                      boxShadow: "none",
+                      color: Colors.white,
+                      "::before": {
+                        content: "''",
+                        display: "block",
+                        width: 0,
+                        height: "100%",
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        zIndex: -1,
+                        transition: "all 0.3s ease-in-out",
+                        borderRadius: "32px"
+                      },
+                      ":hover": {
+                        boxShadow: "none",
+                        background: "transparent",
+                        color: Colors.black,
+                        "::before": {
+                          width: "100%",
+                          background: Colors.primary2
+                        }
+                      }
+                    }}
+                  />
+                </a>
               </Box>
             </Toolbar>
           </Grid>

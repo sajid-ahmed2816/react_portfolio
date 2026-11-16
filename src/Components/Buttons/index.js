@@ -2,15 +2,18 @@ import { Button, CircularProgress } from "@mui/material";
 import Colors from '../../assets/style';
 
 export const PrimaryButton = ({
+  endIcon,
   type,
   fullWidth,
   title,
   loading,
   onClick,
-  disabled
+  disabled,
+  sx
 }) => {
   return (
     <Button
+      endIcon={endIcon}
       disabled={disabled}
       variant='contained'
       fullWidth={fullWidth}
@@ -21,7 +24,8 @@ export const PrimaryButton = ({
         ":hover": {
           background: Colors.primary1,
           boxShadow: `0px 0px 5px 1px ${Colors.secondary}`,
-        }
+        },
+        ...sx
       }}
     >
       {loading

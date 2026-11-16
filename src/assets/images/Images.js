@@ -227,7 +227,7 @@ export const LinkedIn = (props) => {
   );
 }
 
-export const ChatBot = (props) => {
+export const ChatBot = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="80" height="80" fill="none"
       style={{
