@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Box, CardMedia, Container, Grid, Typography } from '@mui/material';
 import Images from '../../assets/images/Images';
 import Colors from '../../assets/style';
-import "aos/dist/aos.css";
 import { SecondaryButton } from '../../Components/Buttons';
 
 const pageSx = {
@@ -55,6 +54,7 @@ function About() {
               <Grid item md={12} sm={12} xs={12}>
                 <Box sx={{ py: { md: 6, xs: 3 } }}>
                   <Typography
+                    data-aos="fade-down"
                     sx={{
                       display: 'flex',
                       alignItems: 'center',
@@ -76,6 +76,7 @@ function About() {
                     A LITTLE ABOUT ME
                   </Typography>
                   <Typography
+                    data-aos="fade-right"
                     component="h1"
                     sx={{
                       mt: 3,
@@ -109,6 +110,7 @@ function About() {
                     }}
                   >
                     <Typography
+                      data-aos="fade-up"
                       sx={{
                         maxWidth: 520,
                         color: '#b6c4c1',
@@ -151,7 +153,7 @@ function About() {
                     height: { xl: "100vh", lg: "100vh", md: "100vh", sm: "100vh", xs: "100%" },
                   }}
                 >
-                  <Grid item sm={5} xs={12} data-aos="fade-right" sx={{ display: "flex" }}>
+                  <Grid item sm={5} xs={12} data-aos="zoom-in" sx={{ display: "flex" }}>
                     <Box
                       sx={{
                         width: "100%",
@@ -180,7 +182,7 @@ function About() {
                       </Box>
                     </Box>
                   </Grid>
-                  <Grid item sm={7} xs={12}>
+                  <Grid item sm={7} xs={12} data-aos="fade-left">
                     <Box
                       sx={{
                         p: 2,

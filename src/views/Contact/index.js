@@ -82,6 +82,7 @@ function Contact() {
               <Grid item md={10}>
                 <Box sx={{ py: { md: 6, xs: 3 } }}>
                   <Typography
+                    data-aos="fade-down"
                     sx={{
                       display: 'flex',
                       alignItems: 'center',
@@ -103,6 +104,7 @@ function Contact() {
                     GET IN TOUCH
                   </Typography>
                   <Typography
+                    data-aos="fade-right"
                     component="h1"
                     sx={{
                       mt: 3,
@@ -136,6 +138,7 @@ function Contact() {
                     }}
                   >
                     <Typography
+                      data-aos="fade-up"
                       sx={{
                         maxWidth: 520,
                         color: '#b6c4c1',

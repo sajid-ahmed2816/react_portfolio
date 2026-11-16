@@ -69,6 +69,7 @@ function Project() {
                   }}
                 >
                   <Typography
+                    data-aos="fade-down"
                     sx={{
                       display: 'flex',
                       alignItems: 'center',
@@ -90,6 +91,7 @@ function Project() {
                     FROM IDEAS TO REALITY
                   </Typography>
                   <Typography
+                    data-aos="fade-right"
                     component="h1"
                     sx={{
                       mt: 3,
@@ -131,6 +133,7 @@ function Project() {
                     }}
                   >
                     <Typography
+                      data-aos="fade-up"
                       sx={{
                         maxWidth: 520,
                         color: '#b6c4c1',
