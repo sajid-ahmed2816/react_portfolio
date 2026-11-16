@@ -150,40 +150,44 @@ function Header() {
                       color: 'white',
                       display: 'block',
                       borderRadius: "32px",
-                      background: pathname === page.path ? Colors.primary2 : "transparent",
                       transition: "all 0.3s ease-in-out",
                       textTransform: "capitalize",
                       ":hover": {
-                        "::before": {
-                          width: "100%",
-                          height: "100%",
-                          background: pathname === page.path ? "transparent" : Colors.primary2,
-                        },
+                        background: "transparent",
                         "& .button-text": {
-                          color: Colors.black
+                          color: Colors.primary2,
+                          "::before": {
+                            width: "100%",
+                            height: "4px",
+                            background: Colors.primary2
+                          },
                         },
-                        background: pathname === page.path ? Colors.primary2 : "transparent"
                       },
-                      "::before": {
-                        content: "''",
-                        display: "block",
-                        width: 0,
-                        height: "100%",
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        zIndex: -1,
-                        transition: "all 0.3s ease-in-out",
-                        borderRadius: "32px"
-                      }
                     }}
                   >
-                    <Typography variant='body2'
+                    <Typography
+                      variant='body2'
                       className='button-text'
                       sx={{
-                        color: pathname === page.path ? Colors.black : Colors.white,
+                        color: pathname === page.path ? Colors.primary2 : Colors.white,
+                        transition: "all 0.3s ease-in-out",
+                        position: "relative",
                         px: 1,
-                      }}>
+                        "::before": {
+                          content: "''",
+                          display: "block",
+                          background: pathname === page.path ? Colors.primary2 : "transparent",
+                          width: pathname === page.path ? "100%" : 0,
+                          height: "4px",
+                          position: "absolute",
+                          bottom: -8,
+                          left: 0,
+                          zIndex: -1,
+                          transition: "all 0.3s ease-in-out",
+                          borderRadius: "32px"
+                        }
+                      }}
+                    >
                       {page.name}
                     </Typography>
                   </Button>
