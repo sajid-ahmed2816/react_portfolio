@@ -79,7 +79,7 @@ function Contact() {
         <Grid container>
           <Grid item md={12}>
             <Grid container justifyContent={"center"}>
-              <Grid item md={10}>
+              <Grid item md={10} sm={12}>
                 <Box sx={{ py: { md: 6, xs: 3 } }}>
                   <Typography
                     data-aos="fade-down"
