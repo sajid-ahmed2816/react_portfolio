@@ -32,7 +32,7 @@ function Header() {
               gap: "20px",
               justifyContent: "space-between",
               background: Colors.black + 40,
-              borderRadius: "60px",
+              borderRadius: "16px",
               backdropFilter: "blur(10px)",
               boxShadow: "0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12)"
             }}
@@ -203,7 +203,7 @@ function Header() {
                     endIcon={<Download />}
                     title={"Download CV"}
                     sx={{
-                      borderRadius: "32px",
+                      borderRadius: "4px",
                       textTransform: "capitalize",
                       background: "transparent",
                       boxShadow: "none",
@@ -218,7 +218,7 @@ function Header() {
                         left: 0,
                         zIndex: -1,
                         transition: "all 0.3s ease-in-out",
-                        borderRadius: "32px"
+                        borderRadius: "4px"
                       },
                       ":hover": {
                         boxShadow: "none",
