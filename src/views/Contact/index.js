@@ -259,6 +259,9 @@ function Contact() {
                                 fullWidth={true}
                                 type={"submit"}
                                 title={"Submit"}
+                                sx={{
+                                  zIndex: 1
+                                }}
                               />
                             </Box>
                           </Grid>
@@ -268,6 +271,9 @@ function Contact() {
                                 title={"Clear"}
                                 fullWidth={true}
                                 onClick={() => handleClear()}
+                                sx={{
+                                  zIndex: 1
+                                }}
                               />
                             </Box>
                           </Grid>

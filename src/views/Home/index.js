@@ -1,15 +1,14 @@
 import { useEffect, useState, useRef, cloneElement } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Box, CardMedia, Container, Grid, Typography, IconButton, Accordion, AccordionSummary, AccordionDetails, Button } from '@mui/material';
+import { Api, ArrowForwardIosSharp, Dashboard, ShoppingCart, Web } from '@mui/icons-material';
 import Images, { Mongodb, ExpressJs, ReactJs, NodeJs, Firebase, Redux, TailwindCSS, MaterialUi, LinkedIn, Github } from '../../assets/images/Images';
+import { styled } from '@mui/material/styles';
 import { TypeAnimation } from 'react-type-animation';
 import Colors from '../../assets/style';
-import { useNavigate } from 'react-router-dom';
-import { PrimaryButton, SecondaryButton } from '../../Components/Buttons';
-import { Api, ArrowForwardIosSharp, Dashboard, ShoppingCart, Web } from '@mui/icons-material';
-import { styled } from '@mui/material/styles';
-// import ParticlesCanvas from '../../Components/Custom';
 import GlowGrid from '../../Components/Glowgrid';
 import AnimatedCounter from '../../Components/Stats';
+import { PrimaryButton, SecondaryButton } from '../../Components/Buttons';
 
 const CustomAccordion = styled((props) => (
   <Accordion disableGutters elevation={0} {...props} sx={{ background: "#072131" }} />
@@ -282,7 +281,7 @@ function Home() {
                       spacing={2}
                       sx={{
                         alignItems: "center",
-                        pt: { xl: 6, lg: 6, md: 6, sm: 12, xs: 12 },
+                        pt: { xl: 7, lg: 7, md: 7, sm: 12, xs: 12 },
                         pb: { xs: 3 },
                         flexWrap: "wrap-reverse",
                       }}
@@ -786,19 +785,19 @@ function Home() {
                               width: "100%",
                               display: "flex",
                               justifyContent: "space-between",
-                              alignItems: "center",
+                              alignItems: "center"
                             }}
                           >
                             <Typography sx={{ ...whiteHeading }}>
                               Insights & Articles
                             </Typography>
-                            <Button
-                              variant="outlined"
-                              sx={{ borderColor: Colors.primary2, color: Colors.primary2, ":hover": { borderColor: Colors.secondary, color: Colors.secondary } }}
+                            <SecondaryButton
                               onClick={() => window.open('https://medium.com/@sajid.ahmed2816', '_blank')}
-                            >
-                              View All
-                            </Button>
+                              title={"View All"}
+                              sx={{
+                                zIndex: 1
+                              }}
+                            />
                           </Box>
                         </Grid>
                         <Grid item md={12}>

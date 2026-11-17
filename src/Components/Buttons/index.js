@@ -13,17 +13,35 @@ export const PrimaryButton = ({
 }) => {
   return (
     <Button
+      variant='contained'
       endIcon={endIcon}
       disabled={disabled}
-      variant='contained'
       fullWidth={fullWidth}
       type={type}
       onClick={onClick}
       sx={{
-        color: Colors.white,
+        boxShadow: "none",
+        "::before": {
+          content: "''",
+          display: "block",
+          width: 0,
+          height: "100%",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          zIndex: -1,
+          transition: "all 0.3s ease-in-out",
+          borderRadius: "4px",
+          border: `1px solid ${Colors.primary2}`,
+        },
         ":hover": {
-          background: Colors.primary1,
-          boxShadow: `0px 0px 5px 1px ${Colors.secondary}`,
+          boxShadow: "none",
+          background: "transparent",
+          color: Colors.primary2,
+          "::before": {
+            width: "100%",
+            background: "transparent",
+          },
         },
         ...sx
       }}
@@ -42,21 +60,42 @@ export const PrimaryButton = ({
 }
 
 export const SecondaryButton = ({
+  endIcon,
   fullWidth,
   title,
-  onClick
+  onClick,
+  sx
 }) => {
   return (
     <Button
       variant='outlined'
+      endIcon={endIcon}
       fullWidth={fullWidth}
       sx={{
-        borderColor: Colors.primary1,
-        color: Colors.primary1,
+        borderColor: Colors.primary2,
+        color: Colors.primary2,
+        "::before": {
+          content: "''",
+          display: "block",
+          width: 0,
+          height: "100%",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          zIndex: -1,
+          transition: "all 0.3s ease-in-out",
+        },
         ":hover": {
-          borderColor: Colors.primary,
-          boxShadow: `0px 0px 0px 1px ${Colors.primary2}`
-        }
+          border: `1px solid ${Colors.primary2}`,
+          boxShadow: "none",
+          background: "transparent",
+          color: Colors.black,
+          "::before": {
+            width: "100%",
+            background: Colors.primary2
+          }
+        },
+        ...sx
       }}
       onClick={onClick}
     >

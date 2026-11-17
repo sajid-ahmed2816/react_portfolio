@@ -4,7 +4,7 @@ import { Menu, Download, Close } from '@mui/icons-material';
 import Navigation from '../../Navigation';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Colors from '../../assets/style';
-import { PrimaryButton } from '../../Components/Buttons';
+import { SecondaryButton } from '../../Components/Buttons';
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -28,7 +28,8 @@ function Header() {
         <Grid container justifyContent={"center"}>
           <Grid item md={10} xs={12}>
             <Toolbar sx={{
-              px: { md: 2.5, xs: 2.5 },
+              px: { md: 2.25, xs: 2.25 },
+              minHeight: { md: "70px", xs: "70px" },
               gap: "20px",
               justifyContent: "space-between",
               background: Colors.black + 40,
@@ -199,36 +200,12 @@ function Header() {
                   href="download/resume.pdf"
                   download
                 >
-                  <PrimaryButton
+                  <SecondaryButton
                     endIcon={<Download />}
                     title={"Download CV"}
                     sx={{
                       borderRadius: "4px",
                       textTransform: "capitalize",
-                      background: "transparent",
-                      boxShadow: "none",
-                      color: Colors.white,
-                      "::before": {
-                        content: "''",
-                        display: "block",
-                        width: 0,
-                        height: "100%",
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        zIndex: -1,
-                        transition: "all 0.3s ease-in-out",
-                        borderRadius: "4px"
-                      },
-                      ":hover": {
-                        boxShadow: "none",
-                        background: "transparent",
-                        color: Colors.black,
-                        "::before": {
-                          width: "100%",
-                          background: Colors.primary2
-                        }
-                      }
                     }}
                   />
                 </a>
